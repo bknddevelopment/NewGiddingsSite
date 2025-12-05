@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { getImagePath } from "@/lib/utils";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -23,7 +24,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/images/logo.png"
+              src={getImagePath("/images/logo.png")}
               alt="Giddings Consulting Group"
               width={184}
               height={58}

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getImagePath } from "@/lib/utils";
 
 // Stay informed items - 5 items matching Figma
 const stayInformedItems = [
@@ -31,7 +32,7 @@ export default function ContactPage() {
         {/* Background with navy color blend */}
         <div className="absolute inset-0">
           <Image
-            src="/images/contact-hero-bg.jpg"
+            src={getImagePath("/images/contact-hero-bg.jpg")}
             alt=""
             fill
             className="object-cover object-center"
@@ -87,7 +88,7 @@ export default function ContactPage() {
               {stayInformedItems.map((item, index) => (
                 <div key={index} className="flex flex-col items-center text-center">
                   <div className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6">
-                    <Image src={item.icon} alt="" width={62} height={62} className="brightness-0 invert" />
+                    <Image src={getImagePath(item.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
                   </div>
                   <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
                     {item.label}
@@ -152,7 +153,7 @@ export default function ContactPage() {
               {/* Right Column - Image */}
               <div className="relative w-full lg:w-[535px] h-[400px] lg:h-[578px] rounded-[32px] overflow-hidden flex-shrink-0">
                 <Image
-                  src="/images/contact-form-image.jpg"
+                  src={getImagePath("/images/contact-form-image.jpg")}
                   alt="Team collaboration"
                   fill
                   className="object-cover"
@@ -169,7 +170,7 @@ export default function ContactPage() {
             <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
               Submit your information.
             </p>
-            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={43} height={43} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
           </Link>
 
           {/* Gold CTA */}
@@ -177,7 +178,7 @@ export default function ContactPage() {
             <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
               Join our<br />mailing list.
             </p>
-            <Image src="/images/icons/circle-arrow-right.svg" alt="" width={39} height={39} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
           </Link>
 
           {/* Blue CTA */}
@@ -185,7 +186,7 @@ export default function ContactPage() {
             <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
               Stay connected to a community focused on impact and results.
             </p>
-            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={39} height={39} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
           </Link>
         </div>
       </div>

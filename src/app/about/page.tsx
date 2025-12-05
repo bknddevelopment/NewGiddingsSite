@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getImagePath } from "@/lib/utils";
 
 // Values data - matching Figma layout (2 rows of 3)
 const valuesTop = [
@@ -36,7 +37,7 @@ export default function AboutPage() {
         {/* Background with navy color blend */}
         <div className="absolute inset-0">
           <Image
-            src="/images/about-hero-bg.jpg"
+            src={getImagePath("/images/about-hero-bg.jpg")}
             alt=""
             fill
             className="object-cover object-center"
@@ -100,7 +101,7 @@ export default function AboutPage() {
               {/* Founder Image */}
               <div className="relative w-full lg:w-[648px] h-[450px] rounded-[32px] overflow-hidden flex-shrink-0">
                 <Image
-                  src="/images/founder-image.jpg"
+                  src={getImagePath("/images/founder-image.jpg")}
                   alt="Drew Giddings"
                   fill
                   className="object-cover object-top"
@@ -183,7 +184,7 @@ export default function AboutPage() {
               {valuesTop.map((value, index) => (
                 <div key={index} className="flex flex-col items-center text-center w-[223px]">
                   <div className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6">
-                    <Image src={value.icon} alt="" width={62} height={62} className="brightness-0 invert" />
+                    <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
                   </div>
                   <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
                     {value.label}
@@ -197,7 +198,7 @@ export default function AboutPage() {
               {valuesBottom.map((value, index) => (
                 <div key={index} className="flex flex-col items-center text-center w-[223px]">
                   <div className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6">
-                    <Image src={value.icon} alt="" width={62} height={62} className="brightness-0 invert" />
+                    <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
                   </div>
                   <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
                     {value.label}
@@ -307,7 +308,7 @@ export default function AboutPage() {
             <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
               Meet with<br />our team.
             </p>
-            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={43} height={43} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
           </Link>
 
           {/* Gold CTA */}
@@ -315,7 +316,7 @@ export default function AboutPage() {
             <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
               Join our partner network.
             </p>
-            <Image src="/images/icons/circle-arrow-right.svg" alt="" width={39} height={39} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
           </Link>
 
           {/* Blue CTA */}
@@ -323,7 +324,7 @@ export default function AboutPage() {
             <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
               Sign up for updates and insights.
             </p>
-            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={39} height={39} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
           </Link>
         </div>
       </div>

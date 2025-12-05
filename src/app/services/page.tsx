@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getImagePath } from "@/lib/utils";
 
 // Service cards data - 5 cards with different header colors
 const serviceCards = [
@@ -114,7 +115,7 @@ export default function ServicesPage() {
         {/* Background with navy color blend */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-bg.jpg"
+            src={getImagePath("/images/hero-bg.jpg")}
             alt=""
             fill
             className="object-cover object-center"
@@ -221,7 +222,7 @@ export default function ServicesPage() {
             <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
               Schedule a 60-minute strategy session.
             </p>
-            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={43} height={43} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
           </Link>
 
           {/* Gold CTA */}
@@ -229,7 +230,7 @@ export default function ServicesPage() {
             <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
               Download our Board Governance Checklist.
             </p>
-            <Image src="/images/icons/circle-arrow-right.svg" alt="" width={39} height={39} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
           </Link>
 
           {/* Blue CTA */}
@@ -237,7 +238,7 @@ export default function ServicesPage() {
             <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
               Join our mailing list for tools and insights.
             </p>
-            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={39} height={39} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
           </Link>
         </div>
       </div>

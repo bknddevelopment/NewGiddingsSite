@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram, Mail, MapPin } from "lucide-react";
+import { getImagePath } from "@/lib/utils";
 
 const footerLinks = {
   quickLinks: [
@@ -35,7 +36,7 @@ export default function Footer() {
           <div className="space-y-6">
             <Link href="/">
               <Image
-                src="/images/logo-white.png"
+                src={getImagePath("/images/logo-white.png")}
                 alt="Giddings Consulting Group"
                 width={184}
                 height={58}

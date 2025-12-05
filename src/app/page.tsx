@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getImagePath } from "@/lib/utils";
 
 // Services with icons
 const services = [
@@ -64,7 +65,7 @@ export default function Home() {
         {/* Background with navy color blend */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-bg-new.jpg"
+            src={getImagePath("/images/hero-bg-new.jpg")}
             alt=""
             fill
             className="object-cover object-top"
@@ -129,7 +130,7 @@ export default function Home() {
               <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
                 What We Do
               </h2>
-              <Image src="/images/icons/circle-arrow-right.svg" alt="" width={32} height={32} />
+              <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
             </div>
 
             {/* Description */}
@@ -144,7 +145,7 @@ export default function Home() {
                 <div key={index} className="flex flex-col items-center text-center">
                   {/* Blue circle with icon */}
                   <div className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6">
-                    <Image src={service.icon} alt="" width={62} height={62} className="brightness-0 invert" />
+                    <Image src={getImagePath(service.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
                   </div>
                   {/* Label */}
                   <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
@@ -164,7 +165,7 @@ export default function Home() {
               <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
                 Why Organizations Work With Us
               </h2>
-              <Image src="/images/icons/circle-arrow-right.svg" alt="" width={32} height={32} />
+              <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
             </div>
 
             {/* Description */}
@@ -208,7 +209,7 @@ export default function Home() {
               <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
                 Our Approach
               </h2>
-              <Image src="/images/icons/circle-arrow-right.svg" alt="" width={32} height={32} />
+              <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
             </div>
 
             {/* 6 Image Cards - 2 rows of 3 */}
@@ -217,7 +218,7 @@ export default function Home() {
                 <div key={index} className="flex flex-col items-center">
                   <div className="relative w-full max-w-[386px] h-[214px] rounded-[32px] overflow-hidden">
                     <Image
-                      src={step.image}
+                      src={getImagePath(step.image)}
                       alt={step.label}
                       fill
                       className="object-cover"
@@ -248,7 +249,7 @@ export default function Home() {
               <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-white">
                 Who We Serve
               </h2>
-              <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={32} height={32} />
+              <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={32} height={32} />
             </div>
           </div>
         </div>
@@ -261,7 +262,7 @@ export default function Home() {
               {whoWeServeTop.map((item, index) => (
                 <div key={index} className="flex flex-col items-center">
                   <div className="w-[112px] h-[112px] flex items-center justify-center mb-6">
-                    <Image src={item.icon} alt="" width={112} height={112} className="brightness-0 invert" />
+                    <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert" />
                   </div>
                   <p className="font-bold text-[18px] leading-[26px] text-center text-white whitespace-pre-line">
                     {item.label}
@@ -275,7 +276,7 @@ export default function Home() {
               {whoWeServeBottom.map((item, index) => (
                 <div key={index} className="flex flex-col items-center">
                   <div className="w-[112px] h-[112px] flex items-center justify-center mb-6">
-                    <Image src={item.icon} alt="" width={112} height={112} className="brightness-0 invert" />
+                    <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert" />
                   </div>
                   <p className="font-bold text-[18px] leading-[26px] text-center text-white whitespace-pre-line">
                     {item.label}
@@ -297,7 +298,7 @@ export default function Home() {
                   <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
                     Impact Snapshot
                   </h2>
-                  <Image src="/images/icons/circle-arrow-right.svg" alt="" width={32} height={32} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
                 </div>
 
                 {/* Description */}
@@ -323,7 +324,7 @@ export default function Home() {
               {/* Image */}
               <div className="relative w-full lg:w-[460px] h-[400px] lg:h-[573px] rounded-[32px] overflow-hidden flex-shrink-0">
                 <Image
-                  src="/images/impact-image.jpg"
+                  src={getImagePath("/images/impact-image.jpg")}
                   alt="Impact"
                   fill
                   className="object-cover"
@@ -406,7 +407,7 @@ export default function Home() {
             <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
               Schedule a 60-minute strategy session.
             </p>
-            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={43} height={43} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
           </Link>
 
           {/* Gold CTA */}
@@ -414,7 +415,7 @@ export default function Home() {
             <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
               Download our Board Governance Checklist.
             </p>
-            <Image src="/images/icons/circle-arrow-right.svg" alt="" width={39} height={39} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
           </Link>
 
           {/* Blue CTA */}
@@ -422,7 +423,7 @@ export default function Home() {
             <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
               Join our mailing list for tools and insights.
             </p>
-            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={39} height={39} />
+            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
           </Link>
         </div>
       </div>

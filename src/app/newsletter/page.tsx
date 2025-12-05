@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getImagePath } from "@/lib/utils";
 
 // Newsletter benefits with checkmarks
 const newsletterBenefits = [
@@ -43,7 +44,7 @@ export default function NewsletterPage() {
         {/* Background with navy color blend */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-bg.jpg"
+            src={getImagePath("/images/hero-bg.jpg")}
             alt=""
             fill
             className="object-cover object-center"
