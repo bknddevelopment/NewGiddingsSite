@@ -1,19 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-// Navigation links matching Figma
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/contact", label: "Contact" },
-  { href: "/newsletter", label: "Newsletter" },
-];
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 // Values data - matching Figma layout (2 rows of 3)
-// Row 1: Collaboration (send-to-back), Integrity (shield), Accountability (rank)
-// Row 2: Equity (sort), Innovation (launch), Practical action (direction)
 const valuesTop = [
   { icon: "/images/icons/send-to-back.svg", label: "Collaboration" },
   { icon: "/images/icons/shield.svg", label: "Integrity" },
@@ -26,7 +17,7 @@ const valuesBottom = [
   { icon: "/images/icons/direction.svg", label: "Practical action" },
 ];
 
-// Process steps - matching Figma
+// Process steps
 const processSteps = [
   "Understand your goals and challenges",
   "Study your context",
@@ -37,86 +28,57 @@ const processSteps = [
 
 export default function AboutPage() {
   return (
-    <div className="overflow-hidden bg-white">
-      {/* Header - exactly matching Figma */}
-      <header className="absolute top-0 left-0 right-0 z-50 bg-white h-[99px]">
-        <div className="flex items-center justify-between h-full px-[122px]">
-          {/* Logo */}
-          <Link href="/">
-            <Image
-              src="/images/logo.png"
-              alt="Giddings Consulting Group"
-              width={184}
-              height={58}
-              className="h-[58px] w-auto"
-              priority
-            />
-          </Link>
+    <div className="w-full bg-white">
+      <Header />
 
-          {/* Navigation */}
-          <nav className="flex items-center gap-[64px]">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[#212121] font-bold text-[18px] leading-[32px] tracking-[-0.36px] hover:text-[#3490f3] transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </header>
-
-      {/* Hero Section - exactly matching Figma */}
-      <section className="relative h-[660px]">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
+      {/* ============ HERO SECTION ============ */}
+      <section className="relative w-full h-[560px] overflow-hidden">
+        {/* Background with navy color blend */}
+        <div className="absolute inset-0">
           <Image
             src="/images/about-hero-bg.jpg"
-            alt="About hero background"
+            alt=""
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
-          {/* Navy color overlay */}
-          <div className="absolute inset-0 bg-[#1d1f4e] mix-blend-color" />
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-[rgba(29,31,78,0.2)] mix-blend-multiply" />
+          <div className="absolute inset-0 bg-navy mix-blend-color" />
+          <div className="absolute inset-0 bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
         </div>
 
         {/* Gradient overlay from left */}
-        <div className="absolute left-0 top-[99px] w-[1024px] h-[587px] bg-gradient-to-r from-[#1d1f4e] to-transparent z-10" />
+        <div
+          className="absolute inset-y-0 left-0 w-[70%]"
+          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(255, 255, 255, 0) 98.21%)' }}
+        />
 
-        {/* Decorative Circles - exact positions from Figma */}
-        <div className="absolute left-[-56px] top-[477px] w-[211px] h-[211px] rounded-full bg-[#3490f3] z-20" />
-        <div className="absolute right-[-63px] top-[235px] w-[127px] h-[127px] rounded-full bg-[#fcba04] z-20" />
-        <div className="absolute right-[90px] top-[151px] w-[51px] h-[51px] rounded-full bg-[#3490f3] z-20" />
-        <div className="absolute right-[193px] top-[557px] w-[51px] h-[51px] rounded-full bg-[#964c2d] z-20" />
+        {/* Decorative Circles */}
+        <div className="absolute w-[211px] h-[211px] -left-14 bottom-[20px] rounded-full bg-blue" />
+        <div className="absolute w-[127px] h-[127px] -right-16 top-[140px] rounded-full bg-gold" />
+        <div className="absolute w-[51px] h-[51px] right-[60px] top-[50px] rounded-full bg-blue" />
+        <div className="absolute w-[51px] h-[51px] right-[200px] bottom-[20px] rounded-full bg-brown" />
 
-        {/* Hero Content */}
-        <div className="relative z-30 pt-[262px] pl-[71px] max-w-[726px]">
-          {/* Gold line */}
-          <div className="flex items-center mb-6">
-            <div className="w-[439px] h-[7px] bg-[#fcba04] ml-[190px]" />
+        {/* Hero Content - positioned in center-left area */}
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-center">
+          <div className="max-w-[726px]">
+            <h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
+              Giddings Consulting Group<br />
+              is a social impact strategy firm<br />
+              based in <span className="relative inline-block">Elizabeth, New Jersey.<span className="absolute left-0 -bottom-1 w-full h-[7px] bg-gold"></span></span>
+            </h1>
           </div>
-
-          <h1 className="text-[36px] font-bold text-white leading-[48px] tracking-[1.8px]">
-            Giddings Consulting Group<br />
-            is a social impact strategy firm based in Elizabeth, New Jersey.
-          </h1>
         </div>
       </section>
 
-      {/* White Content Area with rounded top */}
-      <section className="relative -mt-[77px] z-40">
-        <div className="bg-white rounded-t-[65px] pt-[51px]">
-          {/* Who We Are Section */}
-          <section className="px-[112px] mb-[64px]">
-            <h2 className="text-[28px] font-bold text-[#212121] leading-[32px] mb-[32px]">
+      {/* ============ WHITE CONTENT AREA with rounded top ============ */}
+      <div className="relative -mt-[77px] bg-white rounded-t-[65px] pt-12 pb-0">
+        {/* Who We Are Section */}
+        <section className="py-12">
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+            <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
               Who We Are
             </h2>
-            <div className="text-[18px] text-[#212121] leading-[26px] tracking-[-0.36px] max-w-[1220px]">
+            <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark max-w-[1220px]">
               <p className="mb-4">
                 We work with mission-driven organizations committed to equity, inclusion, and sustainable community outcomes.
               </p>
@@ -125,128 +87,146 @@ export default function AboutPage() {
                 The goal is simple. Help leaders deliver stronger results for the communities they serve.
               </p>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Our Founder Section - Image on LEFT, Text on RIGHT per Figma */}
-          <section className="px-[110px] mb-[80px]">
-            <h2 className="text-[28px] font-bold text-[#212121] leading-[32px] mb-[32px]">
+        {/* Our Founder Section */}
+        <section className="py-12">
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+            <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
               Our Founder
             </h2>
-            <div className="flex gap-[34px]">
-              {/* Founder Image - LEFT side */}
-              <div className="relative w-[648px] h-[314px] rounded-[32px] overflow-hidden flex-shrink-0">
+            <div className="flex flex-col lg:flex-row gap-8">
+              {/* Founder Image */}
+              <div className="relative w-full lg:w-[648px] h-[450px] rounded-[32px] overflow-hidden flex-shrink-0">
                 <Image
                   src="/images/founder-image.jpg"
                   alt="Drew Giddings"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
 
-              {/* Founder Bio - RIGHT side */}
-              <div className="text-[18px] text-[#212121] leading-[26px] tracking-[-0.36px] w-[540px]">
+              {/* Founder Bio */}
+              <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark lg:w-[540px]">
                 <p className="mb-4">
                   Drew Giddings is a strategist, philanthropic advisor, and executive coach with more than two decades of experience across the nonprofit, philanthropic, and public sectors.
                 </p>
                 <p className="mb-4">
-                  He has supported more than 100 organizations. he advised leaders through major transitions. he strengthened boards.<br />
-                  he built fundraising models. he expanded partnerships<br />
+                  He has supported more than 100 organizations. He advised leaders through major transitions. He strengthened boards.<br />
+                  He built fundraising models. He expanded partnerships<br />
                   across sectors, working on climate resilience, economic inclusion, and community development.
                 </p>
                 <p>
-                  Her work sits at the intersection of strategy, equity,<br />
+                  His work sits at the intersection of strategy, equity,<br />
                   and systems change.
                 </p>
               </div>
             </div>
 
-            {/* Decorative lines with arrows pointing RIGHT - matching Figma */}
-            {/* Two stacked lines with matching color triangles at the end */}
-            <div className="relative mt-[80px]">
-              {/* Blue line with blue triangle */}
-              <div className="flex items-center">
-                <div className="w-[1332px] h-[16px] bg-[#3490f3]" />
-                <div className="w-0 h-0 border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent border-l-[40px] border-l-[#3490f3] -ml-[1px]" />
+            {/* Decorative lines with arrows pointing RIGHT */}
+            <div className="relative mt-20 overflow-hidden">
+              {/* Blue arrow line */}
+              <div className="flex items-center w-full lg:w-[92%]">
+                <div className="flex-1 h-[16px] bg-blue" />
+                <div
+                  style={{
+                    width: 0,
+                    height: 0,
+                    borderTop: '20px solid transparent',
+                    borderBottom: '20px solid transparent',
+                    borderLeft: '40px solid #3490F3',
+                  }}
+                />
               </div>
-              {/* Spacer between lines */}
+              {/* Spacer */}
               <div className="h-[64px]" />
-              {/* Navy line with navy triangle */}
-              <div className="flex items-center">
-                <div className="w-[1027px] h-[16px] bg-[#1d1f4e]" />
-                <div className="w-0 h-0 border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent border-l-[40px] border-l-[#1d1f4e] -ml-[1px]" />
+              {/* Navy arrow line */}
+              <div className="flex items-center w-full lg:w-[71%]">
+                <div className="flex-1 h-[16px] bg-navy" />
+                <div
+                  style={{
+                    width: 0,
+                    height: 0,
+                    borderTop: '20px solid transparent',
+                    borderBottom: '20px solid transparent',
+                    borderLeft: '40px solid #1D1F4E',
+                  }}
+                />
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* What Guides Us Section - Gray background */}
-          <section className="bg-[rgba(235,235,235,0.5)] py-[54px]">
-            <div className="px-[114px]">
-              <h2 className="text-[28px] font-bold text-[#212121] leading-[32px] tracking-[-0.56px] mb-[32px]">
-                What Guides Us
-              </h2>
+        {/* ============ WHAT GUIDES US SECTION ============ */}
+        <section className="w-full bg-[rgba(235,235,235,0.5)] py-14">
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+            <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
+              What Guides Us
+            </h2>
 
-              <p className="text-[18px] text-[#212121] leading-[26px] tracking-[-0.36px] mb-[32px] max-w-[1230px]">
-                We believe strong organizations lead to stronger communities.<br />
-                We build strategy that reflects lived experience and local wisdom.<br />
-                We respect your context. We support your values. We help you lead with clarity.
-              </p>
+            <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-8 max-w-[1230px]">
+              We believe strong organizations lead to stronger communities.<br />
+              We build strategy that reflects lived experience and local wisdom.<br />
+              We respect your context. We support your values. We help you lead with clarity.
+            </p>
 
-              {/* Gold divider */}
-              <div className="w-[1220px] h-[2px] bg-[#fcba04] mb-[32px]" />
+            {/* Gold divider */}
+            <div className="w-full max-w-[1220px] h-0 border-[2px] border-gold mb-8" />
 
-              <p className="text-[18px] font-bold text-[#212121] leading-[26px] tracking-[-0.36px] mb-[74px]">
-                Our Values:
-              </p>
+            <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-16">
+              Our Values:
+            </p>
 
-              {/* Values Grid - Top Row */}
-              <div className="flex justify-center gap-[271px] mb-[64px]">
-                {valuesTop.map((value, index) => (
-                  <div key={index} className="flex flex-col items-center text-center w-[223px]">
-                    <div className="w-[112px] h-[112px] rounded-full bg-[#3490f3] flex items-center justify-center mb-[25px]">
-                      <Image src={value.icon} alt="" width={62} height={62} className="brightness-0 invert" />
-                    </div>
-                    <p className="text-[18px] text-[#212121] leading-[26px] tracking-[-0.36px]">
-                      {value.label}
-                    </p>
+            {/* Values Grid - Top Row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-[271px] justify-items-center mb-16">
+              {valuesTop.map((value, index) => (
+                <div key={index} className="flex flex-col items-center text-center w-[223px]">
+                  <div className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6">
+                    <Image src={value.icon} alt="" width={62} height={62} className="brightness-0 invert" />
                   </div>
-                ))}
-              </div>
-
-              {/* Values Grid - Bottom Row */}
-              <div className="flex justify-center gap-[271px]">
-                {valuesBottom.map((value, index) => (
-                  <div key={index} className="flex flex-col items-center text-center w-[223px]">
-                    <div className="w-[112px] h-[112px] rounded-full bg-[#3490f3] flex items-center justify-center mb-[25px]">
-                      <Image src={value.icon} alt="" width={62} height={62} className="brightness-0 invert" />
-                    </div>
-                    <p className="text-[18px] text-[#212121] leading-[26px] tracking-[-0.36px]">
-                      {value.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
+                  <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+                    {value.label}
+                  </p>
+                </div>
+              ))}
             </div>
-          </section>
 
-          {/* How We Work Section - Navy Background */}
-          <section className="bg-[#1d1f4e] relative py-[65px]">
-            {/* Decorative circles */}
-            <div className="absolute right-[-63px] top-[194px] w-[127px] h-[127px] rounded-full bg-[#fcba04]" />
-            <div className="absolute right-[135px] top-[50px] w-[61px] h-[61px] rounded-full bg-[#3490f3]" />
-            <div className="absolute left-[-73px] top-[258px] w-[211px] h-[105px] rounded-full bg-[#964c2d]" />
-            {/* Large blue ellipse at bottom right */}
-            <div className="absolute right-[-77px] bottom-[-100px] w-[437px] h-[219px] rounded-full bg-[#3490f3] opacity-50" />
+            {/* Values Grid - Bottom Row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-[271px] justify-items-center">
+              {valuesBottom.map((value, index) => (
+                <div key={index} className="flex flex-col items-center text-center w-[223px]">
+                  <div className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6">
+                    <Image src={value.icon} alt="" width={62} height={62} className="brightness-0 invert" />
+                  </div>
+                  <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+                    {value.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-            <div className="text-center mb-[64px]">
-              <h2 className="text-[28px] font-bold text-white leading-[32px] tracking-[-0.56px] mb-[32px]">
+        {/* ============ HOW WE WORK SECTION ============ */}
+        <section className="w-full bg-navy relative py-16 overflow-hidden">
+          {/* Decorative circles */}
+          <div className="absolute w-[127px] h-[127px] -right-16 top-[194px] rounded-full bg-gold" />
+          <div className="absolute w-[61px] h-[61px] right-[135px] top-[50px] rounded-full bg-blue" />
+          <div className="absolute w-[211px] h-[105px] -left-[73px] top-[258px] rounded-full bg-brown" />
+          <div className="absolute w-[437px] h-[219px] -right-[77px] -bottom-[100px] rounded-full bg-blue opacity-50" />
+
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28 relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-white mb-8">
                 How We Work
               </h2>
 
               {/* Gold divider */}
-              <div className="w-[474px] h-[2px] bg-[#fcba04] mx-auto mb-[60px]" />
+              <div className="w-[474px] h-0 border-[2px] border-gold mx-auto mb-12" />
 
-              {/* Bullet list - Regular weight per Figma */}
-              <div className="text-[28px] text-white leading-[81px] text-center">
+              {/* Bullet list */}
+              <div className="text-[24px] md:text-[28px] text-white leading-[60px] md:leading-[81px] text-center">
                 <ul className="list-disc list-inside">
                   <li>You get direct engagement from senior leadership.</li>
                   <li>You get tools that support execution.</li>
@@ -255,20 +235,20 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="text-center mt-[93px]">
-              <h2 className="text-[28px] font-bold text-white leading-[32px] tracking-[-0.56px] mb-[32px]">
+            <div className="text-center mt-20">
+              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-white mb-8">
                 Our Process
               </h2>
 
               {/* Gold divider */}
-              <div className="w-[474px] h-[2px] bg-[#fcba04] mx-auto mb-[32px]" />
+              <div className="w-[474px] h-0 border-[2px] border-gold mx-auto mb-8" />
             </div>
 
             {/* Process Steps */}
-            <div className="px-[110px] space-y-[16px] relative z-10">
+            <div className="space-y-4">
               {processSteps.map((step, index) => (
-                <div key={index} className="bg-white rounded-[116px] py-[23px] px-[83px]">
-                  <p className="font-bold text-[18px] text-[#212121] text-center leading-[26px] tracking-[-0.36px]">
+                <div key={index} className="bg-white rounded-[116px] py-6 px-8 lg:px-20">
+                  <p className="font-bold text-[18px] text-dark text-center leading-[26px] tracking-[-0.02em]">
                     {step}
                   </p>
                 </div>
@@ -276,77 +256,79 @@ export default function AboutPage() {
             </div>
 
             {/* Closing statement */}
-            <p className="text-[28px] text-white leading-[81px] text-center mt-[54px] max-w-[1220px] mx-auto relative z-10">
+            <p className="text-[24px] md:text-[28px] text-white leading-[60px] md:leading-[81px] text-center mt-14">
               This approach strengthens culture, decision-making, and long-term sustainability.
             </p>
-          </section>
+          </div>
+        </section>
 
-          {/* Our Reach Section */}
-          <section className="py-[64px] px-[110px]">
-            <h2 className="text-[28px] font-bold text-[#212121] leading-[32px] mb-[32px]">
+        {/* Gold divider bar between navy section and Our Reach */}
+        <div className="w-full h-[16px] bg-gold" />
+
+        {/* ============ OUR REACH SECTION ============ */}
+        <section className="py-16">
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+            <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
               Our Reach
             </h2>
 
-            {/* Gold divider */}
-            <div className="w-[1220px] h-[2px] bg-[#fcba04] mb-[32px]" />
+            {/* Black divider */}
+            <div className="w-full max-w-[1220px] h-0 border-[2px] border-dark mb-8" />
 
-            <ul className="text-[18px] font-bold text-[#212121] leading-[32px] list-disc list-inside space-y-0">
+            <ul className="font-bold text-[18px] leading-[32px] text-dark list-disc list-inside space-y-0">
               <li>Our primary office is in Elizabeth, New Jersey.</li>
               <li>Our work extends across the African diaspora and global partners.</li>
               <li>Recent milestones include an expanded office, a refreshed brand, and membership in the Clinton Global Initiative.</li>
             </ul>
-          </section>
+          </div>
+        </section>
 
-          {/* Commitment to Emerging Leaders Section */}
-          <section className="px-[116px] pb-[32px]">
+        {/* ============ COMMITMENT TO EMERGING LEADERS ============ */}
+        <section className="pb-8">
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             {/* Blue pill bar */}
-            <div className="bg-[#3490f3] rounded-[116px] py-[23px] px-[83px] mb-[32px]">
-              <p className="font-bold text-[28px] text-white text-center leading-[26px] tracking-[-0.56px]">
+            <div className="w-full max-w-[1220px] bg-blue rounded-[116px] py-6 px-8 mb-8">
+              <p className="font-bold text-[24px] md:text-[28px] text-white text-center leading-[26px] tracking-[-0.02em]">
                 Commitment to Emerging Leaders
               </p>
             </div>
 
-            <p className="text-[18px] text-[#212121] leading-[26px] max-w-[1230px] mb-[64px]">
+            <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark max-w-[1230px] mb-16">
               We launched the <span className="font-bold">GoodTrouble Social Impact Apprenticeship Program</span> to support rising strategists and practitioners.<br />
               Apprentices support client work and gain experience in real-world problem-solving.
             </p>
+          </div>
+        </section>
 
-            {/* CTA Cards */}
-            <div className="flex">
-              {/* CTA 1 - Brown */}
-              <div className="bg-[#964c2d] w-[518px] h-[248px] flex flex-col items-center justify-center px-[97px]">
-                <p className="text-[26px] font-bold text-white text-center leading-[38px] tracking-[-0.13px] mb-[20px]">
-                  Meet with<br />our team.
-                </p>
-                <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={43} height={43} />
-              </div>
-
-              {/* CTA 2 - Gold */}
-              <div className="bg-[#fcba04] w-[406px] h-[248px] flex flex-col items-center justify-center px-[40px]">
-                <p className="text-[26px] font-bold text-black text-center leading-[38px] tracking-[-0.13px] mb-[20px]">
-                  Join our partner network.
-                </p>
-                <Image src="/images/icons/circle-arrow-right.svg" alt="" width={39} height={39} />
-              </div>
-
-              {/* CTA 3 - Blue */}
-              <div className="bg-[#3490f3] w-[518px] h-[248px] flex flex-col items-center justify-center px-[40px]">
-                <p className="text-[26px] font-bold text-white text-center leading-[38px] tracking-[-0.13px] mb-[20px]">
-                  Sign up for updates and insights.
-                </p>
-                <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={39} height={39} />
-              </div>
-            </div>
-          </section>
-
-          {/* Footer placeholder area */}
-          <section className="bg-[#d9d9d9] h-[262px] flex items-center justify-center">
-            <p className="text-[36px] font-bold text-[#ff00d9] text-center leading-[48px]">
-              [standard footer/sitemap including social icon drivers]
+        {/* ============ 3 CTA CARDS ============ */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-3">
+          {/* Brown CTA */}
+          <Link href="/contact" className="bg-brown h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
+            <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+              Meet with<br />our team.
             </p>
-          </section>
+            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={43} height={43} />
+          </Link>
+
+          {/* Gold CTA */}
+          <Link href="#" className="bg-gold h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
+            <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
+              Join our partner network.
+            </p>
+            <Image src="/images/icons/circle-arrow-right.svg" alt="" width={39} height={39} />
+          </Link>
+
+          {/* Blue CTA */}
+          <Link href="/newsletter" className="bg-blue h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
+            <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+              Sign up for updates and insights.
+            </p>
+            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={39} height={39} />
+          </Link>
         </div>
-      </section>
+      </div>
+
+      <Footer />
     </div>
   );
 }

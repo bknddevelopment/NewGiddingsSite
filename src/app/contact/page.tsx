@@ -1,23 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-// Navigation links matching Figma
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/contact", label: "Contact" },
-  { href: "/newsletter", label: "Newsletter" },
-];
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 // Stay informed items - 5 items matching Figma
 const stayInformedItems = [
-  { icon: "/images/icons/rank.svg", label: "New client \nwins and \ncase studies" },
-  { icon: "/images/icons/brain.svg", label: "Upcoming \nconvening and \nlearning sessions" },
-  { icon: "/images/icons/file.svg", label: "Leadership \nand fundraising \ntools" },
-  { icon: "/images/icons/bell.svg", label: "GoodTrouble apprenticeship \nupdates" },
-  { icon: "/images/icons/bulb.svg", label: "Insights from our work across climate, equity, \n& community resilience" },
+  { icon: "/images/icons/rank.svg", label: "New client\nwins and\ncase studies" },
+  { icon: "/images/icons/brain.svg", label: "Upcoming\nconvening and\nlearning sessions" },
+  { icon: "/images/icons/file.svg", label: "Leadership\nand fundraising\ntools" },
+  { icon: "/images/icons/bell.svg", label: "GoodTrouble\napprenticeship\nupdates" },
+  { icon: "/images/icons/bulb.svg", label: "Insights from our work\nacross climate, equity,\n& community resilience" },
 ];
 
 // Tell us items - 4 numbered items
@@ -30,127 +23,101 @@ const tellUsItems = [
 
 export default function ContactPage() {
   return (
-    <div className="overflow-hidden bg-white">
-      {/* Header - exactly matching Figma */}
-      <header className="absolute top-0 left-0 right-0 z-50 bg-white h-[99px]">
-        <div className="flex items-center justify-between h-full px-[122px]">
-          {/* Logo */}
-          <Link href="/">
-            <Image
-              src="/images/logo.png"
-              alt="Giddings Consulting Group"
-              width={184}
-              height={58}
-              className="h-[58px] w-auto"
-              priority
-            />
-          </Link>
+    <div className="w-full bg-white">
+      <Header />
 
-          {/* Navigation */}
-          <nav className="flex items-center gap-[64px]">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[#212121] font-bold text-[18px] leading-[40.96px] tracking-[-0.36px] hover:text-[#3490f3] transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </header>
-
-      {/* Hero Section - exactly matching Figma */}
-      <section className="relative h-[496px]">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
+      {/* ============ HERO SECTION ============ */}
+      <section className="relative w-full h-[500px] overflow-hidden">
+        {/* Background with navy color blend */}
+        <div className="absolute inset-0">
           <Image
             src="/images/contact-hero-bg.jpg"
-            alt="Contact hero background"
+            alt=""
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
-          {/* Navy color overlay */}
-          <div className="absolute inset-0 bg-[#1d1f4e] mix-blend-color" />
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-[rgba(29,31,78,0.2)] mix-blend-multiply" />
+          <div className="absolute inset-0 bg-navy mix-blend-color" />
+          <div className="absolute inset-0 bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
         </div>
 
         {/* Gradient overlay from left */}
-        <div className="absolute left-0 top-[99px] w-[1024px] h-[397px] bg-gradient-to-r from-[#1d1f4e] to-transparent z-10" />
+        <div
+          className="absolute inset-y-0 left-0 w-[70%]"
+          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(255, 255, 255, 0) 98.21%)' }}
+        />
 
-        {/* Decorative Circles - exact positions from Figma */}
-        <div className="absolute left-[-56px] top-[477px] w-[211px] h-[211px] rounded-full bg-[#3490f3] z-20" />
-        <div className="absolute right-[-63px] top-[235px] w-[127px] h-[127px] rounded-full bg-[#fcba04] z-20" />
-        <div className="absolute right-[90px] top-[151px] w-[51px] h-[51px] rounded-full bg-[#3490f3] z-20" />
-        <div className="absolute right-[193px] top-[557px] w-[51px] h-[51px] rounded-full bg-[#964c2d] z-20" />
+        {/* Decorative Circles */}
+        <div className="absolute w-[211px] h-[211px] -left-14 bottom-[20px] rounded-full bg-blue" />
+        <div className="absolute w-[127px] h-[127px] -right-16 top-[140px] rounded-full bg-gold" />
+        <div className="absolute w-[51px] h-[51px] right-[60px] top-[50px] rounded-full bg-blue" />
+        <div className="absolute w-[51px] h-[51px] right-[200px] bottom-[60px] rounded-full bg-brown" />
 
         {/* Hero Content */}
-        <div className="relative z-30 pt-[259px] pl-[71px] max-w-[726px]">
-          {/* Gold line */}
-          <div className="flex items-center mb-6">
-            <div className="w-[224px] h-[7px] bg-[#fcba04] ml-[210px]" />
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-center">
+          <div className="max-w-[726px]">
+            {/* Gold line above text */}
+            <div className="w-[200px] md:w-[224px] h-[7px] bg-gold mb-6" />
+            <h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
+              Let&apos;s stay connected!
+            </h1>
           </div>
-
-          <h1 className="text-[36px] font-bold text-white leading-[48px] tracking-[1.8px]">
-            Let&apos;s stay connected!
-          </h1>
         </div>
       </section>
 
-      {/* White Content Area with rounded top */}
-      <section className="relative -mt-[77px] z-40">
-        <div className="bg-white rounded-t-[65px]">
-          {/* Intro text below hero */}
-          <div className="pt-[51px] px-[329px] text-center mb-[64px]">
-            <p className="text-[18px] text-[#212121] leading-[26px] tracking-[-0.36px]">
-              You want tools, insights, and practical strategies that strengthen your work.<br />
-              We share updates that help you lead with clarity and confidence.
-            </p>
-          </div>
+      {/* ============ WHITE CONTENT AREA with rounded top ============ */}
+      <div className="relative -mt-[77px] bg-white rounded-t-[65px] pt-12 pb-0">
+        {/* Intro text */}
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+          <p className="max-w-[782px] mx-auto text-center font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-16">
+            You want tools, insights, and practical strategies that strengthen your work.<br />
+            We share updates that help you lead with clarity and confidence.
+          </p>
+        </div>
 
-          {/* Stay informed about Section - Gray background */}
-          <section className="bg-[rgba(235,235,235,0.5)] py-[64px]">
-            <div className="px-[112px]">
-              <h2 className="text-[28px] font-bold text-[#212121] leading-[32px] tracking-[-0.56px] mb-[32px]">
-                Stay informed about
-              </h2>
+        {/* ============ STAY INFORMED ABOUT SECTION ============ */}
+        <section className="w-full bg-[rgba(235,235,235,0.5)] py-16">
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+            <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
+              Stay informed about
+            </h2>
 
-              {/* 5 icon items in a row */}
-              <div className="flex justify-between">
-                {stayInformedItems.map((item, index) => (
-                  <div key={index} className="flex flex-col items-center text-center w-[223px]">
-                    <div className="w-[112px] h-[112px] rounded-full bg-[#3490f3] flex items-center justify-center mb-[25px]">
-                      <Image src={item.icon} alt="" width={62} height={62} className="brightness-0 invert" />
-                    </div>
-                    <p className="text-[18px] text-[#212121] leading-[26px] tracking-[-0.36px] whitespace-pre-line">
-                      {item.label}
-                    </p>
+            {/* 5 icon items */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
+              {stayInformedItems.map((item, index) => (
+                <div key={index} className="flex flex-col items-center text-center">
+                  <div className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6">
+                    <Image src={item.icon} alt="" width={62} height={62} className="brightness-0 invert" />
                   </div>
-                ))}
-              </div>
+                  <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
+                    {item.label}
+                  </p>
+                </div>
+              ))}
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Navy bar with message */}
-          <div className="bg-[#1d1f4e] py-[24px]">
-            <p className="text-[18px] font-bold text-white text-center leading-[32px]">
+        {/* Navy bar with message */}
+        <div className="w-full bg-navy py-6">
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+            <p className="font-bold text-[18px] leading-[32px] text-center text-white">
               Share your information below. We&apos;ll keep you up to date on what matters most to your mission.
             </p>
           </div>
+        </div>
 
-          {/* Work with us Section */}
-          <section className="py-[64px] px-[112px]">
-            <div className="flex gap-[60px]">
+        {/* ============ WORK WITH US SECTION ============ */}
+        <section className="py-16">
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+            <div className="flex flex-col lg:flex-row gap-12">
               {/* Left Column - Content */}
-              <div className="w-[644px]">
-                <h2 className="text-[28px] font-bold text-[#212121] leading-[32px] tracking-[-0.56px] mb-[32px]">
+              <div className="flex-1">
+                <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
                   Work with us
                 </h2>
 
-                <div className="text-[18px] text-[#212121] leading-[26px] tracking-[-0.36px] mb-[32px]">
+                <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-8">
                   <p className="mb-4">
                     If you want support with strategy, leadership, fundraising, or partnership development, complete the form. We respond within two business days.
                   </p>
@@ -158,18 +125,18 @@ export default function ContactPage() {
                 </div>
 
                 {/* Numbered items */}
-                <div className="space-y-[16px] mb-[32px]">
+                <div className="space-y-4 mb-8">
                   {tellUsItems.map((item, index) => (
-                    <div key={index} className="flex items-center gap-[16px]">
+                    <div key={index} className="flex items-center gap-4">
                       {/* Blue circle with number */}
-                      <div className="w-[72px] h-[72px] rounded-full bg-[#3490f3] flex items-center justify-center flex-shrink-0">
-                        <span className="text-[28px] font-bold text-white tracking-[-0.56px]">
+                      <div className="w-[72px] h-[72px] rounded-full bg-blue flex items-center justify-center flex-shrink-0">
+                        <span className="font-bold text-[28px] text-white tracking-[-0.02em]">
                           {index + 1}
                         </span>
                       </div>
                       {/* Gray pill */}
-                      <div className="bg-[rgba(235,235,235,0.5)] rounded-[116px] h-[72px] flex-1 flex items-center px-[32px]">
-                        <p className="text-[18px] font-bold text-[#212121] leading-[26px] tracking-[-0.36px]">
+                      <div className="bg-[rgba(235,235,235,0.5)] rounded-[116px] h-[72px] flex-1 flex items-center px-8">
+                        <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
                           {item}
                         </p>
                       </div>
@@ -177,13 +144,13 @@ export default function ContactPage() {
                   ))}
                 </div>
 
-                <p className="text-[18px] font-bold text-[#212121] leading-[26px] tracking-[-0.36px]">
+                <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
                   We look forward to hearing from you.
                 </p>
               </div>
 
               {/* Right Column - Image */}
-              <div className="relative w-[535px] h-[578px] rounded-[32px] overflow-hidden flex-shrink-0">
+              <div className="relative w-full lg:w-[535px] h-[400px] lg:h-[578px] rounded-[32px] overflow-hidden flex-shrink-0">
                 <Image
                   src="/images/contact-form-image.jpg"
                   alt="Team collaboration"
@@ -192,43 +159,38 @@ export default function ContactPage() {
                 />
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* CTA Cards */}
-          <section className="flex">
-            {/* CTA 1 - Brown */}
-            <div className="bg-[#964c2d] w-[518px] h-[248px] flex flex-col items-center justify-center px-[97px]">
-              <p className="text-[26px] font-bold text-white text-center leading-[38px] tracking-[-0.13px] mb-[20px]">
-                Submit your information.
-              </p>
-              <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={43} height={43} />
-            </div>
-
-            {/* CTA 2 - Gold */}
-            <div className="bg-[#fcba04] w-[406px] h-[248px] flex flex-col items-center justify-center px-[40px]">
-              <p className="text-[26px] font-bold text-black text-center leading-[38px] tracking-[-0.13px] mb-[20px]">
-                Join our<br />mailing list.
-              </p>
-              <Image src="/images/icons/circle-arrow-right.svg" alt="" width={39} height={39} />
-            </div>
-
-            {/* CTA 3 - Blue */}
-            <div className="bg-[#3490f3] w-[518px] h-[248px] flex flex-col items-center justify-center px-[40px]">
-              <p className="text-[26px] font-bold text-white text-center leading-[38px] tracking-[-0.13px] mb-[20px]">
-                Stay connected to a community focused on impact and results.
-              </p>
-              <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={39} height={39} />
-            </div>
-          </section>
-
-          {/* Footer placeholder area */}
-          <section className="bg-[#d9d9d9] h-[262px] flex items-center justify-center">
-            <p className="text-[36px] font-bold text-[#ff00d9] text-center leading-[48px]">
-              [standard footer/sitemap including social icon drivers]
+        {/* ============ 3 CTA CARDS ============ */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-3">
+          {/* Brown CTA */}
+          <Link href="#" className="bg-brown h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
+            <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+              Submit your information.
             </p>
-          </section>
+            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={43} height={43} />
+          </Link>
+
+          {/* Gold CTA */}
+          <Link href="/newsletter" className="bg-gold h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
+            <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
+              Join our<br />mailing list.
+            </p>
+            <Image src="/images/icons/circle-arrow-right.svg" alt="" width={39} height={39} />
+          </Link>
+
+          {/* Blue CTA */}
+          <Link href="#" className="bg-blue h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
+            <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+              Stay connected to a community focused on impact and results.
+            </p>
+            <Image src="/images/icons/circle-arrow-right-white.svg" alt="" width={39} height={39} />
+          </Link>
         </div>
-      </section>
+      </div>
+
+      <Footer />
     </div>
   );
 }
