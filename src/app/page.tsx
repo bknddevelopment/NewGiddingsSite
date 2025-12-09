@@ -94,16 +94,16 @@ export default function Home() {
               Giddings Consulting Group strengthens organizations working
             </h1>
             {/* Line with gold underlines */}
-            <div className="flex items-baseline gap-2 mt-1">
+            <div className="flex items-baseline gap-2 mt-1 flex-wrap">
               <div className="relative">
                 <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">for equity</span>
                 <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-gold" />
               </div>
+              <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">and</span>
               <div className="relative">
-                <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">and community</span>
+                <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">community impact.</span>
                 <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-gold" />
               </div>
-              <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">impact.</span>
             </div>
           </div>
         </div>

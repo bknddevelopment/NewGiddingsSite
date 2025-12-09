@@ -93,15 +93,17 @@ export default function NewsletterPage() {
                   You get:
                 </p>
 
-                {/* Checkbox list with blue checkmark icons */}
+                {/* Checkbox list with blue badge checkmark icons */}
                 <div className="space-y-4 mb-8">
                   {newsletterBenefits.map((benefit, index) => (
                     <div key={index} className="flex items-center gap-4">
-                      {/* Blue checkmark icon */}
-                      <div className="w-[40px] h-[40px] flex-shrink-0">
+                      {/* Blue badge/seal checkmark icon */}
+                      <div className="w-[48px] h-[48px] flex-shrink-0">
                         <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect width="40" height="40" rx="8" fill="#3490F3"/>
-                          <path d="M28 14L17 25L12 20" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                          {/* Smooth wavy badge shape */}
+                          <path d="M20 1C21.8 1 23 4 24.8 5.2C26.6 6.4 30 5.2 31.2 7C32.4 8.8 30.6 11.8 31.2 14C31.8 16.2 35 17.2 35 19.5C35 21.8 31.8 22.8 31.2 25C30.6 27.2 32.4 30.2 31.2 32C30 33.8 26.6 32.6 24.8 33.8C23 35 21.8 38 20 38C18.2 38 17 35 15.2 33.8C13.4 32.6 10 33.8 8.8 32C7.6 30.2 9.4 27.2 8.8 25C8.2 22.8 5 21.8 5 19.5C5 17.2 8.2 16.2 8.8 14C9.4 11.8 7.6 8.8 8.8 7C10 5.2 13.4 6.4 15.2 5.2C17 4 18.2 1 20 1Z" fill="#3490F3"/>
+                          {/* Checkmark */}
+                          <path d="M27 15L17 25L13 21" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
                       <p className="font-normal text-[18px] leading-[26px] text-dark">

@@ -95,14 +95,14 @@ const serviceCards = [
   },
 ];
 
-// Impact statements - 6 pill bars
-const impactStatements = [
-  "More than 20 years of experience across 100 organizations",
-  "Work across the United States and the African diaspora",
-  "Millions in philanthropic revenue supported",
-  "Deep expertise in equity, climate resilience, economic inclusion, and community transformation",
-  "A consistent track record helping leaders build stronger systems and better results",
-  "Direct engagement from senior leadership on every project",
+// How We Work statements - 6 pill bars
+const howWeWorkStatements = [
+  "Retreat facilitation",
+  "Strategic communications support",
+  "Philanthropic advising for funders",
+  "Resource development roadmaps",
+  "Organizational health scans",
+  "Climate justice and economic inclusion strategy",
 ];
 
 export default function ServicesPage() {
@@ -138,10 +138,8 @@ export default function ServicesPage() {
         {/* Hero Content */}
         <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-center">
           <div className="max-w-[726px]">
-            {/* Gold line above text */}
-            <div className="w-[200px] md:w-[432px] h-[7px] bg-gold mb-6" />
             <h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
-              How we support your mission
+              How we <span className="relative inline-block">support your mission<span className="absolute left-0 -bottom-1 w-full h-[7px] bg-gold"></span></span>
             </h1>
           </div>
         </div>
@@ -192,16 +190,16 @@ export default function ServicesPage() {
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28 relative z-10">
             <div className="text-center mb-12">
               <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-white mb-8">
-                Our Impact
+                How We Work
               </h2>
 
               {/* Gold divider */}
               <div className="w-[474px] max-w-full h-0 border-[2px] border-gold mx-auto" />
             </div>
 
-            {/* Impact statements - 6 white pill bars */}
+            {/* How We Work statements - 6 white pill bars */}
             <div className="space-y-4">
-              {impactStatements.map((statement, index) => (
+              {howWeWorkStatements.map((statement, index) => (
                 <div key={index} className="bg-white rounded-[116px] py-6 px-8 lg:px-20">
                   <p className="font-bold text-[18px] text-dark text-center leading-[26px] tracking-[-0.02em]">
                     {statement}
@@ -220,7 +218,7 @@ export default function ServicesPage() {
           {/* Brown CTA */}
           <Link href="/contact" className="bg-brown h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
             <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
-              Schedule a 60-minute strategy session.
+              Schedule a<br />strategy session.
             </p>
             <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
           </Link>
@@ -228,15 +226,15 @@ export default function ServicesPage() {
           {/* Gold CTA */}
           <Link href="#" className="bg-gold h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
             <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
-              Download our Board Governance Checklist.
+              Request<br />a proposal.
             </p>
             <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
           </Link>
 
           {/* Blue CTA */}
-          <Link href="/newsletter" className="bg-blue h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
+          <Link href="#" className="bg-blue h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
             <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
-              Join our mailing list for tools and insights.
+              Download our<br />services overview
             </p>
             <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
           </Link>
