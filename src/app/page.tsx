@@ -1,8 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getImagePath } from "@/lib/utils";
+import {
+  FadeIn,
+  StaggerChildren,
+  StaggerItem,
+  CountUp,
+  FloatingCircle,
+  AnimatedUnderline,
+} from "@/components/animations";
+import { motion } from "framer-motion";
 
 // Services with icons
 const services = [
@@ -49,10 +60,10 @@ const whoWeServeBottom = [
 
 // Impact stats
 const impactStats = [
-  { number: "100+", label: "Organizations Served" },
-  { number: "Millions", label: "Leveraged to strengthen\nprograms and communities" },
-  { number: "Dozens", label: "of boards received training" },
-  { number: "Strategic", label: "Strategic fundraising frameworks\nbuilt for local, national,\nand global organizations" },
+  { number: 100, suffix: "+", label: "Organizations Served" },
+  { number: null, text: "Millions", label: "Leveraged to strengthen\nprograms and communities" },
+  { number: null, text: "Dozens", label: "of boards received training" },
+  { number: null, text: "Strategic", label: "Strategic fundraising frameworks\nbuilt for local, national,\nand global organizations" },
 ];
 
 export default function Home() {
@@ -61,7 +72,7 @@ export default function Home() {
       <Header />
 
       {/* ============ HERO SECTION ============ */}
-      <section className="relative w-full h-[660px] overflow-hidden">
+      <section className="relative w-full h-[900px] overflow-hidden">
         {/* Background with navy color blend */}
         <div className="absolute inset-0">
           <Image
@@ -81,79 +92,156 @@ export default function Home() {
           style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(255, 255, 255, 0) 98.21%)' }}
         />
 
-        {/* Decorative Circles */}
-        <div className="absolute w-[211px] h-[211px] -left-14 bottom-[100px] rounded-full bg-blue" />
-        <div className="absolute w-[127px] h-[127px] -right-16 top-[140px] rounded-full bg-gold" />
-        <div className="absolute w-[51px] h-[51px] right-[60px] top-[50px] rounded-full bg-blue" />
-        <div className="absolute w-[51px] h-[51px] right-[200px] bottom-[100px] rounded-full bg-brown" />
+        {/* Animated Decorative Circles */}
+        <FloatingCircle
+          size={211}
+          color="#3490F3"
+          className="-left-14 bottom-[100px]"
+          delay={0.2}
+          floatRange={12}
+          duration={5}
+        />
+        <FloatingCircle
+          size={127}
+          color="#FCBA04"
+          className="-right-16 top-[140px]"
+          delay={0.4}
+          floatRange={8}
+          duration={4}
+        />
+        <FloatingCircle
+          size={51}
+          color="#3490F3"
+          className="right-[60px] top-[50px]"
+          delay={0.6}
+          floatRange={6}
+          duration={3.5}
+        />
+        <FloatingCircle
+          size={51}
+          color="#964C2D"
+          className="right-[200px] bottom-[100px]"
+          delay={0.8}
+          floatRange={8}
+          duration={4.5}
+        />
 
         {/* Hero Text with gold underlines */}
         <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-center">
-          <div className="max-w-[726px]">
+          <motion.div
+            className="max-w-[726px]"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
               Giddings Consulting Group strengthens organizations working
             </h1>
             {/* Line with gold underlines */}
             <div className="flex items-baseline gap-2 mt-1 flex-wrap">
-              <div className="relative">
+              <AnimatedUnderline delay={0.8}>
                 <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">for equity</span>
-                <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-gold" />
-              </div>
+              </AnimatedUnderline>
               <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">and</span>
-              <div className="relative">
+              <AnimatedUnderline delay={1.0}>
                 <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">community impact.</span>
-                <div className="absolute -bottom-1 left-0 w-full h-[6px] bg-gold" />
-              </div>
+              </AnimatedUnderline>
             </div>
-          </div>
+          </motion.div>
         </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
+          onClick={() => window.scrollTo({ top: window.innerHeight - 100, behavior: 'smooth' })}
+        >
+          <span className="text-white/70 text-xs tracking-widest uppercase">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.7" />
+            </svg>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* ============ WHITE CONTENT AREA with rounded top ============ */}
       <div className="relative -mt-[77px] bg-white rounded-t-[65px] pt-12 pb-0">
         {/* Tagline */}
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
-          <p className="max-w-[782px] mx-auto text-center font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
-            You want clarity. Strong leadership. Sustainable funding.<br />
-            We help you build the systems, partnerships, and strategy to move your mission forward.
-          </p>
+        <FadeIn delay={0.2}>
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+            <p className="max-w-[782px] mx-auto text-center font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+              You want clarity. Strong leadership. Sustainable funding.<br />
+              We help you build the systems, partnerships, and strategy to move your mission forward.
+            </p>
 
-          {/* Gold divider */}
-          <div className="w-[300px] h-0 mx-auto mt-8 border-[2px] border-gold" />
-        </div>
+            {/* Gold divider */}
+            <motion.div
+              className="w-[300px] h-0 mx-auto mt-8 border-[2px] border-gold"
+              initial={{ width: 0 }}
+              whileInView={{ width: 300 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            />
+          </div>
+        </FadeIn>
 
         {/* ============ WHAT WE DO SECTION ============ */}
         <section className="w-full bg-[rgba(235,235,235,0.5)] mt-12 py-16">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             {/* Section Header */}
-            <div className="flex items-center gap-4 mb-8">
-              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
-                What We Do
-              </h2>
-              <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
-            </div>
+            <FadeIn>
+              <div className="flex items-center gap-4 mb-8">
+                <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
+                  What We Do
+                </h2>
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
+                </motion.div>
+              </div>
+            </FadeIn>
 
             {/* Description */}
-            <p className="max-w-[885px] font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-12">
-              You get support across strategy, leadership, governance, and fundraising.<br />
-              You leave with aligned teams. Better decisions. Clear priorities. A stronger organization.
-            </p>
+            <FadeIn delay={0.1}>
+              <p className="max-w-[885px] font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-12">
+                You get support across strategy, leadership, governance, and fundraising.<br />
+                You leave with aligned teams. Better decisions. Clear priorities. A stronger organization.
+              </p>
+            </FadeIn>
 
             {/* Services Grid - 5 items */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
               {services.map((service, index) => (
-                <div key={index} className="flex flex-col items-center text-center">
-                  {/* Blue circle with icon */}
-                  <div className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6">
-                    <Image src={getImagePath(service.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
-                  </div>
-                  {/* Label */}
-                  <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
-                    {service.title}
-                  </p>
-                </div>
+                <StaggerItem key={index}>
+                  <motion.div
+                    className="flex flex-col items-center text-center"
+                    whileHover={{ y: -8 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {/* Blue circle with icon */}
+                    <motion.div
+                      className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Image src={getImagePath(service.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
+                    </motion.div>
+                    {/* Label */}
+                    <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
+                      {service.title}
+                    </p>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerChildren>
           </div>
         </section>
 
@@ -161,43 +249,63 @@ export default function Home() {
         <section className="w-full py-16">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             {/* Section Header */}
-            <div className="flex items-center gap-4 mb-8">
-              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
-                Why Organizations Work With Us
-              </h2>
-              <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
-            </div>
+            <FadeIn>
+              <div className="flex items-center gap-4 mb-8">
+                <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
+                  Why Organizations Work With Us
+                </h2>
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
+                </motion.div>
+              </div>
+            </FadeIn>
 
             {/* Description */}
-            <div className="max-w-[1230px] font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-8">
-              <p>
-                The social sector faces complex pressure. More demand. Limited resources. Boards needing direction.<br />
-                Fundraising stuck in short cycles. Leaders stretched thin. You need practical solutions that increase alignment and impact.
-              </p>
-              <p className="mt-4 font-bold">We bring:</p>
-            </div>
+            <FadeIn delay={0.1}>
+              <div className="max-w-[1230px] font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-8">
+                <p>
+                  The social sector faces complex pressure. More demand. Limited resources. Boards needing direction.<br />
+                  Fundraising stuck in short cycles. Leaders stretched thin. You need practical solutions that increase alignment and impact.
+                </p>
+                <p className="mt-4 font-bold">We bring:</p>
+              </div>
+            </FadeIn>
 
             {/* 5 Pill Bars */}
-            <div className="space-y-4 mb-8">
+            <StaggerChildren staggerDelay={0.1} className="space-y-4 mb-8">
               {whyWorkWithUs.map((text, index) => (
-                <div
-                  key={index}
-                  className="w-full max-w-[1220px] h-[72px] bg-[rgba(235,235,235,0.5)] rounded-[116px] flex items-center justify-center px-6"
-                >
-                  <p className="font-bold text-[16px] md:text-[18px] leading-[26px] text-center tracking-[-0.02em] text-dark">
-                    {text}
-                  </p>
-                </div>
+                <StaggerItem key={index}>
+                  <motion.div
+                    className="w-full max-w-[1220px] h-[72px] bg-[rgba(235,235,235,0.5)] rounded-[116px] flex items-center justify-center px-6"
+                    whileHover={{ scale: 1.02, backgroundColor: "rgba(235,235,235,0.8)" }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <p className="font-bold text-[16px] md:text-[18px] leading-[26px] text-center tracking-[-0.02em] text-dark">
+                      {text}
+                    </p>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerChildren>
 
             {/* Gold divider */}
-            <div className="w-full max-w-[1220px] h-0 border-[2px] border-gold mb-8" />
+            <motion.div
+              className="w-full max-w-[1220px] h-0 border-[2px] border-gold mb-8"
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2 }}
+            />
 
             {/* Bottom text */}
-            <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
-              You get simple steps. Straight talk. Measurable outcomes.
-            </p>
+            <FadeIn>
+              <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+                You get simple steps. Straight talk. Measurable outcomes.
+              </p>
+            </FadeIn>
           </div>
         </section>
 
@@ -205,85 +313,121 @@ export default function Home() {
         <section className="w-full py-16">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             {/* Section Header */}
-            <div className="flex items-center gap-4 mb-12">
-              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
-                Our Approach
-              </h2>
-              <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
-            </div>
+            <FadeIn>
+              <div className="flex items-center gap-4 mb-12">
+                <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
+                  Our Approach
+                </h2>
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
+                </motion.div>
+              </div>
+            </FadeIn>
 
             {/* 6 Image Cards - 2 rows of 3 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {approachSteps.map((step, index) => (
-                <div key={index} className="flex flex-col items-center">
-                  <div className="relative w-full max-w-[386px] h-[214px] rounded-[32px] overflow-hidden">
-                    <Image
-                      src={getImagePath(step.image)}
-                      alt={step.label}
-                      fill
-                      className="object-cover"
-                      style={{ opacity: step.blend === 'saturation' ? 0.9 : 0.9 }}
-                    />
-                    <div
-                      className="absolute inset-0 rounded-[32px]"
-                      style={{
-                        backgroundColor: step.color,
-                        mixBlendMode: step.blend as 'color' | 'saturation',
-                      }}
-                    />
-                  </div>
-                  <p className="mt-5 font-normal text-[18px] leading-[26px] text-center tracking-[-0.02em] text-dark">
-                    {step.label}
-                  </p>
-                </div>
+                <StaggerItem key={index}>
+                  <motion.div
+                    className="flex flex-col items-center"
+                    whileHover={{ y: -8 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <motion.div
+                      className="relative w-full max-w-[386px] h-[214px] rounded-[32px] overflow-hidden"
+                      whileHover={{ scale: 1.03 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Image
+                        src={getImagePath(step.image)}
+                        alt={step.label}
+                        fill
+                        className="object-cover"
+                        style={{ opacity: step.blend === 'saturation' ? 0.9 : 0.9 }}
+                      />
+                      <div
+                        className="absolute inset-0 rounded-[32px]"
+                        style={{
+                          backgroundColor: step.color,
+                          mixBlendMode: step.blend as 'color' | 'saturation',
+                        }}
+                      />
+                    </motion.div>
+                    <p className="mt-5 font-normal text-[18px] leading-[26px] text-center tracking-[-0.02em] text-dark">
+                      {step.label}
+                    </p>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerChildren>
           </div>
         </section>
 
         {/* ============ WHO WE SERVE ============ */}
         {/* Navy header bar */}
-        <div className="w-full bg-navy py-12">
-          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
-            <div className="flex items-center gap-4">
-              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-white">
-                Who We Serve
-              </h2>
-              <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={32} height={32} />
+        <FadeIn>
+          <div className="w-full bg-navy py-12">
+            <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+              <div className="flex items-center gap-4">
+                <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-white">
+                  Who We Serve
+                </h2>
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={32} height={32} />
+                </motion.div>
+              </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
 
         {/* Blue section */}
         <div className="w-full bg-blue py-20">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             {/* Top row - 4 icons */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
               {whoWeServeTop.map((item, index) => (
-                <div key={index} className="flex flex-col items-center">
-                  <div className="w-[112px] h-[112px] flex items-center justify-center mb-6">
-                    <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert" />
-                  </div>
-                  <p className="font-bold text-[18px] leading-[26px] text-center text-white whitespace-pre-line">
-                    {item.label}
-                  </p>
-                </div>
+                <StaggerItem key={index}>
+                  <motion.div
+                    className="flex flex-col items-center"
+                    whileHover={{ y: -8, scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="w-[112px] h-[112px] flex items-center justify-center mb-6">
+                      <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert" />
+                    </div>
+                    <p className="font-bold text-[18px] leading-[26px] text-center text-white whitespace-pre-line">
+                      {item.label}
+                    </p>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerChildren>
 
             {/* Bottom row - 3 icons centered */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-[1000px] mx-auto">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-[1000px] mx-auto">
               {whoWeServeBottom.map((item, index) => (
-                <div key={index} className="flex flex-col items-center">
-                  <div className="w-[112px] h-[112px] flex items-center justify-center mb-6">
-                    <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert" />
-                  </div>
-                  <p className="font-bold text-[18px] leading-[26px] text-center text-white whitespace-pre-line">
-                    {item.label}
-                  </p>
-                </div>
+                <StaggerItem key={index}>
+                  <motion.div
+                    className="flex flex-col items-center"
+                    whileHover={{ y: -8, scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="w-[112px] h-[112px] flex items-center justify-center mb-6">
+                      <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert" />
+                    </div>
+                    <p className="font-bold text-[18px] leading-[26px] text-center text-white whitespace-pre-line">
+                      {item.label}
+                    </p>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerChildren>
           </div>
         </div>
 
@@ -294,138 +438,209 @@ export default function Home() {
               {/* Left content */}
               <div className="flex-1">
                 {/* Section Header */}
-                <div className="flex items-center gap-4 mb-8">
-                  <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
-                    Impact Snapshot
-                  </h2>
-                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
-                </div>
+                <FadeIn>
+                  <div className="flex items-center gap-4 mb-8">
+                    <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark">
+                      Impact Snapshot
+                    </h2>
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
+                    </motion.div>
+                  </div>
+                </FadeIn>
 
                 {/* Description */}
-                <p className="max-w-[694px] font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-12">
-                  Having worked on the forefront of creating social change through community outreach and engagement – we know social change is hard. We don&apos;t believe in emphasizing the latest buzzwords, providing quick answers or taking short cuts, because they don&apos;t foster social change. Instead, we provide individualized solutions based on the needs of the client and their constituency.
-                </p>
+                <FadeIn delay={0.1}>
+                  <p className="max-w-[694px] font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-12">
+                    Having worked on the forefront of creating social change through community outreach and engagement – we know social change is hard. We don&apos;t believe in emphasizing the latest buzzwords, providing quick answers or taking short cuts, because they don&apos;t foster social change. Instead, we provide individualized solutions based on the needs of the client and their constituency.
+                  </p>
+                </FadeIn>
 
                 {/* Stats Grid - 2x2 */}
-                <div className="grid grid-cols-2 gap-x-12 gap-y-0 max-w-[630px]">
+                <StaggerChildren staggerDelay={0.15} className="grid grid-cols-2 gap-x-12 gap-y-0 max-w-[630px]">
                   {impactStats.map((stat, index) => (
-                    <div key={index} className="border-t-[1.5px] border-[rgba(92,92,92,0.2)] pt-6 pb-12">
-                      <p className="font-bold text-[48px] leading-[52px] tracking-[-0.02em] text-dark">
-                        {stat.number}
-                      </p>
-                      <p className="mt-2 font-normal text-[18px] leading-[24px] text-dark whitespace-pre-line">
-                        {stat.label}
-                      </p>
-                    </div>
+                    <StaggerItem key={index}>
+                      <div className="border-t-[1.5px] border-[rgba(92,92,92,0.2)] pt-6 pb-12">
+                        <p className="font-bold text-[48px] leading-[52px] tracking-[-0.02em] text-dark">
+                          {stat.number !== null ? (
+                            <CountUp value={stat.number} suffix={stat.suffix} />
+                          ) : (
+                            stat.text
+                          )}
+                        </p>
+                        <p className="mt-2 font-normal text-[18px] leading-[24px] text-dark whitespace-pre-line">
+                          {stat.label}
+                        </p>
+                      </div>
+                    </StaggerItem>
                   ))}
-                </div>
+                </StaggerChildren>
               </div>
 
               {/* Image */}
-              <div className="relative w-full lg:w-[460px] h-[400px] lg:h-[573px] rounded-[32px] overflow-hidden flex-shrink-0">
-                <Image
-                  src={getImagePath("/images/impact-image.jpg")}
-                  alt="Impact"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              <FadeIn direction="right" delay={0.3}>
+                <div className="relative w-full lg:w-[460px] h-[400px] lg:h-[573px] rounded-[32px] overflow-hidden flex-shrink-0">
+                  <Image
+                    src={getImagePath("/images/impact-image.jpg")}
+                    alt="Impact"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </FadeIn>
             </div>
           </div>
         </section>
 
-        {/* Gold and Navy decorative lines with arrow points */}
+        {/* Blue and Brown decorative lines with rounded arrow points */}
         <div className="relative w-full h-[120px] overflow-hidden">
-          {/* Gold arrow line */}
-          <div className="absolute left-0 top-[20px] w-[90%] flex items-center">
-            <div className="flex-1 h-[16px] bg-gold" />
-            <div
-              style={{
-                width: 0,
-                height: 0,
-                borderTop: '20px solid transparent',
-                borderBottom: '20px solid transparent',
-                borderLeft: '32px solid #FCBA04',
-              }}
-            />
-          </div>
-          {/* Navy arrow line */}
-          <div className="absolute left-0 top-[65px] w-[75%] flex items-center">
-            <div className="flex-1 h-[16px] bg-navy" />
-            <div
-              style={{
-                width: 0,
-                height: 0,
-                borderTop: '20px solid transparent',
-                borderBottom: '20px solid transparent',
-                borderLeft: '32px solid #1D1F4E',
-              }}
-            />
-          </div>
+          {/* Blue arrow line (top) */}
+          <motion.div
+            className="absolute left-0 top-[20px] flex items-center"
+            initial={{ width: 0 }}
+            whileInView={{ width: "90%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <div className="flex-1 h-[16px] bg-blue" />
+            <svg width="40" height="40" viewBox="0 0 40 40" className="ml-[-2px]">
+              <polygon points="0,8 28,20 0,32" fill="#3490f3" strokeLinejoin="round" stroke="#3490f3" strokeWidth="6" />
+            </svg>
+          </motion.div>
+          {/* Brown arrow line (bottom) */}
+          <motion.div
+            className="absolute left-0 top-[65px] flex items-center"
+            initial={{ width: 0 }}
+            whileInView={{ width: "75%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+          >
+            <div className="flex-1 h-[16px] bg-brown" />
+            <svg width="40" height="40" viewBox="0 0 40 40" className="ml-[-2px]">
+              <polygon points="0,8 28,20 0,32" fill="#964c2d" strokeLinejoin="round" stroke="#964c2d" strokeWidth="6" />
+            </svg>
+          </motion.div>
         </div>
 
         {/* ============ FEATURED INITIATIVE ============ */}
         <section className="w-full py-8">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             {/* Blue pill bar */}
-            <div className="w-full max-w-[1220px] h-[72px] bg-blue rounded-[116px] flex items-center justify-center mb-8">
-              <p className="font-bold text-[28px] leading-[26px] text-center tracking-[-0.02em] text-white">
-                Featured Initiative
-              </p>
-            </div>
+            <FadeIn>
+              <motion.div
+                className="w-full max-w-[1220px] h-[72px] bg-blue rounded-[116px] flex items-center justify-center mb-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <p className="font-bold text-[28px] leading-[26px] text-center tracking-[-0.02em] text-white">
+                  Featured Initiative
+                </p>
+              </motion.div>
+            </FadeIn>
 
             {/* Carousel placeholder */}
-            <div className="w-full max-w-[1220px] h-[359px] bg-gray-300 rounded-[32px] flex items-center justify-center mb-4">
-              <p className="font-bold text-[24px] md:text-[36px] leading-[48px] text-center text-[#FF00D9] px-4">
-                [imagery showcasing apprenticeship program in action in a rotating carousel]
-              </p>
-            </div>
+            <FadeIn delay={0.1}>
+              <div className="w-full max-w-[1220px] h-[359px] bg-gray-300 rounded-[32px] flex items-center justify-center mb-4">
+                <p className="font-bold text-[24px] md:text-[36px] leading-[48px] text-center text-[#FF00D9] px-4">
+                  [imagery showcasing apprenticeship program in action in a rotating carousel]
+                </p>
+              </div>
+            </FadeIn>
 
             {/* Carousel dots */}
             <div className="flex justify-center gap-4 mb-8">
-              <div className="w-[18px] h-[18px] rounded-full bg-white border border-gray-300 flex items-center justify-center">
-                <div className="w-[14px] h-[14px] rounded-full bg-gray-400" />
-              </div>
-              <div className="w-[18px] h-[18px] rounded-full bg-white border border-gray-300" />
-              <div className="w-[18px] h-[18px] rounded-full bg-white border border-gray-300" />
+              {[0, 1, 2].map((dot) => (
+                <motion.div
+                  key={dot}
+                  className={`w-[18px] h-[18px] rounded-full border border-gray-300 flex items-center justify-center cursor-pointer ${dot === 0 ? 'bg-white' : 'bg-white'}`}
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  {dot === 0 && <div className="w-[14px] h-[14px] rounded-full bg-gray-400" />}
+                </motion.div>
+              ))}
             </div>
 
             {/* Program title and description */}
-            <h3 className="font-bold text-[28px] leading-[32px] text-dark mb-4">
-              GoodTrouble Social Impact Apprenticeship Program.
-            </h3>
-            <p className="font-normal text-[18px] leading-[26px] text-dark">
-              Three emerging leaders. Real client work. Practical training in strategy, philanthropy, and community development.
-            </p>
+            <FadeIn delay={0.2}>
+              <h3 className="font-bold text-[28px] leading-[32px] text-dark mb-4">
+                GoodTrouble Social Impact Apprenticeship Program.
+              </h3>
+              <p className="font-normal text-[18px] leading-[26px] text-dark">
+                Three emerging leaders. Real client work. Practical training in strategy, philanthropy, and community development.
+              </p>
+            </FadeIn>
           </div>
         </section>
 
         {/* ============ 3 CTA CARDS ============ */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 mt-16">
+        <StaggerChildren staggerDelay={0.1} className="w-full grid grid-cols-1 md:grid-cols-3 mt-16">
           {/* Brown CTA */}
-          <Link href="/contact" className="bg-brown h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
-            <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
-              Schedule a 60-minute strategy session.
-            </p>
-            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
-          </Link>
+          <StaggerItem>
+            <Link href="/contact" className="block">
+              <motion.div
+                className="bg-brown h-[248px] flex flex-col items-center justify-center px-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                  Schedule a 60-minute strategy session.
+                </p>
+                <motion.div
+                  whileHover={{ x: 8 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
+                </motion.div>
+              </motion.div>
+            </Link>
+          </StaggerItem>
 
           {/* Gold CTA */}
-          <Link href="#" className="bg-gold h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
-            <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
-              Download our Board Governance Checklist.
-            </p>
-            <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
-          </Link>
+          <StaggerItem>
+            <Link href="#" className="block">
+              <motion.div
+                className="bg-gold h-[248px] flex flex-col items-center justify-center px-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
+                  Download our Board Governance Checklist.
+                </p>
+                <motion.div
+                  whileHover={{ x: 8 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
+                </motion.div>
+              </motion.div>
+            </Link>
+          </StaggerItem>
 
           {/* Blue CTA */}
-          <Link href="/newsletter" className="bg-blue h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
-            <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
-              Join our mailing list for tools and insights.
-            </p>
-            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
-          </Link>
-        </div>
+          <StaggerItem>
+            <Link href="/newsletter" className="block">
+              <motion.div
+                className="bg-blue h-[248px] flex flex-col items-center justify-center px-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                  Join our mailing list for tools and insights.
+                </p>
+                <motion.div
+                  whileHover={{ x: 8 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
+                </motion.div>
+              </motion.div>
+            </Link>
+          </StaggerItem>
+        </StaggerChildren>
       </div>
 
       <Footer />

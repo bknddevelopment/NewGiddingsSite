@@ -1,9 +1,19 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getImagePath } from "@/lib/utils";
+import {
+  FadeIn,
+  StaggerChildren,
+  StaggerItem,
+  FloatingCircle,
+  AnimatedUnderline,
+} from "@/components/animations";
+import { motion } from "framer-motion";
 
 // Values data - matching Figma layout (2 rows of 3)
 const valuesTop = [
@@ -53,21 +63,54 @@ export default function AboutPage() {
           style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(255, 255, 255, 0) 98.21%)' }}
         />
 
-        {/* Decorative Circles */}
-        <div className="absolute w-[211px] h-[211px] -left-14 bottom-[20px] rounded-full bg-blue" />
-        <div className="absolute w-[127px] h-[127px] -right-16 top-[140px] rounded-full bg-gold" />
-        <div className="absolute w-[51px] h-[51px] right-[60px] top-[50px] rounded-full bg-blue" />
-        <div className="absolute w-[51px] h-[51px] right-[200px] bottom-[20px] rounded-full bg-brown" />
+        {/* Animated Decorative Circles */}
+        <FloatingCircle
+          size={211}
+          color="#3490F3"
+          className="-left-14 bottom-[20px]"
+          delay={0.2}
+          floatRange={12}
+          duration={5}
+        />
+        <FloatingCircle
+          size={127}
+          color="#FCBA04"
+          className="-right-16 top-[140px]"
+          delay={0.4}
+          floatRange={8}
+          duration={4}
+        />
+        <FloatingCircle
+          size={51}
+          color="#3490F3"
+          className="right-[60px] top-[50px]"
+          delay={0.6}
+          floatRange={6}
+          duration={3.5}
+        />
+        <FloatingCircle
+          size={51}
+          color="#964C2D"
+          className="right-[200px] bottom-[20px]"
+          delay={0.8}
+          floatRange={8}
+          duration={4.5}
+        />
 
         {/* Hero Content - positioned in center-left area */}
         <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-center">
-          <div className="max-w-[726px]">
+          <motion.div
+            className="max-w-[726px]"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
               Giddings Consulting Group<br />
               is a social impact strategy firm<br />
-              based in <span className="relative inline-block">Elizabeth, New Jersey.<span className="absolute left-0 -bottom-1 w-full h-[7px] bg-gold"></span></span>
+              based in <AnimatedUnderline delay={0.8}><span>Elizabeth, New Jersey.</span></AnimatedUnderline>
             </h1>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -76,211 +119,339 @@ export default function AboutPage() {
         {/* Who We Are Section */}
         <section className="py-12">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
-            <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
-              Who We Are
-            </h2>
-            <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark max-w-[1220px]">
-              <p className="mb-4">
-                We work with mission-driven organizations committed to equity, inclusion, and sustainable community outcomes.
-              </p>
-              <p>
-                Our work spans strategic planning, governance, fundraising, leadership development, coalition building, and philanthropic advising.<br />
-                The goal is simple. Help leaders deliver stronger results for the communities they serve.
-              </p>
-            </div>
+            <FadeIn>
+              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
+                Who We Are
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark max-w-[1220px]">
+                <p className="mb-4">
+                  We work with mission-driven organizations committed to equity, inclusion, and sustainable community outcomes.
+                </p>
+                <p>
+                  Our work spans strategic planning, governance, fundraising, leadership development, coalition building, and philanthropic advising.<br />
+                  The goal is simple. Help leaders deliver stronger results for the communities they serve.
+                </p>
+              </div>
+            </FadeIn>
           </div>
         </section>
 
         {/* Our Founder Section */}
         <section className="py-12">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
-            <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
-              Our Founder
-            </h2>
+            <FadeIn>
+              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
+                Our Founder
+              </h2>
+            </FadeIn>
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Founder Image */}
-              <div className="relative w-full lg:w-[648px] h-[450px] rounded-[32px] overflow-hidden flex-shrink-0">
-                <Image
-                  src={getImagePath("/images/founder-image.jpg")}
-                  alt="Drew Giddings"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
+              <FadeIn direction="left" delay={0.1}>
+                <div className="relative w-full lg:w-[648px] h-[450px] rounded-[32px] overflow-hidden flex-shrink-0">
+                  <Image
+                    src={getImagePath("/images/founder-image.jpg")}
+                    alt="Drew Giddings"
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
+              </FadeIn>
 
               {/* Founder Bio */}
-              <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark lg:w-[540px]">
-                <p className="mb-4">
-                  Drew Giddings is a strategist, philanthropic advisor, and executive coach with more than two decades of experience across the nonprofit, philanthropic, and public sectors.
-                </p>
-                <p className="mb-4">
-                  He has supported more than 100 organizations. He advised leaders through major transitions. He strengthened boards.<br />
-                  He built fundraising models. He expanded partnerships<br />
-                  across sectors, working on climate resilience, economic inclusion, and community development.
-                </p>
-                <p>
-                  His work sits at the intersection of strategy, equity,<br />
-                  and systems change.
-                </p>
-              </div>
+              <FadeIn direction="right" delay={0.2}>
+                <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark lg:w-[540px]">
+                  <p className="mb-4">
+                    Drew Giddings is a strategist, philanthropic advisor, and executive coach with more than two decades of experience across the nonprofit, philanthropic, and public sectors.
+                  </p>
+                  <p className="mb-4">
+                    He has supported more than 100 organizations. He advised leaders through major transitions. He strengthened boards.<br />
+                    He built fundraising models. He expanded partnerships<br />
+                    across sectors, working on climate resilience, economic inclusion, and community development.
+                  </p>
+                  <p>
+                    His work sits at the intersection of strategy, equity,<br />
+                    and systems change.
+                  </p>
+                </div>
+              </FadeIn>
             </div>
 
-            {/* Decorative lines with arrows pointing RIGHT */}
-            <div className="relative mt-20 overflow-hidden">
-              {/* Blue arrow line */}
-              <div className="flex items-center w-full lg:w-[92%]">
-                <div className="flex-1 h-[16px] bg-blue" />
-                <div
-                  style={{
-                    width: 0,
-                    height: 0,
-                    borderTop: '20px solid transparent',
-                    borderBottom: '20px solid transparent',
-                    borderLeft: '40px solid #3490F3',
-                  }}
-                />
-              </div>
-              {/* Spacer */}
-              <div className="h-[64px]" />
-              {/* Navy arrow line */}
-              <div className="flex items-center w-full lg:w-[71%]">
-                <div className="flex-1 h-[16px] bg-navy" />
-                <div
-                  style={{
-                    width: 0,
-                    height: 0,
-                    borderTop: '20px solid transparent',
-                    borderBottom: '20px solid transparent',
-                    borderLeft: '40px solid #1D1F4E',
-                  }}
-                />
-              </div>
-            </div>
           </div>
         </section>
+
+        {/* Decorative lines with arrows pointing RIGHT - Full width */}
+        <div className="relative w-full h-[160px] overflow-hidden">
+          {/* Blue arrow line */}
+          <motion.div
+            className="absolute left-0 top-[20px] flex items-center"
+            initial={{ width: 0 }}
+            whileInView={{ width: "92%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <div className="flex-1 h-[16px] bg-blue" />
+            <div
+              style={{
+                width: 0,
+                height: 0,
+                borderTop: '20px solid transparent',
+                borderBottom: '20px solid transparent',
+                borderLeft: '40px solid #3490F3',
+              }}
+            />
+          </motion.div>
+          {/* Navy arrow line */}
+          <motion.div
+            className="absolute left-0 top-[85px] flex items-center"
+            initial={{ width: 0 }}
+            whileInView={{ width: "71%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+          >
+            <div className="flex-1 h-[16px] bg-navy" />
+            <div
+              style={{
+                width: 0,
+                height: 0,
+                borderTop: '20px solid transparent',
+                borderBottom: '20px solid transparent',
+                borderLeft: '40px solid #1D1F4E',
+              }}
+            />
+          </motion.div>
+        </div>
 
         {/* ============ WHAT GUIDES US SECTION ============ */}
         <section className="w-full bg-[rgba(235,235,235,0.5)] py-14">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
-            <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
-              What Guides Us
-            </h2>
+            <FadeIn>
+              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
+                What Guides Us
+              </h2>
+            </FadeIn>
 
-            <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-8 max-w-[1230px]">
-              We believe strong organizations lead to stronger communities.<br />
-              We build strategy that reflects lived experience and local wisdom.<br />
-              We respect your context. We support your values. We help you lead with clarity.
-            </p>
+            <FadeIn delay={0.1}>
+              <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-8 max-w-[1230px]">
+                We believe strong organizations lead to stronger communities.<br />
+                We build strategy that reflects lived experience and local wisdom.<br />
+                We respect your context. We support your values. We help you lead with clarity.
+              </p>
+            </FadeIn>
 
             {/* Gold divider */}
-            <div className="w-full max-w-[1220px] h-0 border-[2px] border-gold mb-8" />
+            <motion.div
+              className="w-full max-w-[1220px] h-0 border-[2px] border-gold mb-8"
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            />
 
-            <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-16">
-              Our Values:
-            </p>
+            <FadeIn delay={0.2}>
+              <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-16">
+                Our Values:
+              </p>
+            </FadeIn>
 
             {/* Values Grid - Top Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-[271px] justify-items-center mb-16">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-[271px] justify-items-center mb-16">
               {valuesTop.map((value, index) => (
-                <div key={index} className="flex flex-col items-center text-center w-[223px]">
-                  <div className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6">
-                    <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
-                  </div>
-                  <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
-                    {value.label}
-                  </p>
-                </div>
+                <StaggerItem key={index}>
+                  <motion.div
+                    className="flex flex-col items-center text-center w-[223px]"
+                    whileHover={{ y: -8 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <motion.div
+                      className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
+                    </motion.div>
+                    <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+                      {value.label}
+                    </p>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerChildren>
 
             {/* Values Grid - Bottom Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-[271px] justify-items-center">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-[271px] justify-items-center">
               {valuesBottom.map((value, index) => (
-                <div key={index} className="flex flex-col items-center text-center w-[223px]">
-                  <div className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6">
-                    <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
-                  </div>
-                  <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
-                    {value.label}
-                  </p>
-                </div>
+                <StaggerItem key={index}>
+                  <motion.div
+                    className="flex flex-col items-center text-center w-[223px]"
+                    whileHover={{ y: -8 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <motion.div
+                      className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
+                    </motion.div>
+                    <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+                      {value.label}
+                    </p>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerChildren>
           </div>
         </section>
 
         {/* ============ HOW WE WORK SECTION ============ */}
         <section className="w-full bg-navy relative py-16 overflow-hidden">
-          {/* Decorative circles */}
-          <div className="absolute w-[127px] h-[127px] -right-16 top-[194px] rounded-full bg-gold" />
-          <div className="absolute w-[61px] h-[61px] right-[135px] top-[50px] rounded-full bg-blue" />
-          <div className="absolute w-[211px] h-[105px] -left-[73px] top-[258px] rounded-full bg-brown" />
-          <div className="absolute w-[437px] h-[219px] -right-[77px] -bottom-[100px] rounded-full bg-blue opacity-50" />
+          {/* Animated decorative circles */}
+          <FloatingCircle
+            size={127}
+            color="#FCBA04"
+            className="-right-16 top-[194px]"
+            delay={0.2}
+            floatRange={8}
+            duration={4}
+          />
+          <FloatingCircle
+            size={61}
+            color="#3490F3"
+            className="right-[135px] top-[50px]"
+            delay={0.4}
+            floatRange={6}
+            duration={3.5}
+          />
+          <motion.div
+            className="absolute w-[211px] h-[105px] -left-[73px] top-[258px] rounded-full bg-brown"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          />
+          <motion.div
+            className="absolute w-[437px] h-[219px] -right-[77px] -bottom-[100px] rounded-full bg-blue opacity-50"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 0.5, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
+          />
 
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28 relative z-10">
             <div className="text-center mb-16">
-              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-white mb-8">
-                How We Work
-              </h2>
+              <FadeIn>
+                <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-white mb-8">
+                  How We Work
+                </h2>
+              </FadeIn>
 
               {/* Gold divider */}
-              <div className="w-[474px] h-0 border-[2px] border-gold mx-auto mb-12" />
+              <motion.div
+                className="w-[474px] h-0 border-[2px] border-gold mx-auto mb-12"
+                initial={{ width: 0 }}
+                whileInView={{ width: 474 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              />
 
               {/* Bullet list */}
-              <div className="text-[24px] md:text-[28px] text-white leading-[60px] md:leading-[81px] text-center">
-                <ul className="list-disc list-inside">
-                  <li>You get direct engagement from senior leadership.</li>
-                  <li>You get tools that support execution.</li>
-                  <li>You get plans built around real conditions, not abstract theory.</li>
-                </ul>
-              </div>
+              <StaggerChildren staggerDelay={0.15} className="text-[24px] md:text-[28px] text-white leading-[60px] md:leading-[81px] text-center">
+                <StaggerItem>
+                  <p>• You get direct engagement from senior leadership.</p>
+                </StaggerItem>
+                <StaggerItem>
+                  <p>• You get tools that support execution.</p>
+                </StaggerItem>
+                <StaggerItem>
+                  <p>• You get plans built around real conditions, not abstract theory.</p>
+                </StaggerItem>
+              </StaggerChildren>
             </div>
 
             <div className="text-center mt-20">
-              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-white mb-8">
-                Our Process
-              </h2>
+              <FadeIn>
+                <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-white mb-8">
+                  Our Process
+                </h2>
+              </FadeIn>
 
               {/* Gold divider */}
-              <div className="w-[474px] h-0 border-[2px] border-gold mx-auto mb-8" />
+              <motion.div
+                className="w-[474px] h-0 border-[2px] border-gold mx-auto mb-8"
+                initial={{ width: 0 }}
+                whileInView={{ width: 474 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              />
             </div>
 
             {/* Process Steps */}
-            <div className="space-y-4">
+            <StaggerChildren staggerDelay={0.1} className="space-y-4">
               {processSteps.map((step, index) => (
-                <div key={index} className="bg-white rounded-[116px] py-6 px-8 lg:px-20">
-                  <p className="font-bold text-[18px] text-dark text-center leading-[26px] tracking-[-0.02em]">
-                    {step}
-                  </p>
-                </div>
+                <StaggerItem key={index}>
+                  <motion.div
+                    className="bg-white rounded-[116px] py-6 px-8 lg:px-20"
+                    whileHover={{ scale: 1.02, x: 10 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <p className="font-bold text-[18px] text-dark text-center leading-[26px] tracking-[-0.02em]">
+                      {step}
+                    </p>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerChildren>
 
             {/* Closing statement */}
-            <p className="text-[24px] md:text-[28px] text-white leading-[60px] md:leading-[81px] text-center mt-14">
-              This approach strengthens culture, decision-making, and long-term sustainability.
-            </p>
+            <FadeIn delay={0.3}>
+              <p className="text-[24px] md:text-[28px] text-white leading-[60px] md:leading-[81px] text-center mt-14">
+                This approach strengthens culture, decision-making, and long-term sustainability.
+              </p>
+            </FadeIn>
           </div>
         </section>
 
         {/* Gold divider bar between navy section and Our Reach */}
-        <div className="w-full h-[16px] bg-gold" />
+        <motion.div
+          className="w-full h-[16px] bg-gold"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          style={{ originX: 0 }}
+        />
 
         {/* ============ OUR REACH SECTION ============ */}
         <section className="py-16">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
-            <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
-              Our Reach
-            </h2>
+            <FadeIn>
+              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
+                Our Reach
+              </h2>
+            </FadeIn>
 
             {/* Black divider */}
-            <div className="w-full max-w-[1220px] h-0 border-[2px] border-dark mb-8" />
+            <motion.div
+              className="w-full max-w-[1220px] h-0 border-[2px] border-dark mb-8"
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            />
 
-            <ul className="font-bold text-[18px] leading-[32px] text-dark list-disc list-inside space-y-0">
-              <li>Our primary office is in Elizabeth, New Jersey.</li>
-              <li>Our work extends across the African diaspora and global partners.</li>
-              <li>Recent milestones include an expanded office, a refreshed brand, and membership in the Clinton Global Initiative.</li>
-            </ul>
+            <StaggerChildren staggerDelay={0.1} className="font-bold text-[18px] leading-[32px] text-dark list-disc list-inside space-y-0">
+              <StaggerItem>
+                <p>• Our primary office is in Elizabeth, New Jersey.</p>
+              </StaggerItem>
+              <StaggerItem>
+                <p>• Our work extends across the African diaspora and global partners.</p>
+              </StaggerItem>
+              <StaggerItem>
+                <p>• Recent milestones include an expanded office, a refreshed brand, and membership in the Clinton Global Initiative.</p>
+              </StaggerItem>
+            </StaggerChildren>
           </div>
         </section>
 
@@ -288,45 +459,92 @@ export default function AboutPage() {
         <section className="pb-8">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             {/* Blue pill bar */}
-            <div className="w-full max-w-[1220px] bg-blue rounded-[116px] py-6 px-8 mb-8">
-              <p className="font-bold text-[24px] md:text-[28px] text-white text-center leading-[26px] tracking-[-0.02em]">
-                Commitment to Emerging Leaders
-              </p>
-            </div>
+            <FadeIn>
+              <motion.div
+                className="w-full max-w-[1220px] bg-blue rounded-[116px] py-6 px-8 mb-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <p className="font-bold text-[24px] md:text-[28px] text-white text-center leading-[26px] tracking-[-0.02em]">
+                  Commitment to Emerging Leaders
+                </p>
+              </motion.div>
+            </FadeIn>
 
-            <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark max-w-[1230px] mb-16">
-              We launched the <span className="font-bold">GoodTrouble Social Impact Apprenticeship Program</span> to support rising strategists and practitioners.<br />
-              Apprentices support client work and gain experience in real-world problem-solving.
-            </p>
+            <FadeIn delay={0.1}>
+              <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark max-w-[1230px] mb-16">
+                We launched the <span className="font-bold">GoodTrouble Social Impact Apprenticeship Program</span> to support rising strategists and practitioners.<br />
+                Apprentices support client work and gain experience in real-world problem-solving.
+              </p>
+            </FadeIn>
           </div>
         </section>
 
         {/* ============ 3 CTA CARDS ============ */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-3">
+        <StaggerChildren staggerDelay={0.1} className="w-full grid grid-cols-1 md:grid-cols-3">
           {/* Brown CTA */}
-          <Link href="/contact" className="bg-brown h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
-            <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
-              Meet with<br />our team.
-            </p>
-            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
-          </Link>
+          <StaggerItem>
+            <Link href="/contact" className="block">
+              <motion.div
+                className="bg-brown h-[248px] flex flex-col items-center justify-center px-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                  Meet with<br />our team.
+                </p>
+                <motion.div
+                  whileHover={{ x: 8 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
+                </motion.div>
+              </motion.div>
+            </Link>
+          </StaggerItem>
 
           {/* Gold CTA */}
-          <Link href="#" className="bg-gold h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
-            <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
-              Join our partner network.
-            </p>
-            <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
-          </Link>
+          <StaggerItem>
+            <Link href="#" className="block">
+              <motion.div
+                className="bg-gold h-[248px] flex flex-col items-center justify-center px-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
+                  Join our partner network.
+                </p>
+                <motion.div
+                  whileHover={{ x: 8 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
+                </motion.div>
+              </motion.div>
+            </Link>
+          </StaggerItem>
 
           {/* Blue CTA */}
-          <Link href="/newsletter" className="bg-blue h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
-            <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
-              Sign up for updates and insights.
-            </p>
-            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
-          </Link>
-        </div>
+          <StaggerItem>
+            <Link href="/newsletter" className="block">
+              <motion.div
+                className="bg-blue h-[248px] flex flex-col items-center justify-center px-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                  Sign up for updates and insights.
+                </p>
+                <motion.div
+                  whileHover={{ x: 8 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
+                </motion.div>
+              </motion.div>
+            </Link>
+          </StaggerItem>
+        </StaggerChildren>
       </div>
 
       <Footer />

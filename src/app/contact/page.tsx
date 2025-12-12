@@ -1,9 +1,18 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getImagePath } from "@/lib/utils";
+import {
+  FadeIn,
+  StaggerChildren,
+  StaggerItem,
+  FloatingCircle,
+} from "@/components/animations";
+import { motion } from "framer-motion";
 
 // Stay informed items - 5 items matching Figma
 const stayInformedItems = [
@@ -48,65 +57,119 @@ export default function ContactPage() {
           style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(255, 255, 255, 0) 98.21%)' }}
         />
 
-        {/* Decorative Circles */}
-        <div className="absolute w-[211px] h-[211px] -left-14 bottom-[20px] rounded-full bg-blue" />
-        <div className="absolute w-[127px] h-[127px] -right-16 top-[140px] rounded-full bg-gold" />
-        <div className="absolute w-[51px] h-[51px] right-[60px] top-[50px] rounded-full bg-blue" />
-        <div className="absolute w-[51px] h-[51px] right-[200px] bottom-[60px] rounded-full bg-brown" />
+        {/* Animated Decorative Circles */}
+        <FloatingCircle
+          size={211}
+          color="#3490F3"
+          className="-left-14 bottom-[20px]"
+          delay={0.2}
+          floatRange={12}
+          duration={5}
+        />
+        <FloatingCircle
+          size={127}
+          color="#FCBA04"
+          className="-right-16 top-[140px]"
+          delay={0.4}
+          floatRange={8}
+          duration={4}
+        />
+        <FloatingCircle
+          size={51}
+          color="#3490F3"
+          className="right-[60px] top-[50px]"
+          delay={0.6}
+          floatRange={6}
+          duration={3.5}
+        />
+        <FloatingCircle
+          size={51}
+          color="#964C2D"
+          className="right-[200px] bottom-[60px]"
+          delay={0.8}
+          floatRange={8}
+          duration={4.5}
+        />
 
         {/* Hero Content */}
         <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-center">
-          <div className="max-w-[726px]">
+          <motion.div
+            className="max-w-[726px]"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             {/* Gold line above text */}
-            <div className="w-[200px] md:w-[224px] h-[7px] bg-gold mb-6" />
+            <motion.div
+              className="h-[7px] bg-gold mb-6"
+              initial={{ width: 0 }}
+              animate={{ width: 224 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            />
             <h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
               Let&apos;s stay connected!
             </h1>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ============ WHITE CONTENT AREA with rounded top ============ */}
       <div className="relative -mt-[77px] bg-white rounded-t-[65px] pt-12 pb-0">
         {/* Intro text */}
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
-          <p className="max-w-[782px] mx-auto text-center font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-16">
-            You want tools, insights, and practical strategies that strengthen your work.<br />
-            We share updates that help you lead with clarity and confidence.
-          </p>
-        </div>
+        <FadeIn>
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+            <p className="max-w-[782px] mx-auto text-center font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-16">
+              You want tools, insights, and practical strategies that strengthen your work.<br />
+              We share updates that help you lead with clarity and confidence.
+            </p>
+          </div>
+        </FadeIn>
 
         {/* ============ STAY INFORMED ABOUT SECTION ============ */}
         <section className="w-full bg-[rgba(235,235,235,0.5)] py-16">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
-            <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
-              Stay informed about
-            </h2>
+            <FadeIn>
+              <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
+                Stay informed about
+              </h2>
+            </FadeIn>
 
             {/* 5 icon items */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
               {stayInformedItems.map((item, index) => (
-                <div key={index} className="flex flex-col items-center text-center">
-                  <div className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6">
-                    <Image src={getImagePath(item.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
-                  </div>
-                  <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
-                    {item.label}
-                  </p>
-                </div>
+                <StaggerItem key={index}>
+                  <motion.div
+                    className="flex flex-col items-center text-center"
+                    whileHover={{ y: -8 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <motion.div
+                      className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Image src={getImagePath(item.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
+                    </motion.div>
+                    <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
+                      {item.label}
+                    </p>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerChildren>
           </div>
         </section>
 
         {/* Navy bar with message */}
-        <div className="w-full bg-navy py-6">
-          <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
-            <p className="font-bold text-[18px] leading-[32px] text-center text-white">
-              Share your information below. We&apos;ll keep you up to date on what matters most to your mission.
-            </p>
+        <FadeIn>
+          <div className="w-full bg-navy py-6">
+            <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
+              <p className="font-bold text-[18px] leading-[32px] text-center text-white">
+                Share your information below. We&apos;ll keep you up to date on what matters most to your mission.
+              </p>
+            </div>
           </div>
-        </div>
+        </FadeIn>
 
         {/* ============ WORK WITH US SECTION ============ */}
         <section className="py-16">
@@ -114,81 +177,142 @@ export default function ContactPage() {
             <div className="flex flex-col lg:flex-row gap-12">
               {/* Left Column - Content */}
               <div className="flex-1">
-                <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
-                  Work with us
-                </h2>
+                <FadeIn>
+                  <h2 className="font-bold text-[28px] leading-[32px] tracking-[-0.02em] text-dark mb-8">
+                    Work with us
+                  </h2>
+                </FadeIn>
 
-                <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-8">
-                  <p className="mb-4">
-                    If you want support with strategy, leadership, fundraising, or partnership development, complete the form. We respond within two business days.
-                  </p>
-                  <p className="font-bold">Tell us:</p>
-                </div>
+                <FadeIn delay={0.1}>
+                  <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-8">
+                    <p className="mb-4">
+                      If you want support with strategy, leadership, fundraising, or partnership development, complete the form. We respond within two business days.
+                    </p>
+                    <p className="font-bold">Tell us:</p>
+                  </div>
+                </FadeIn>
 
                 {/* Numbered items */}
-                <div className="space-y-4 mb-8">
+                <StaggerChildren staggerDelay={0.1} className="space-y-4 mb-8">
                   {tellUsItems.map((item, index) => (
-                    <div key={index} className="flex items-center gap-4">
-                      {/* Blue circle with number */}
-                      <div className="w-[72px] h-[72px] rounded-full bg-blue flex items-center justify-center flex-shrink-0">
-                        <span className="font-bold text-[28px] text-white tracking-[-0.02em]">
-                          {index + 1}
-                        </span>
-                      </div>
-                      {/* Gray pill */}
-                      <div className="bg-[rgba(235,235,235,0.5)] rounded-[116px] h-[72px] flex-1 flex items-center px-8">
-                        <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
-                          {item}
-                        </p>
-                      </div>
-                    </div>
+                    <StaggerItem key={index}>
+                      <motion.div
+                        className="flex items-center gap-4"
+                        whileHover={{ x: 10 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        {/* Blue circle with number */}
+                        <motion.div
+                          className="w-[72px] h-[72px] rounded-full bg-blue flex items-center justify-center flex-shrink-0"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <span className="font-bold text-[28px] text-white tracking-[-0.02em]">
+                            {index + 1}
+                          </span>
+                        </motion.div>
+                        {/* Gray pill */}
+                        <motion.div
+                          className="bg-[rgba(235,235,235,0.5)] rounded-[116px] h-[72px] flex-1 flex items-center px-8"
+                          whileHover={{ backgroundColor: "rgba(235,235,235,0.8)" }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+                            {item}
+                          </p>
+                        </motion.div>
+                      </motion.div>
+                    </StaggerItem>
                   ))}
-                </div>
+                </StaggerChildren>
 
-                <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
-                  We look forward to hearing from you.
-                </p>
+                <FadeIn delay={0.3}>
+                  <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+                    We look forward to hearing from you.
+                  </p>
+                </FadeIn>
               </div>
 
               {/* Right Column - Image */}
-              <div className="relative w-full lg:w-[535px] h-[400px] lg:h-[578px] rounded-[32px] overflow-hidden flex-shrink-0">
-                <Image
-                  src={getImagePath("/images/contact-form-image.jpg")}
-                  alt="Team collaboration"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              <FadeIn direction="right" delay={0.2}>
+                <div className="relative w-full lg:w-[535px] h-[400px] lg:h-[578px] rounded-[32px] overflow-hidden flex-shrink-0">
+                  <Image
+                    src={getImagePath("/images/contact-form-image.jpg")}
+                    alt="Team collaboration"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </FadeIn>
             </div>
           </div>
         </section>
 
         {/* ============ 3 CTA CARDS ============ */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-3">
+        <StaggerChildren staggerDelay={0.1} className="w-full grid grid-cols-1 md:grid-cols-3">
           {/* Brown CTA */}
-          <Link href="#" className="bg-brown h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
-            <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
-              Submit your information.
-            </p>
-            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
-          </Link>
+          <StaggerItem>
+            <Link href="#" className="block">
+              <motion.div
+                className="bg-brown h-[248px] flex flex-col items-center justify-center px-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                  Submit your information.
+                </p>
+                <motion.div
+                  whileHover={{ x: 8 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
+                </motion.div>
+              </motion.div>
+            </Link>
+          </StaggerItem>
 
           {/* Gold CTA */}
-          <Link href="/newsletter" className="bg-gold h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
-            <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
-              Join our<br />mailing list.
-            </p>
-            <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
-          </Link>
+          <StaggerItem>
+            <Link href="/newsletter" className="block">
+              <motion.div
+                className="bg-gold h-[248px] flex flex-col items-center justify-center px-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
+                  Join our<br />mailing list.
+                </p>
+                <motion.div
+                  whileHover={{ x: 8 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
+                </motion.div>
+              </motion.div>
+            </Link>
+          </StaggerItem>
 
           {/* Blue CTA */}
-          <Link href="#" className="bg-blue h-[248px] flex flex-col items-center justify-center px-8 hover:opacity-90 transition-opacity">
-            <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
-              Stay connected to a community focused on impact and results.
-            </p>
-            <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
-          </Link>
-        </div>
+          <StaggerItem>
+            <Link href="#" className="block">
+              <motion.div
+                className="bg-blue h-[248px] flex flex-col items-center justify-center px-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                  Stay connected to a community focused on impact and results.
+                </p>
+                <motion.div
+                  whileHover={{ x: 8 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
+                </motion.div>
+              </motion.div>
+            </Link>
+          </StaggerItem>
+        </StaggerChildren>
       </div>
 
       <Footer />
