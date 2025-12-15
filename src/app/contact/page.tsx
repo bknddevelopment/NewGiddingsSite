@@ -11,6 +11,7 @@ import {
   StaggerChildren,
   StaggerItem,
   FloatingCircle,
+  AnimatedUnderline,
 } from "@/components/animations";
 import { motion } from "framer-motion";
 
@@ -99,15 +100,8 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Gold line above text */}
-            <motion.div
-              className="h-[7px] bg-gold mb-6"
-              initial={{ width: 0 }}
-              animate={{ width: 224 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            />
-            <h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
-              Let&apos;s stay connected!
+<h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
+              Let&apos;s stay <AnimatedUnderline delay={0.8}><span>connected!</span></AnimatedUnderline>
             </h1>
           </motion.div>
         </div>
@@ -286,7 +280,7 @@ export default function ContactPage() {
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-black.svg")} alt="" width={43} height={43} />
                 </motion.div>
               </motion.div>
             </Link>
@@ -307,7 +301,7 @@ export default function ContactPage() {
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
                 </motion.div>
               </motion.div>
             </Link>

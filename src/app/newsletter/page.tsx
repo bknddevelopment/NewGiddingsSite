@@ -323,7 +323,7 @@ export default function NewsletterPage() {
         </section>
 
         {/* Blue and Brown decorative arrow lines */}
-        <div className="relative w-full h-[120px] overflow-hidden mt-16">
+        <div className="relative w-full h-[160px] overflow-hidden mt-16 mb-24">
           {/* Blue arrow line */}
           <motion.div
             className="absolute left-0 top-[20px] flex items-center"
@@ -345,7 +345,7 @@ export default function NewsletterPage() {
           </motion.div>
           {/* Brown arrow line */}
           <motion.div
-            className="absolute left-0 top-[65px] flex items-center"
+            className="absolute left-0 top-[90px] flex items-center"
             initial={{ width: 0 }}
             whileInView={{ width: "68%" }}
             viewport={{ once: true }}

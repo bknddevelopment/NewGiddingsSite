@@ -195,27 +195,15 @@ export default function ServicesPage() {
           </div>
         </FadeIn>
 
-        {/* ============ SERVICE CARDS SECTION ============ */}
+        {/* ============ SERVICE TILES SECTION ============ */}
         <section className="py-8">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
-            {/* First row - 3 cards */}
-            <StaggerChildren staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-              {serviceCards.slice(0, 3).map((card, index) => (
+            <StaggerChildren staggerDelay={0.1} className="space-y-4">
+              {serviceCards.map((card, index) => (
                 <StaggerItem key={index}>
-                  <ServiceCard {...card} />
+                  <ServiceTile {...card} index={index} />
                 </StaggerItem>
               ))}
-            </StaggerChildren>
-
-            {/* Second row - 2 cards aligned left */}
-            <StaggerChildren staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {serviceCards.slice(3, 5).map((card, index) => (
-                <StaggerItem key={index + 3}>
-                  <ServiceCard {...card} />
-                </StaggerItem>
-              ))}
-              {/* Empty third column on large screens to maintain grid alignment */}
-              <div className="hidden lg:block" />
             </StaggerChildren>
           </div>
         </section>
@@ -332,7 +320,7 @@ export default function ServicesPage() {
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-black.svg")} alt="" width={43} height={43} />
                 </motion.div>
               </motion.div>
             </Link>
@@ -353,7 +341,7 @@ export default function ServicesPage() {
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
                 </motion.div>
               </motion.div>
             </Link>
@@ -366,14 +354,22 @@ export default function ServicesPage() {
   );
 }
 
-// Service Card Component with animations
-function ServiceCard({
+// Border color mapping
+const borderColors: Record<string, string> = {
+  'bg-navy': 'border-navy',
+  'bg-blue': 'border-blue',
+  'bg-brown': 'border-brown',
+  'bg-gold': 'border-gold',
+};
+
+// Service Tile Component - sleek horizontal expandable tiles
+function ServiceTile({
   headerColor,
-  textColor,
   title,
   description,
   deliverables,
   outcomes,
+  index,
 }: {
   headerColor: string;
   textColor: string;
@@ -381,58 +377,91 @@ function ServiceCard({
   description: string;
   deliverables: string[];
   outcomes: string[];
+  index: number;
 }) {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  const borderColor = borderColors[headerColor] || 'border-navy';
+
   return (
     <motion.div
-      className="flex flex-col h-full"
-      whileHover={{ y: -8 }}
+      className={`bg-[#EBEBEB] ${borderColor} border-[4px] rounded-[24px] overflow-hidden cursor-pointer`}
+      whileHover={{ scale: 1.01, x: 8 }}
       transition={{ type: "spring", stiffness: 300 }}
+      onClick={() => setIsExpanded(!isExpanded)}
     >
-      {/* Colored header */}
-      <motion.div
-        className={`${headerColor} rounded-t-[32px] h-[108px] flex items-center justify-center px-6`}
-        whileHover={{ scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 300 }}
-      >
-        <p className={`font-bold text-[24px] leading-[36px] text-center whitespace-pre-line ${textColor}`}>
-          {title}
-        </p>
-      </motion.div>
+      {/* Main tile content */}
+      <div className="flex items-center justify-between p-6 lg:p-8">
+        <div className="flex items-center gap-6 flex-1">
+          {/* Number badge */}
+          <div className={`w-12 h-12 rounded-full ${headerColor} flex items-center justify-center flex-shrink-0`}>
+            <span className="font-bold text-[20px] text-white">{index + 1}</span>
+          </div>
 
-      {/* Gray content area */}
-      <div className="bg-gray-100 rounded-b-[32px] p-8 flex-1">
-        {/* Description */}
-        <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-6">
-          {description}
-        </p>
-
-        {/* Black divider */}
-        <div className="w-full h-0 border-[2px] border-dark mb-6" />
-
-        {/* Deliverables */}
-        <div className="mb-6">
-          <p className="font-bold text-[18px] leading-[28px] text-dark mb-2">What you get:</p>
-          <ul className="space-y-1">
-            {deliverables.map((item, index) => (
-              <li key={index} className="font-bold text-[18px] leading-[28px] text-dark">
-                • {item}
-              </li>
-            ))}
-          </ul>
+          {/* Title and description */}
+          <div className="flex-1">
+            <h3 className="font-bold text-[20px] lg:text-[24px] leading-tight text-dark">
+              {title.replace('\n', ' ')}
+            </h3>
+            <p className="text-[14px] lg:text-[16px] mt-1 text-dark/70 hidden md:block">
+              {description}
+            </p>
+          </div>
         </div>
 
-        {/* Outcomes */}
-        <div>
-          <p className="font-bold text-[18px] leading-[28px] text-dark mb-2">Outcomes:</p>
-          <ul className="space-y-1">
-            {outcomes.map((item, index) => (
-              <li key={index} className="font-bold text-[18px] leading-[28px] text-dark">
-                • {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Expand indicator */}
+        <motion.div
+          animate={{ rotate: isExpanded ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="ml-4"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-dark">
+            <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </motion.div>
       </div>
+
+      {/* Expandable content */}
+      <motion.div
+        initial={false}
+        animate={{ height: isExpanded ? 'auto' : 0, opacity: isExpanded ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="overflow-hidden"
+      >
+        <div className="px-6 lg:px-8 pb-6 lg:pb-8">
+          {/* Description for mobile */}
+          <p className="text-[14px] mb-4 text-dark/70 md:hidden">
+            {description}
+          </p>
+
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t ${borderColor}`}>
+            {/* Deliverables */}
+            <div>
+              <p className="font-bold text-[16px] text-dark mb-3">What you get:</p>
+              <ul className="space-y-2">
+                {deliverables.map((item, idx) => (
+                  <li key={idx} className="text-[14px] text-dark/80 flex items-start gap-2">
+                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${headerColor} flex-shrink-0`} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Outcomes */}
+            <div>
+              <p className="font-bold text-[16px] text-dark mb-3">Outcomes:</p>
+              <ul className="space-y-2">
+                {outcomes.map((item, idx) => (
+                  <li key={idx} className="text-[14px] text-dark/80 flex items-start gap-2">
+                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${headerColor} flex-shrink-0`} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   );
 }
