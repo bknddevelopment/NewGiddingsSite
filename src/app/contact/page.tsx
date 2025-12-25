@@ -17,11 +17,11 @@ import { motion } from "framer-motion";
 
 // Stay informed items - 5 items matching Figma
 const stayInformedItems = [
-  { icon: "/images/icons/rank.svg", label: "New client\nwins and\ncase studies" },
-  { icon: "/images/icons/brain.svg", label: "Upcoming\nconvening and\nlearning sessions" },
-  { icon: "/images/icons/file.svg", label: "Leadership\nand fundraising\ntools" },
-  { icon: "/images/icons/bell.svg", label: "GoodTrouble\napprenticeship\nupdates" },
-  { icon: "/images/icons/bulb.svg", label: "Insights from our work\nacross climate, equity,\n& community resilience" },
+  { icon: "/images/icons/contact_rank.png", label: "New client\nwins and\ncase studies" },
+  { icon: "/images/icons/contact_brain.png", label: "Upcoming\nconvening and\nlearning sessions" },
+  { icon: "/images/icons/contact_file.png", label: "Leadership\nand fundraising\ntools" },
+  { icon: "/images/icons/contact_bell.png", label: "GoodTrouble\napprenticeship\nupdates" },
+  { icon: "/images/icons/contact_bulb.png", label: "Insights from our work\nacross climate, equity,\n& community resilience" },
 ];
 
 // Tell us items - 4 numbered items

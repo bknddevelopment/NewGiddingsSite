@@ -17,15 +17,15 @@ import { motion } from "framer-motion";
 
 // Values data - matching Figma layout (2 rows of 3)
 const valuesTop = [
-  { icon: "/images/icons/send-to-back.svg", label: "Collaboration" },
-  { icon: "/images/icons/shield.svg", label: "Integrity" },
-  { icon: "/images/icons/rank.svg", label: "Accountability" },
+  { icon: "/images/icons/about_send-to-back.png", label: "Collaboration" },
+  { icon: "/images/icons/about_shield.png", label: "Integrity" },
+  { icon: "/images/icons/about_rank.png", label: "Accountability" },
 ];
 
 const valuesBottom = [
-  { icon: "/images/icons/sort.svg", label: "Equity" },
-  { icon: "/images/icons/launch.svg", label: "Innovation" },
-  { icon: "/images/icons/direction.svg", label: "Practical action" },
+  { icon: "/images/icons/about_sort.png", label: "Equity" },
+  { icon: "/images/icons/about_launch.png", label: "Innovation" },
+  { icon: "/images/icons/about_direction.png", label: "Practical action" },
 ];
 
 // Process steps
@@ -182,43 +182,39 @@ export default function AboutPage() {
         </section>
 
         {/* Decorative lines with arrows pointing RIGHT - Full width */}
-        <div className="relative w-full h-[160px] overflow-hidden">
-          {/* Blue arrow line */}
+        <div className="relative w-full h-[150px]">
+          {/* Blue arrow line - using image */}
           <motion.div
-            className="absolute left-0 top-[20px] flex items-center"
-            initial={{ width: 0 }}
-            whileInView={{ width: "92%" }}
+            className="absolute -left-4 top-0"
+            style={{ width: "92%" }}
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <div className="flex-1 h-[16px] bg-blue" />
-            <div
-              style={{
-                width: 0,
-                height: 0,
-                borderTop: '20px solid transparent',
-                borderBottom: '20px solid transparent',
-                borderLeft: '40px solid #3490F3',
-              }}
+            <Image
+              src={getImagePath("/images/icons/arrow_dodger_blue.png")}
+              alt=""
+              width={1218}
+              height={55}
+              className="w-full h-auto"
             />
           </motion.div>
-          {/* Navy arrow line */}
+          {/* Community blue arrow line - using image */}
           <motion.div
-            className="absolute left-0 top-[85px] flex items-center"
-            initial={{ width: 0 }}
-            whileInView={{ width: "71%" }}
+            className="absolute -left-4 top-[70px]"
+            style={{ width: "71%" }}
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
           >
-            <div className="flex-1 h-[16px] bg-navy" />
-            <div
-              style={{
-                width: 0,
-                height: 0,
-                borderTop: '20px solid transparent',
-                borderBottom: '20px solid transparent',
-                borderLeft: '40px solid #1D1F4E',
-              }}
+            <Image
+              src={getImagePath("/images/icons/arrow_community_blue.png")}
+              alt=""
+              width={1218}
+              height={55}
+              className="w-full h-auto"
             />
           </motion.div>
         </div>
@@ -325,7 +321,7 @@ export default function AboutPage() {
             duration={3.5}
           />
           <motion.div
-            className="absolute w-[211px] h-[105px] -left-[73px] top-[258px] rounded-full bg-brown"
+            className="absolute w-[211px] h-[105px] -left-[160px] top-[258px] rounded-full bg-brown"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

@@ -140,7 +140,7 @@ export default function NewsletterPage() {
                         whileHover={{ x: 5 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        {/* Blue badge/seal checkmark icon */}
+                        {/* Blue badge/seal checkmark icon - using image */}
                         <motion.div
                           className="w-[48px] h-[48px] flex-shrink-0"
                           initial={{ scale: 0, rotate: -180 }}
@@ -148,12 +148,13 @@ export default function NewsletterPage() {
                           viewport={{ once: true }}
                           transition={{ type: "spring", stiffness: 300, delay: index * 0.1 }}
                         >
-                          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            {/* Smooth wavy badge shape */}
-                            <path d="M20 1C21.8 1 23 4 24.8 5.2C26.6 6.4 30 5.2 31.2 7C32.4 8.8 30.6 11.8 31.2 14C31.8 16.2 35 17.2 35 19.5C35 21.8 31.8 22.8 31.2 25C30.6 27.2 32.4 30.2 31.2 32C30 33.8 26.6 32.6 24.8 33.8C23 35 21.8 38 20 38C18.2 38 17 35 15.2 33.8C13.4 32.6 10 33.8 8.8 32C7.6 30.2 9.4 27.2 8.8 25C8.2 22.8 5 21.8 5 19.5C5 17.2 8.2 16.2 8.8 14C9.4 11.8 7.6 8.8 8.8 7C10 5.2 13.4 6.4 15.2 5.2C17 4 18.2 1 20 1Z" fill="#3490F3"/>
-                            {/* Checkmark */}
-                            <path d="M27 15L17 25L13 21" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
+                          <Image
+                            src={getImagePath("/images/icons/newsletter_checkmark.png")}
+                            alt=""
+                            width={48}
+                            height={48}
+                            className="w-full h-full"
+                          />
                         </motion.div>
                         <p className="font-normal text-[18px] leading-[26px] text-dark">
                           {benefit}
@@ -323,43 +324,39 @@ export default function NewsletterPage() {
         </section>
 
         {/* Blue and Brown decorative arrow lines */}
-        <div className="relative w-full h-[160px] overflow-hidden mt-16 mb-24">
-          {/* Blue arrow line */}
+        <div className="relative w-full h-[180px] mt-16 mb-24">
+          {/* Blue arrow line - using image */}
           <motion.div
-            className="absolute left-0 top-[20px] flex items-center"
-            initial={{ width: 0 }}
-            whileInView={{ width: "75%" }}
+            className="absolute -left-4 top-0"
+            style={{ width: "75%" }}
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <div className="flex-1 h-[16px] bg-blue" />
-            <div
-              style={{
-                width: 0,
-                height: 0,
-                borderTop: '20px solid transparent',
-                borderBottom: '20px solid transparent',
-                borderLeft: '32px solid #3490F3',
-              }}
+            <Image
+              src={getImagePath("/images/icons/arrow_dodger_blue.png")}
+              alt=""
+              width={1218}
+              height={55}
+              className="w-full h-auto"
             />
           </motion.div>
-          {/* Brown arrow line */}
+          {/* Brown arrow line - using image */}
           <motion.div
-            className="absolute left-0 top-[90px] flex items-center"
-            initial={{ width: 0 }}
-            whileInView={{ width: "68%" }}
+            className="absolute -left-4 top-[80px]"
+            style={{ width: "68%" }}
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
           >
-            <div className="flex-1 h-[16px] bg-brown" />
-            <div
-              style={{
-                width: 0,
-                height: 0,
-                borderTop: '20px solid transparent',
-                borderBottom: '20px solid transparent',
-                borderLeft: '32px solid #964C2D',
-              }}
+            <Image
+              src={getImagePath("/images/icons/arrow_chestnut.png")}
+              alt=""
+              width={1218}
+              height={55}
+              className="w-full h-auto"
             />
           </motion.div>
         </div>

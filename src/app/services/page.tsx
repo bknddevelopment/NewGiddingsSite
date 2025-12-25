@@ -228,14 +228,14 @@ export default function ServicesPage() {
             duration={3.5}
           />
           <motion.div
-            className="absolute w-[211px] h-[105px] -left-[60px] top-[200px] rounded-full bg-blue"
+            className="absolute w-[211px] h-[105px] -left-[160px] top-[200px] rounded-full bg-blue"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           />
           <motion.div
-            className="absolute w-[437px] h-[219px] right-0 -bottom-[100px] rounded-full bg-blue opacity-50"
+            className="absolute w-[437px] h-[437px] -right-[160px] -bottom-[200px] rounded-full bg-blue opacity-50"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 0.5, scale: 1 }}
             viewport={{ once: true }}

@@ -17,11 +17,11 @@ import { motion } from "framer-motion";
 
 // Services with icons
 const services = [
-  { icon: "/images/icons/document.svg", title: "Strategic and\nOrganizational Planning" },
-  { icon: "/images/icons/flag.svg", title: "Board Development\nand Governance" },
-  { icon: "/images/icons/crown.svg", title: "Leadership and\nExecutive Development" },
-  { icon: "/images/icons/receipt.svg", title: "Fund Development and\nPhilanthropic Strategy" },
-  { icon: "/images/icons/favorite.svg", title: "Social Impact Strategy\nand Partnership Building" },
+  { icon: "/images/icons/home_document.png", title: "Strategic and\nOrganizational Planning" },
+  { icon: "/images/icons/home_flag.png", title: "Board Development\nand Governance" },
+  { icon: "/images/icons/home_crown.png", title: "Leadership and\nExecutive Development" },
+  { icon: "/images/icons/home_receipt.png", title: "Fund Development and\nPhilanthropic Strategy" },
+  { icon: "/images/icons/home_favorite.png", title: "Social Impact Strategy\nand Partnership Building" },
 ];
 
 // Why work with us - 5 pill bars
@@ -45,17 +45,17 @@ const approachSteps = [
 
 // Who We Serve - top row (4 items)
 const whoWeServeTop = [
-  { icon: "/images/icons/educational.svg", label: "Schools and\nEducational Institutions" },
-  { icon: "/images/icons/home.svg", label: "Foundations and\nPhilanthropic Entities" },
-  { icon: "/images/icons/heart-rate.svg", label: "Faith-based\nOrganizations" },
-  { icon: "/images/icons/group.svg", label: "Community-based\nNonprofits" },
+  { icon: "/images/icons/home_educational.png", label: "Schools and\nEducational Institutions" },
+  { icon: "/images/icons/home_home.png", label: "Foundations and\nPhilanthropic Entities" },
+  { icon: "/images/icons/home_heart.png", label: "Faith-based\nOrganizations" },
+  { icon: "/images/icons/home_group.png", label: "Community-based\nNonprofits" },
 ];
 
 // Who We Serve - bottom row (3 items)
 const whoWeServeBottom = [
-  { icon: "/images/icons/megaphone.svg", label: "Social Movements\nand Coalitions" },
-  { icon: "/images/icons/scales.svg", label: "Government\nAgencies" },
-  { icon: "/images/icons/earth.svg", label: "Networks working in\nclimate, equity, economic\njustice, and community\nresilience" },
+  { icon: "/images/icons/home_megaphone.png", label: "Social Movements\nand Coalitions" },
+  { icon: "/images/icons/home_scales.png", label: "Government\nAgencies" },
+  { icon: "/images/icons/home_earth.png", label: "Networks working in\nclimate, equity, economic\njustice, and community\nresilience" },
 ];
 
 // Impact stats
@@ -495,33 +495,41 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Blue and Brown decorative lines with rounded arrow points */}
-        <div className="relative w-full h-[120px] overflow-hidden">
-          {/* Blue arrow line (top) */}
+        {/* Blue and Brown decorative arrow lines */}
+        <div className="relative w-full h-[150px]">
+          {/* Blue arrow line - using image */}
           <motion.div
-            className="absolute left-0 top-[20px] flex items-center"
-            initial={{ width: 0 }}
-            whileInView={{ width: "90%" }}
+            className="absolute -left-4 top-0"
+            style={{ width: "90%" }}
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <div className="flex-1 h-[16px] bg-blue" />
-            <svg width="40" height="40" viewBox="0 0 40 40" className="ml-[-2px]">
-              <polygon points="0,8 28,20 0,32" fill="#3490f3" strokeLinejoin="round" stroke="#3490f3" strokeWidth="6" />
-            </svg>
+            <Image
+              src={getImagePath("/images/icons/arrow_dodger_blue.png")}
+              alt=""
+              width={1218}
+              height={55}
+              className="w-full h-auto"
+            />
           </motion.div>
-          {/* Brown arrow line (bottom) */}
+          {/* Brown arrow line - using image */}
           <motion.div
-            className="absolute left-0 top-[65px] flex items-center"
-            initial={{ width: 0 }}
-            whileInView={{ width: "75%" }}
+            className="absolute -left-4 top-[70px]"
+            style={{ width: "75%" }}
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
           >
-            <div className="flex-1 h-[16px] bg-brown" />
-            <svg width="40" height="40" viewBox="0 0 40 40" className="ml-[-2px]">
-              <polygon points="0,8 28,20 0,32" fill="#964c2d" strokeLinejoin="round" stroke="#964c2d" strokeWidth="6" />
-            </svg>
+            <Image
+              src={getImagePath("/images/icons/arrow_chestnut.png")}
+              alt=""
+              width={1218}
+              height={55}
+              className="w-full h-auto"
+            />
           </motion.div>
         </div>
 
