@@ -38,31 +38,31 @@ export default function ContactPage() {
       <Header />
 
       {/* ============ HERO SECTION ============ */}
-      <section className="relative w-full h-[500px] overflow-hidden">
+      <section className="relative w-full h-[480px] md:h-[500px] overflow-hidden">
         {/* Background with navy color blend */}
         <div className="absolute inset-0">
           <Image
             src={getImagePath("/images/contact-hero-bg.jpg")}
             alt=""
             fill
-            className="object-cover object-center"
+            className="object-cover object-[65%_center] md:object-center"
             priority
           />
           <div className="absolute inset-0 bg-navy mix-blend-color" />
-          <div className="absolute inset-0 bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
+          <div className="absolute inset-0 bg-navy/10 md:bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
         </div>
 
-        {/* Gradient overlay from left */}
+        {/* Gradient overlay from left - narrower on mobile */}
         <div
-          className="absolute inset-y-0 left-0 w-[70%]"
-          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(255, 255, 255, 0) 98.21%)' }}
+          className="absolute inset-y-0 left-0 w-[50%] md:w-[70%]"
+          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.85) 50%, rgba(255, 255, 255, 0) 100%)' }}
         />
 
         {/* Animated Decorative Circles */}
         <FloatingCircle
           size={211}
           color="#3490F3"
-          className="-left-14 bottom-[20px]"
+          className="-left-14 bottom-[20px] hidden md:block"
           delay={0.2}
           floatRange={12}
           duration={5}
@@ -78,7 +78,7 @@ export default function ContactPage() {
         <FloatingCircle
           size={51}
           color="#3490F3"
-          className="right-[60px] top-[50px]"
+          className="right-[60px] top-[50px] hidden sm:block"
           delay={0.6}
           floatRange={6}
           duration={3.5}
@@ -86,21 +86,21 @@ export default function ContactPage() {
         <FloatingCircle
           size={51}
           color="#964C2D"
-          className="right-[200px] bottom-[60px]"
+          className="right-[200px] bottom-[60px] hidden lg:block"
           delay={0.8}
           floatRange={8}
           duration={4.5}
         />
 
         {/* Hero Content */}
-        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-center">
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-start pt-28 md:pt-0 md:items-center">
           <motion.div
-            className="max-w-[726px]"
+            className="max-w-[220px] md:max-w-[726px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-<h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
+            <h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
               Let&apos;s stay <AnimatedUnderline delay={0.8}><span>connected!</span></AnimatedUnderline>
             </h1>
           </motion.div>
@@ -129,7 +129,7 @@ export default function ContactPage() {
             </FadeIn>
 
             {/* 5 icon items */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-4">
               {stayInformedItems.map((item, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -138,13 +138,13 @@ export default function ContactPage() {
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <motion.div
-                      className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6"
+                      className="w-[80px] h-[80px] md:w-[112px] md:h-[112px] rounded-full bg-blue flex items-center justify-center mb-4 md:mb-6"
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <Image src={getImagePath(item.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
+                      <Image src={getImagePath(item.icon)} alt="" width={62} height={62} className="brightness-0 invert w-[44px] h-[44px] md:w-[62px] md:h-[62px]" />
                     </motion.div>
-                    <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
+                    <p className="font-normal text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
                       {item.label}
                     </p>
                   </motion.div>
@@ -187,31 +187,31 @@ export default function ContactPage() {
                 </FadeIn>
 
                 {/* Numbered items */}
-                <StaggerChildren staggerDelay={0.1} className="space-y-4 mb-8">
+                <StaggerChildren staggerDelay={0.1} className="space-y-3 md:space-y-4 mb-8">
                   {tellUsItems.map((item, index) => (
                     <StaggerItem key={index}>
                       <motion.div
-                        className="flex items-center gap-4"
+                        className="flex items-center gap-3 md:gap-4"
                         whileHover={{ x: 10 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
                         {/* Blue circle with number */}
                         <motion.div
-                          className="w-[72px] h-[72px] rounded-full bg-blue flex items-center justify-center flex-shrink-0"
+                          className="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-full bg-blue flex items-center justify-center flex-shrink-0"
                           whileHover={{ scale: 1.1 }}
                           transition={{ type: "spring", stiffness: 300 }}
                         >
-                          <span className="font-bold text-[28px] text-white tracking-[-0.02em]">
+                          <span className="font-bold text-[22px] md:text-[28px] text-white tracking-[-0.02em]">
                             {index + 1}
                           </span>
                         </motion.div>
                         {/* Gray pill */}
                         <motion.div
-                          className="bg-[rgba(235,235,235,0.5)] rounded-[116px] h-[72px] flex-1 flex items-center px-8"
+                          className="bg-[rgba(235,235,235,0.5)] rounded-[116px] min-h-[56px] md:min-h-[72px] py-3 md:py-4 flex-1 flex items-center px-5 md:px-8"
                           whileHover={{ backgroundColor: "rgba(235,235,235,0.8)" }}
                           transition={{ duration: 0.2 }}
                         >
-                          <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+                          <p className="font-bold text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] tracking-[-0.02em] text-dark">
                             {item}
                           </p>
                         </motion.div>
@@ -229,7 +229,7 @@ export default function ContactPage() {
 
               {/* Right Column - Image */}
               <FadeIn direction="right" delay={0.2}>
-                <div className="relative w-full lg:w-[535px] h-[400px] lg:h-[578px] rounded-[32px] overflow-hidden flex-shrink-0">
+                <div className="relative w-full lg:w-[535px] h-[300px] md:h-[400px] lg:h-[578px] rounded-[24px] md:rounded-[32px] overflow-hidden flex-shrink-0">
                   <Image
                     src={getImagePath("/images/contact-form-image.jpg")}
                     alt="Team collaboration"
@@ -248,18 +248,18 @@ export default function ContactPage() {
           <StaggerItem>
             <Link href="#" className="block">
               <motion.div
-                className="bg-brown h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-brown h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                <p className="max-w-[323px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-white mb-4 md:mb-5">
                   Submit your information.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
                 </motion.div>
               </motion.div>
             </Link>
@@ -269,18 +269,18 @@ export default function ContactPage() {
           <StaggerItem>
             <Link href="/newsletter" className="block">
               <motion.div
-                className="bg-gold h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-gold h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
+                <p className="max-w-[327px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-black mb-4 md:mb-5">
                   Join our<br />mailing list.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-black.svg")} alt="" width={43} height={43} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-black.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
                 </motion.div>
               </motion.div>
             </Link>
@@ -290,18 +290,18 @@ export default function ContactPage() {
           <StaggerItem>
             <Link href="#" className="block">
               <motion.div
-                className="bg-blue h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-blue h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                <p className="max-w-[311px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-white mb-4 md:mb-5">
                   Stay connected to a community focused on impact and results.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
                 </motion.div>
               </motion.div>
             </Link>

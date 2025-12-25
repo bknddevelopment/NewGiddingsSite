@@ -21,7 +21,7 @@ export default function Header() {
   return (
     <header className="bg-white sticky top-0 z-50 shadow-sm">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
-        <div className="flex items-center justify-between h-[99px]">
+        <div className="flex items-center justify-between h-[70px] md:h-[99px]">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <motion.div
@@ -34,7 +34,7 @@ export default function Header() {
                 alt="Giddings Consulting Group"
                 width={320}
                 height={100}
-                className="h-[100px] w-auto"
+                className="h-[50px] md:h-[80px] w-auto"
                 priority
               />
             </motion.div>

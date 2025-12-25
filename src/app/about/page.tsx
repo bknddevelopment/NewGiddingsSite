@@ -43,31 +43,31 @@ export default function AboutPage() {
       <Header />
 
       {/* ============ HERO SECTION ============ */}
-      <section className="relative w-full h-[560px] overflow-hidden">
+      <section className="relative w-full h-[480px] md:h-[560px] overflow-hidden">
         {/* Background with navy color blend */}
         <div className="absolute inset-0">
           <Image
             src={getImagePath("/images/about-hero-bg.jpg")}
             alt=""
             fill
-            className="object-cover object-center"
+            className="object-cover object-[70%_center] md:object-center"
             priority
           />
           <div className="absolute inset-0 bg-navy mix-blend-color" />
-          <div className="absolute inset-0 bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
+          <div className="absolute inset-0 bg-navy/10 md:bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
         </div>
 
-        {/* Gradient overlay from left */}
+        {/* Gradient overlay from left - narrower on mobile */}
         <div
-          className="absolute inset-y-0 left-0 w-[70%]"
-          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(255, 255, 255, 0) 98.21%)' }}
+          className="absolute inset-y-0 left-0 w-[55%] md:w-[70%]"
+          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.85) 50%, rgba(255, 255, 255, 0) 100%)' }}
         />
 
         {/* Animated Decorative Circles */}
         <FloatingCircle
           size={211}
           color="#3490F3"
-          className="-left-14 bottom-[20px]"
+          className="-left-14 bottom-[20px] hidden md:block"
           delay={0.2}
           floatRange={12}
           duration={5}
@@ -83,7 +83,7 @@ export default function AboutPage() {
         <FloatingCircle
           size={51}
           color="#3490F3"
-          className="right-[60px] top-[50px]"
+          className="right-[60px] top-[50px] hidden sm:block"
           delay={0.6}
           floatRange={6}
           duration={3.5}
@@ -91,21 +91,21 @@ export default function AboutPage() {
         <FloatingCircle
           size={51}
           color="#964C2D"
-          className="right-[200px] bottom-[20px]"
+          className="right-[200px] bottom-[20px] hidden lg:block"
           delay={0.8}
           floatRange={8}
           duration={4.5}
         />
 
         {/* Hero Content - positioned in center-left area */}
-        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-center">
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-start pt-20 md:pt-0 md:items-center">
           <motion.div
-            className="max-w-[726px]"
+            className="max-w-[280px] md:max-w-[726px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
+            <h1 className="font-bold text-[28px] md:text-[36px] leading-[38px] md:leading-[48px] tracking-[0.05em] text-white">
               Giddings Consulting Group<br />
               is a social impact strategy firm<br />
               based in <AnimatedUnderline delay={0.8}><span>Elizabeth, New Jersey.</span></AnimatedUnderline>
@@ -149,7 +149,7 @@ export default function AboutPage() {
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Founder Image */}
               <FadeIn direction="left" delay={0.1}>
-                <div className="relative w-full lg:w-[648px] h-[450px] rounded-[32px] overflow-hidden flex-shrink-0">
+                <div className="relative w-full lg:w-[648px] h-[300px] md:h-[450px] rounded-[24px] md:rounded-[32px] overflow-hidden flex-shrink-0">
                   <Image
                     src={getImagePath("/images/founder-image.jpg")}
                     alt="Drew Giddings"
@@ -182,7 +182,7 @@ export default function AboutPage() {
         </section>
 
         {/* Decorative lines with arrows pointing RIGHT - Full width */}
-        <div className="relative w-full h-[150px]">
+        <div className="relative w-full h-[100px] md:h-[150px] overflow-hidden">
           {/* Blue arrow line - using image */}
           <motion.div
             className="absolute -left-4 top-0"
@@ -202,7 +202,7 @@ export default function AboutPage() {
           </motion.div>
           {/* Community blue arrow line - using image */}
           <motion.div
-            className="absolute -left-4 top-[70px]"
+            className="absolute -left-4 top-[50px] md:top-[70px]"
             style={{ width: "71%" }}
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -252,22 +252,22 @@ export default function AboutPage() {
             </FadeIn>
 
             {/* Values Grid - Top Row */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-[271px] justify-items-center mb-16">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 lg:gap-[271px] justify-items-center mb-8 md:mb-16">
               {valuesTop.map((value, index) => (
                 <StaggerItem key={index}>
                   <motion.div
-                    className="flex flex-col items-center text-center w-[223px]"
+                    className="flex flex-col items-center text-center w-full max-w-[223px]"
                     whileHover={{ y: -8 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <motion.div
-                      className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6"
+                      className="w-[80px] h-[80px] md:w-[112px] md:h-[112px] rounded-full bg-blue flex items-center justify-center mb-4 md:mb-6"
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
+                      <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert w-[44px] h-[44px] md:w-[62px] md:h-[62px]" />
                     </motion.div>
-                    <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+                    <p className="font-normal text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] tracking-[-0.02em] text-dark">
                       {value.label}
                     </p>
                   </motion.div>
@@ -276,22 +276,22 @@ export default function AboutPage() {
             </StaggerChildren>
 
             {/* Values Grid - Bottom Row */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-[271px] justify-items-center">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 lg:gap-[271px] justify-items-center">
               {valuesBottom.map((value, index) => (
                 <StaggerItem key={index}>
                   <motion.div
-                    className="flex flex-col items-center text-center w-[223px]"
+                    className="flex flex-col items-center text-center w-full max-w-[223px]"
                     whileHover={{ y: -8 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <motion.div
-                      className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6"
+                      className="w-[80px] h-[80px] md:w-[112px] md:h-[112px] rounded-full bg-blue flex items-center justify-center mb-4 md:mb-6"
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
+                      <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert w-[44px] h-[44px] md:w-[62px] md:h-[62px]" />
                     </motion.div>
-                    <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+                    <p className="font-normal text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] tracking-[-0.02em] text-dark">
                       {value.label}
                     </p>
                   </motion.div>
@@ -345,15 +345,15 @@ export default function AboutPage() {
 
               {/* Gold divider */}
               <motion.div
-                className="w-[474px] h-0 border-[2px] border-gold mx-auto mb-12"
+                className="w-full max-w-[474px] h-0 border-[2px] border-gold mx-auto mb-8 md:mb-12"
                 initial={{ width: 0 }}
-                whileInView={{ width: 474 }}
+                whileInView={{ width: "100%" }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               />
 
               {/* Bullet list */}
-              <StaggerChildren staggerDelay={0.15} className="text-[24px] md:text-[28px] text-white leading-[60px] md:leading-[81px] text-center">
+              <StaggerChildren staggerDelay={0.15} className="text-[18px] md:text-[28px] text-white leading-[32px] md:leading-[60px] text-center">
                 <StaggerItem>
                   <p>• You get direct engagement from senior leadership.</p>
                 </StaggerItem>
@@ -375,24 +375,24 @@ export default function AboutPage() {
 
               {/* Gold divider */}
               <motion.div
-                className="w-[474px] h-0 border-[2px] border-gold mx-auto mb-8"
+                className="w-full max-w-[474px] h-0 border-[2px] border-gold mx-auto mb-8"
                 initial={{ width: 0 }}
-                whileInView={{ width: 474 }}
+                whileInView={{ width: "100%" }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               />
             </div>
 
             {/* Process Steps */}
-            <StaggerChildren staggerDelay={0.1} className="space-y-4">
+            <StaggerChildren staggerDelay={0.1} className="space-y-3 md:space-y-4">
               {processSteps.map((step, index) => (
                 <StaggerItem key={index}>
                   <motion.div
-                    className="bg-white rounded-[116px] py-6 px-8 lg:px-20"
+                    className="bg-white rounded-[116px] py-4 md:py-6 px-6 md:px-8 lg:px-20"
                     whileHover={{ scale: 1.02, x: 10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <p className="font-bold text-[18px] text-dark text-center leading-[26px] tracking-[-0.02em]">
+                    <p className="font-bold text-[14px] md:text-[18px] text-dark text-center leading-[20px] md:leading-[26px] tracking-[-0.02em]">
                       {step}
                     </p>
                   </motion.div>
@@ -402,7 +402,7 @@ export default function AboutPage() {
 
             {/* Closing statement */}
             <FadeIn delay={0.3}>
-              <p className="text-[24px] md:text-[28px] text-white leading-[60px] md:leading-[81px] text-center mt-14">
+              <p className="text-[18px] md:text-[28px] text-white leading-[32px] md:leading-[60px] text-center mt-10 md:mt-14">
                 This approach strengthens culture, decision-making, and long-term sustainability.
               </p>
             </FadeIn>
@@ -482,18 +482,18 @@ export default function AboutPage() {
           <StaggerItem>
             <Link href="/contact" className="block">
               <motion.div
-                className="bg-brown h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-brown h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                <p className="max-w-[323px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-white mb-4 md:mb-5">
                   Meet with<br />our team.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
                 </motion.div>
               </motion.div>
             </Link>
@@ -503,18 +503,18 @@ export default function AboutPage() {
           <StaggerItem>
             <Link href="#" className="block">
               <motion.div
-                className="bg-gold h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-gold h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
+                <p className="max-w-[327px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-black mb-4 md:mb-5">
                   Join our partner network.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]" />
                 </motion.div>
               </motion.div>
             </Link>
@@ -524,18 +524,18 @@ export default function AboutPage() {
           <StaggerItem>
             <Link href="/newsletter" className="block">
               <motion.div
-                className="bg-blue h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-blue h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                <p className="max-w-[311px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-white mb-4 md:mb-5">
                   Sign up for updates and insights.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]" />
                 </motion.div>
               </motion.div>
             </Link>

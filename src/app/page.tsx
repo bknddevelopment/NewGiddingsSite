@@ -72,31 +72,31 @@ export default function Home() {
       <Header />
 
       {/* ============ HERO SECTION ============ */}
-      <section className="relative w-full h-[900px] overflow-hidden">
+      <section className="relative w-full h-[520px] md:h-[900px] overflow-hidden">
         {/* Background with navy color blend */}
         <div className="absolute inset-0">
           <Image
             src={getImagePath("/images/hero-bg-new.jpg")}
             alt=""
             fill
-            className="object-cover object-top"
+            className="object-cover object-[75%_top] md:object-top"
             priority
           />
           <div className="absolute inset-0 bg-navy mix-blend-color" />
-          <div className="absolute inset-0 bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
+          <div className="absolute inset-0 bg-navy/10 md:bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
         </div>
 
-        {/* Gradient overlay from left */}
+        {/* Gradient overlay from left - narrower on mobile to show more image */}
         <div
-          className="absolute inset-y-0 left-0 w-[70%]"
-          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(255, 255, 255, 0) 98.21%)' }}
+          className="absolute inset-y-0 left-0 w-[60%] md:w-[70%]"
+          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.8) 40%, rgba(255, 255, 255, 0) 100%)' }}
         />
 
         {/* Animated Decorative Circles */}
         <FloatingCircle
           size={211}
           color="#3490F3"
-          className="-left-14 bottom-[100px]"
+          className="-left-14 bottom-[100px] hidden md:block"
           delay={0.2}
           floatRange={12}
           duration={5}
@@ -112,7 +112,7 @@ export default function Home() {
         <FloatingCircle
           size={51}
           color="#3490F3"
-          className="right-[60px] top-[50px]"
+          className="right-[60px] top-[50px] hidden sm:block"
           delay={0.6}
           floatRange={6}
           duration={3.5}
@@ -120,16 +120,16 @@ export default function Home() {
         <FloatingCircle
           size={51}
           color="#964C2D"
-          className="right-[200px] bottom-[100px]"
+          className="right-[200px] bottom-[100px] hidden lg:block"
           delay={0.8}
           floatRange={8}
           duration={4.5}
         />
 
         {/* Hero Text with gold underlines */}
-        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-center">
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-start pt-24 md:pt-0 md:items-center">
           <motion.div
-            className="max-w-[726px]"
+            className="max-w-[300px] md:max-w-[726px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -218,7 +218,7 @@ export default function Home() {
             </FadeIn>
 
             {/* Services Grid - 5 items */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-4">
               {services.map((service, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -228,14 +228,14 @@ export default function Home() {
                   >
                     {/* Blue circle with icon */}
                     <motion.div
-                      className="w-[112px] h-[112px] rounded-full bg-blue flex items-center justify-center mb-6"
+                      className="w-[80px] h-[80px] md:w-[112px] md:h-[112px] rounded-full bg-blue flex items-center justify-center mb-4 md:mb-6"
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <Image src={getImagePath(service.icon)} alt="" width={62} height={62} className="brightness-0 invert" />
+                      <Image src={getImagePath(service.icon)} alt="" width={62} height={62} className="brightness-0 invert w-[44px] h-[44px] md:w-[62px] md:h-[62px]" />
                     </motion.div>
                     {/* Label */}
-                    <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
+                    <p className="font-normal text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
                       {service.title}
                     </p>
                   </motion.div>
@@ -279,11 +279,11 @@ export default function Home() {
               {whyWorkWithUs.map((text, index) => (
                 <StaggerItem key={index}>
                   <motion.div
-                    className="w-full max-w-[1220px] h-[72px] bg-[rgba(235,235,235,0.5)] rounded-[116px] flex items-center justify-center px-6"
+                    className="w-full max-w-[1220px] min-h-[56px] md:min-h-[72px] py-3 md:py-4 bg-[rgba(235,235,235,0.5)] rounded-[116px] flex items-center justify-center px-4 md:px-6"
                     whileHover={{ scale: 1.02, backgroundColor: "rgba(235,235,235,0.8)" }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <p className="font-bold text-[16px] md:text-[18px] leading-[26px] text-center tracking-[-0.02em] text-dark">
+                    <p className="font-bold text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-center tracking-[-0.02em] text-dark">
                       {text}
                     </p>
                   </motion.div>
@@ -337,7 +337,7 @@ export default function Home() {
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <motion.div
-                      className="relative w-full max-w-[386px] h-[214px] rounded-[32px] overflow-hidden"
+                      className="relative w-full max-w-[386px] h-[160px] md:h-[214px] rounded-[24px] md:rounded-[32px] overflow-hidden"
                       whileHover={{ scale: 1.03 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
@@ -390,7 +390,7 @@ export default function Home() {
         <div className="w-full bg-blue py-20">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             {/* Top row - 4 icons */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12 mb-8 md:mb-16">
               {whoWeServeTop.map((item, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -398,10 +398,10 @@ export default function Home() {
                     whileHover={{ y: -8, scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <div className="w-[112px] h-[112px] flex items-center justify-center mb-6">
-                      <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert" />
+                    <div className="w-[80px] h-[80px] md:w-[112px] md:h-[112px] flex items-center justify-center mb-4 md:mb-6">
+                      <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert w-[80px] h-[80px] md:w-[112px] md:h-[112px]" />
                     </div>
-                    <p className="font-bold text-[18px] leading-[26px] text-center text-white whitespace-pre-line">
+                    <p className="font-bold text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-center text-white whitespace-pre-line">
                       {item.label}
                     </p>
                   </motion.div>
@@ -410,7 +410,7 @@ export default function Home() {
             </StaggerChildren>
 
             {/* Bottom row - 3 icons centered */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-[1000px] mx-auto">
+            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-12 max-w-[1000px] mx-auto">
               {whoWeServeBottom.map((item, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -418,10 +418,10 @@ export default function Home() {
                     whileHover={{ y: -8, scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <div className="w-[112px] h-[112px] flex items-center justify-center mb-6">
-                      <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert" />
+                    <div className="w-[80px] h-[80px] md:w-[112px] md:h-[112px] flex items-center justify-center mb-4 md:mb-6">
+                      <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert w-[80px] h-[80px] md:w-[112px] md:h-[112px]" />
                     </div>
-                    <p className="font-bold text-[18px] leading-[26px] text-center text-white whitespace-pre-line">
+                    <p className="font-bold text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-center text-white whitespace-pre-line">
                       {item.label}
                     </p>
                   </motion.div>
@@ -460,11 +460,11 @@ export default function Home() {
                 </FadeIn>
 
                 {/* Stats Grid - 2x2 */}
-                <StaggerChildren staggerDelay={0.15} className="grid grid-cols-2 gap-x-12 gap-y-0 max-w-[630px]">
+                <StaggerChildren staggerDelay={0.15} className="grid grid-cols-2 gap-x-6 md:gap-x-12 gap-y-0 max-w-[630px]">
                   {impactStats.map((stat, index) => (
                     <StaggerItem key={index}>
-                      <div className="border-t-[1.5px] border-[rgba(92,92,92,0.2)] pt-6 pb-12">
-                        <p className="font-bold text-[48px] leading-[52px] tracking-[-0.02em] text-dark">
+                      <div className="border-t-[1.5px] border-[rgba(92,92,92,0.2)] pt-4 md:pt-6 pb-8 md:pb-12">
+                        <p className="font-bold text-[32px] md:text-[48px] leading-[36px] md:leading-[52px] tracking-[-0.02em] text-dark">
                           {stat.number !== null ? (
                             <CountUp value={stat.number} suffix={stat.suffix} />
                           ) : (
@@ -496,7 +496,7 @@ export default function Home() {
         </section>
 
         {/* Blue and Brown decorative arrow lines */}
-        <div className="relative w-full h-[150px]">
+        <div className="relative w-full h-[100px] md:h-[150px] overflow-hidden">
           {/* Blue arrow line - using image */}
           <motion.div
             className="absolute -left-4 top-0"
@@ -516,7 +516,7 @@ export default function Home() {
           </motion.div>
           {/* Brown arrow line - using image */}
           <motion.div
-            className="absolute -left-4 top-[70px]"
+            className="absolute -left-4 top-[50px] md:top-[70px]"
             style={{ width: "75%" }}
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -539,11 +539,11 @@ export default function Home() {
             {/* Blue pill bar */}
             <FadeIn>
               <motion.div
-                className="w-full max-w-[1220px] h-[72px] bg-blue rounded-[116px] flex items-center justify-center mb-8"
+                className="w-full max-w-[1220px] min-h-[56px] md:h-[72px] py-3 md:py-0 bg-blue rounded-[116px] flex items-center justify-center mb-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="font-bold text-[28px] leading-[26px] text-center tracking-[-0.02em] text-white">
+                <p className="font-bold text-[20px] md:text-[28px] leading-[24px] md:leading-[26px] text-center tracking-[-0.02em] text-white px-4">
                   Featured Initiative
                 </p>
               </motion.div>
@@ -551,8 +551,8 @@ export default function Home() {
 
             {/* Carousel placeholder */}
             <FadeIn delay={0.1}>
-              <div className="w-full max-w-[1220px] h-[359px] bg-gray-300 rounded-[32px] flex items-center justify-center mb-4">
-                <p className="font-bold text-[24px] md:text-[36px] leading-[48px] text-center text-[#FF00D9] px-4">
+              <div className="w-full max-w-[1220px] h-[250px] md:h-[359px] bg-gray-300 rounded-[24px] md:rounded-[32px] flex items-center justify-center mb-4">
+                <p className="font-bold text-[18px] md:text-[36px] leading-[24px] md:leading-[48px] text-center text-[#FF00D9] px-4">
                   [imagery showcasing apprenticeship program in action in a rotating carousel]
                 </p>
               </div>
@@ -574,10 +574,10 @@ export default function Home() {
 
             {/* Program title and description */}
             <FadeIn delay={0.2}>
-              <h3 className="font-bold text-[28px] leading-[32px] text-dark mb-4">
+              <h3 className="font-bold text-[22px] md:text-[28px] leading-[28px] md:leading-[32px] text-dark mb-4">
                 GoodTrouble Social Impact Apprenticeship Program.
               </h3>
-              <p className="font-normal text-[18px] leading-[26px] text-dark">
+              <p className="font-normal text-[16px] md:text-[18px] leading-[24px] md:leading-[26px] text-dark">
                 Three emerging leaders. Real client work. Practical training in strategy, philanthropy, and community development.
               </p>
             </FadeIn>
@@ -585,23 +585,23 @@ export default function Home() {
         </section>
 
         {/* ============ 3 CTA CARDS ============ */}
-        <StaggerChildren staggerDelay={0.1} className="w-full grid grid-cols-1 md:grid-cols-3 mt-16">
+        <StaggerChildren staggerDelay={0.1} className="w-full grid grid-cols-1 md:grid-cols-3 mt-8 md:mt-16">
           {/* Brown CTA */}
           <StaggerItem>
             <Link href="/contact" className="block">
               <motion.div
-                className="bg-brown h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-brown h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                <p className="max-w-[323px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-white mb-4 md:mb-5">
                   Schedule a 60-minute strategy session.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
                 </motion.div>
               </motion.div>
             </Link>
@@ -611,18 +611,18 @@ export default function Home() {
           <StaggerItem>
             <Link href="#" className="block">
               <motion.div
-                className="bg-gold h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-gold h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
+                <p className="max-w-[327px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-black mb-4 md:mb-5">
                   Download our Board Governance Checklist.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]" />
                 </motion.div>
               </motion.div>
             </Link>
@@ -632,18 +632,18 @@ export default function Home() {
           <StaggerItem>
             <Link href="/newsletter" className="block">
               <motion.div
-                className="bg-blue h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-blue h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                <p className="max-w-[311px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-white mb-4 md:mb-5">
                   Join our mailing list for tools and insights.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]" />
                 </motion.div>
               </motion.div>
             </Link>

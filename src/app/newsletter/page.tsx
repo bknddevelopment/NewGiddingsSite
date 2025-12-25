@@ -48,24 +48,24 @@ export default function NewsletterPage() {
       <Header />
 
       {/* ============ HERO SECTION ============ */}
-      <section className="relative w-full h-[500px] overflow-hidden">
+      <section className="relative w-full h-[480px] md:h-[500px] overflow-hidden">
         {/* Background with navy color blend */}
         <div className="absolute inset-0">
           <Image
             src={getImagePath("/images/hero-bg.jpg")}
             alt=""
             fill
-            className="object-cover object-center"
+            className="object-cover object-[70%_center] md:object-center"
             priority
           />
           <div className="absolute inset-0 bg-navy mix-blend-color" />
-          <div className="absolute inset-0 bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
+          <div className="absolute inset-0 bg-navy/10 md:bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
         </div>
 
-        {/* Gradient overlay from left */}
+        {/* Gradient overlay from left - narrower on mobile */}
         <div
-          className="absolute inset-y-0 left-0 w-[70%]"
-          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(255, 255, 255, 0) 98.21%)' }}
+          className="absolute inset-y-0 left-0 w-[50%] md:w-[70%]"
+          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.85) 50%, rgba(255, 255, 255, 0) 100%)' }}
         />
 
         {/* Animated Decorative Circles */}
@@ -80,7 +80,7 @@ export default function NewsletterPage() {
         <FloatingCircle
           size={51}
           color="#3490F3"
-          className="right-[60px] top-[50px]"
+          className="right-[60px] top-[50px] hidden sm:block"
           delay={0.6}
           floatRange={6}
           duration={3.5}
@@ -88,16 +88,16 @@ export default function NewsletterPage() {
         <FloatingCircle
           size={51}
           color="#964C2D"
-          className="right-[200px] bottom-[60px]"
+          className="right-[200px] bottom-[60px] hidden lg:block"
           delay={0.8}
           floatRange={8}
           duration={4.5}
         />
 
         {/* Hero Content */}
-        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-center">
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-start pt-28 md:pt-0 md:items-center">
           <motion.div
-            className="max-w-[726px]"
+            className="max-w-[220px] md:max-w-[726px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -170,14 +170,14 @@ export default function NewsletterPage() {
                 <div className="w-full lg:w-[608px] flex-shrink-0">
                   {/* Navy header pill */}
                   <motion.div
-                    className="bg-navy rounded-[237px] h-[117px] flex flex-col items-center justify-center px-6"
+                    className="bg-navy rounded-[237px] min-h-[100px] md:h-[117px] py-4 md:py-0 flex flex-col items-center justify-center px-4 md:px-6"
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <p className="font-bold text-[24px] leading-[32px] text-center text-white">
+                    <p className="font-bold text-[20px] md:text-[24px] leading-[28px] md:leading-[32px] text-center text-white">
                       Subscribe to stay connected.
                     </p>
-                    <p className="font-normal text-[16px] leading-[24px] text-center text-gray-300">
+                    <p className="font-normal text-[14px] md:text-[16px] leading-[20px] md:leading-[24px] text-center text-gray-300">
                       Stay informed. Stay prepared for your next move.
                     </p>
                   </motion.div>
@@ -324,7 +324,7 @@ export default function NewsletterPage() {
         </section>
 
         {/* Blue and Brown decorative arrow lines */}
-        <div className="relative w-full h-[180px] mt-16 mb-24">
+        <div className="relative w-full h-[120px] md:h-[180px] mt-12 md:mt-16 mb-16 md:mb-24 overflow-hidden">
           {/* Blue arrow line - using image */}
           <motion.div
             className="absolute -left-4 top-0"
@@ -344,7 +344,7 @@ export default function NewsletterPage() {
           </motion.div>
           {/* Brown arrow line - using image */}
           <motion.div
-            className="absolute -left-4 top-[80px]"
+            className="absolute -left-4 top-[50px] md:top-[80px]"
             style={{ width: "68%" }}
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}

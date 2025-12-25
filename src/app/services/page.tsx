@@ -121,24 +121,24 @@ export default function ServicesPage() {
       <Header />
 
       {/* ============ HERO SECTION ============ */}
-      <section className="relative w-full h-[500px] overflow-hidden">
+      <section className="relative w-full h-[480px] md:h-[500px] overflow-hidden">
         {/* Background with navy color blend */}
         <div className="absolute inset-0">
           <Image
             src={getImagePath("/images/hero-bg.jpg")}
             alt=""
             fill
-            className="object-cover object-center"
+            className="object-cover object-[70%_center] md:object-center"
             priority
           />
           <div className="absolute inset-0 bg-navy mix-blend-color" />
-          <div className="absolute inset-0 bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
+          <div className="absolute inset-0 bg-navy/10 md:bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
         </div>
 
-        {/* Gradient overlay from left */}
+        {/* Gradient overlay from left - narrower on mobile */}
         <div
-          className="absolute inset-y-0 left-0 w-[70%]"
-          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(255, 255, 255, 0) 98.21%)' }}
+          className="absolute inset-y-0 left-0 w-[55%] md:w-[70%]"
+          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.85) 50%, rgba(255, 255, 255, 0) 100%)' }}
         />
 
         {/* Animated Decorative Circles */}
@@ -153,16 +153,16 @@ export default function ServicesPage() {
         <FloatingCircle
           size={51}
           color="#3490F3"
-          className="right-[60px] top-[50px]"
+          className="right-[60px] top-[50px] hidden sm:block"
           delay={0.6}
           floatRange={6}
           duration={3.5}
         />
 
         {/* Hero Content */}
-        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-center">
+        <div className="relative max-w-[1440px] mx-auto px-6 lg:px-28 h-full flex items-start pt-28 md:pt-0 md:items-center">
           <motion.div
-            className="max-w-[726px]"
+            className="max-w-[260px] md:max-w-[726px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -252,24 +252,24 @@ export default function ServicesPage() {
 
               {/* Gold divider */}
               <motion.div
-                className="w-[474px] max-w-full h-0 border-[2px] border-gold mx-auto"
+                className="w-full max-w-[474px] h-0 border-[2px] border-gold mx-auto"
                 initial={{ width: 0 }}
-                whileInView={{ width: 474 }}
+                whileInView={{ width: "100%" }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               />
             </div>
 
             {/* How We Work statements - 6 white pill bars */}
-            <StaggerChildren staggerDelay={0.1} className="space-y-4">
+            <StaggerChildren staggerDelay={0.1} className="space-y-3 md:space-y-4">
               {howWeWorkStatements.map((statement, index) => (
                 <StaggerItem key={index}>
                   <motion.div
-                    className="bg-white rounded-[116px] py-6 px-8 lg:px-20"
+                    className="bg-white rounded-[116px] py-4 md:py-6 px-6 md:px-8 lg:px-20"
                     whileHover={{ scale: 1.02, x: 10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <p className="font-bold text-[18px] text-dark text-center leading-[26px] tracking-[-0.02em]">
+                    <p className="font-bold text-[14px] md:text-[18px] text-dark text-center leading-[20px] md:leading-[26px] tracking-[-0.02em]">
                       {statement}
                     </p>
                   </motion.div>
@@ -288,18 +288,18 @@ export default function ServicesPage() {
           <StaggerItem>
             <Link href="/contact" className="block">
               <motion.div
-                className="bg-brown h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-brown h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[323px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                <p className="max-w-[323px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-white mb-4 md:mb-5">
                   Schedule a<br />strategy session.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
                 </motion.div>
               </motion.div>
             </Link>
@@ -309,18 +309,18 @@ export default function ServicesPage() {
           <StaggerItem>
             <Link href="#" className="block">
               <motion.div
-                className="bg-gold h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-gold h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[327px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-black mb-5">
+                <p className="max-w-[327px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-black mb-4 md:mb-5">
                   Request<br />a proposal.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-black.svg")} alt="" width={43} height={43} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-black.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
                 </motion.div>
               </motion.div>
             </Link>
@@ -330,18 +330,18 @@ export default function ServicesPage() {
           <StaggerItem>
             <Link href="#" className="block">
               <motion.div
-                className="bg-blue h-[248px] flex flex-col items-center justify-center px-8"
+                className="bg-blue h-[200px] md:h-[248px] flex flex-col items-center justify-center px-6 md:px-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <p className="max-w-[311px] font-bold text-[26px] leading-[38px] text-center tracking-[-0.005em] text-white mb-5">
+                <p className="max-w-[311px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-white mb-4 md:mb-5">
                   Download our<br />services overview
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} />
+                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
                 </motion.div>
               </motion.div>
             </Link>
