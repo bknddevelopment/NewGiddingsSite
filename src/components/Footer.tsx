@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Twitter, Linkedin, Instagram, Mail, MapPin } from "lucide-react";
+import {
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+  Mail,
+  MapPin,
+} from "lucide-react";
 import { getImagePath } from "@/lib/utils";
 import { motion } from "framer-motion";
 
@@ -78,8 +85,9 @@ export default function Footer() {
                 />
               </motion.div>
             </Link>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Strengthening organizations working for equity and community impact.
+            <p className="text-gray-300 text-sm leading-relaxed mt-4">
+              Strengthening organizations working for equity and community
+              impact.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
@@ -91,7 +99,7 @@ export default function Footer() {
                   whileHover={{
                     scale: 1.15,
                     backgroundColor: "#3490F3",
-                    boxShadow: "0 0 20px rgba(52, 144, 243, 0.5)"
+                    boxShadow: "0 0 20px rgba(52, 144, 243, 0.5)",
                   }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 10 }}
@@ -99,7 +107,7 @@ export default function Footer() {
                   transition={{
                     delay: 0.5 + index * 0.1,
                     type: "spring",
-                    stiffness: 300
+                    stiffness: 300,
                   }}
                 >
                   <social.icon className="h-5 w-5" />
@@ -181,9 +189,7 @@ export default function Footer() {
                 >
                   <MapPin className="h-5 w-5 text-gold flex-shrink-0 mt-0.5" />
                 </motion.div>
-                <span className="text-gray-300">
-                  Elizabeth, New Jersey
-                </span>
+                <span className="text-gray-300">Elizabeth, New Jersey</span>
               </motion.li>
               <motion.li
                 className="flex items-center gap-3"
@@ -216,7 +222,8 @@ export default function Footer() {
           transition={{ delay: 0.6, duration: 0.5 }}
         >
           <p className="text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} Giddings Consulting Group. All rights reserved.
+            &copy; {new Date().getFullYear()} Giddings Consulting Group. All
+            rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <Link

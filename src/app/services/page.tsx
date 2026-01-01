@@ -21,24 +21,22 @@ const serviceCards = [
     headerColor: "bg-navy",
     textColor: "text-white",
     title: "Strategic and\nOrganizational Planning",
-    description: "Develop clear, actionable strategies that align your team, focus resources, and drive measurable impact.",
+    description:
+      "Develop clear, actionable strategies that align your team, focus resources, and drive measurable impact.",
     deliverables: [
       "Strategic plan development",
       "Organizational assessments",
       "Theory of change development",
       "Implementation roadmaps",
     ],
-    outcomes: [
-      "Aligned leadership",
-      "Clear priorities",
-      "Focused execution",
-    ],
+    outcomes: ["Aligned leadership", "Clear priorities", "Focused execution"],
   },
   {
     headerColor: "bg-blue",
     textColor: "text-white",
     title: "Board Development\nand Governance",
-    description: "Build an engaged, effective board that provides strategic leadership and oversight.",
+    description:
+      "Build an engaged, effective board that provides strategic leadership and oversight.",
     deliverables: [
       "Board assessments and retreats",
       "Governance policy development",
@@ -46,34 +44,28 @@ const serviceCards = [
       "Board training and development",
       "Committee structure optimization",
     ],
-    outcomes: [
-      "Stronger oversight",
-      "Better decisions",
-      "Clear roles",
-    ],
+    outcomes: ["Stronger oversight", "Better decisions", "Clear roles"],
   },
   {
     headerColor: "bg-brown",
     textColor: "text-white",
     title: "Leadership and\nExecutive Development",
-    description: "Strengthen leadership capacity across your organization with coaching and development.",
+    description:
+      "Strengthen leadership capacity across your organization with coaching and development.",
     deliverables: [
       "Executive coaching",
       "Leadership team development",
       "Succession planning",
       "Management training",
     ],
-    outcomes: [
-      "Confident leaders",
-      "Strong teams",
-      "Sustainable growth",
-    ],
+    outcomes: ["Confident leaders", "Strong teams", "Sustainable growth"],
   },
   {
     headerColor: "bg-gold",
     textColor: "text-dark",
     title: "Fund Development and\nPhilanthropic Strategy",
-    description: "Build sustainable funding systems and deepen donor relationships for lasting impact.",
+    description:
+      "Build sustainable funding systems and deepen donor relationships for lasting impact.",
     deliverables: [
       "Fundraising strategy development",
       "Donor cultivation plans",
@@ -90,18 +82,15 @@ const serviceCards = [
     headerColor: "bg-navy",
     textColor: "text-white",
     title: "Social Impact Strategy\nand Partnership Building",
-    description: "Design strategies that create meaningful community impact and build strong coalitions.",
+    description:
+      "Design strategies that create meaningful community impact and build strong coalitions.",
     deliverables: [
       "Coalition building",
       "Partnership development",
       "Community engagement strategies",
       "Impact measurement frameworks",
     ],
-    outcomes: [
-      "Stronger partnerships",
-      "Greater impact",
-      "Aligned action",
-    ],
+    outcomes: ["Stronger partnerships", "Greater impact", "Aligned action"],
   },
 ];
 
@@ -132,13 +121,19 @@ export default function ServicesPage() {
             priority
           />
           <div className="absolute inset-0 bg-navy mix-blend-color" />
-          <div className="absolute inset-0 bg-navy/10 md:bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
+          <div
+            className="absolute inset-0 bg-navy/10 md:bg-navy/20"
+            style={{ mixBlendMode: "multiply" }}
+          />
         </div>
 
         {/* Gradient overlay from left - narrower on mobile */}
         <div
           className="absolute inset-y-0 left-0 w-[55%] md:w-[70%]"
-          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.85) 50%, rgba(255, 255, 255, 0) 100%)' }}
+          style={{
+            background:
+              "linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.85) 50%, rgba(255, 255, 255, 0) 100%)",
+          }}
         />
 
         {/* Animated Decorative Circles */}
@@ -168,7 +163,10 @@ export default function ServicesPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
-              How we <AnimatedUnderline delay={0.8}><span>support your mission</span></AnimatedUnderline>
+              How we{" "}
+              <AnimatedUnderline delay={0.8}>
+                <span>support your mission</span>
+              </AnimatedUnderline>
             </h1>
           </motion.div>
         </div>
@@ -180,8 +178,11 @@ export default function ServicesPage() {
         <FadeIn>
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             <p className="max-w-[1220px] mx-auto text-center font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-4">
-              You get targeted support across strategy, leadership, governance, and fundraising.<br />
-              Each engagement adapts to your needs and builds your capacity for lasting impact.
+              You get targeted support across strategy, leadership, governance,
+              and fundraising.
+              <br />
+              Each engagement adapts to your needs and builds your capacity for
+              lasting impact.
             </p>
 
             {/* Gold divider */}
@@ -234,12 +235,13 @@ export default function ServicesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           />
-          <motion.div
-            className="absolute w-[437px] h-[437px] -right-[160px] -bottom-[200px] rounded-full bg-blue opacity-50"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 0.5, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.3 }}
+          <FloatingCircle
+            size={437}
+            color="#3490F3"
+            className="-right-[160px] -bottom-[200px] opacity-50"
+            delay={0.3}
+            floatRange={8}
+            duration={4}
           />
 
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28 relative z-10">
@@ -261,7 +263,10 @@ export default function ServicesPage() {
             </div>
 
             {/* How We Work statements - 6 white pill bars */}
-            <StaggerChildren staggerDelay={0.1} className="space-y-3 md:space-y-4">
+            <StaggerChildren
+              staggerDelay={0.1}
+              className="space-y-3 md:space-y-4"
+            >
               {howWeWorkStatements.map((statement, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -279,11 +284,86 @@ export default function ServicesPage() {
           </div>
         </section>
 
+        {/* ============ CLIENT LOGOS CAROUSEL ============ */}
+        <section className="bg-white py-[30px] md:py-[40px] overflow-hidden">
+          <FadeIn>
+            <div className="relative">
+              <div className="flex animate-scroll">
+                {/* First set of logos */}
+                <div className="flex items-center gap-[60px] md:gap-[100px] px-[30px] md:px-[50px] shrink-0">
+                  <Image
+                    src={getImagePath("/dream.png")}
+                    alt="Dream - Play Learn Grow"
+                    width={172}
+                    height={70}
+                    className="object-contain w-[120px] md:w-[172px] h-auto"
+                  />
+                  <Image
+                    src={getImagePath("/embrace.png")}
+                    alt="Embrace Race"
+                    width={172}
+                    height={70}
+                    className="object-contain w-[120px] md:w-[172px] h-auto"
+                  />
+                  <Image
+                    src={getImagePath("/globalmin.png")}
+                    alt="Global Ministries - The United Methodist Church"
+                    width={172}
+                    height={70}
+                    className="object-contain w-[120px] md:w-[172px] h-auto"
+                  />
+                  <Image
+                    src={getImagePath("/leap.png")}
+                    alt="Leap"
+                    width={172}
+                    height={70}
+                    className="object-contain w-[120px] md:w-[172px] h-auto"
+                  />
+                </div>
+                {/* Duplicate set for seamless loop */}
+                <div className="flex items-center gap-[60px] md:gap-[100px] px-[30px] md:px-[50px] shrink-0">
+                  <Image
+                    src={getImagePath("/dream.png")}
+                    alt="Dream - Play Learn Grow"
+                    width={172}
+                    height={70}
+                    className="object-contain w-[120px] md:w-[172px] h-auto"
+                  />
+                  <Image
+                    src={getImagePath("/embrace.png")}
+                    alt="Embrace Race"
+                    width={172}
+                    height={70}
+                    className="object-contain w-[120px] md:w-[172px] h-auto"
+                  />
+                  <Image
+                    src={getImagePath("/globalmin.png")}
+                    alt="Global Ministries - The United Methodist Church"
+                    width={172}
+                    height={70}
+                    className="object-contain w-[120px] md:w-[172px] h-auto"
+                  />
+                  <Image
+                    src={getImagePath("/leap.png")}
+                    alt="Leap"
+                    width={172}
+                    height={70}
+                    className="object-contain w-[120px] md:w-[172px] h-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </section>
+
         {/* White bar separator */}
         <div className="w-full h-[16px] bg-white" />
 
         {/* ============ 3 CTA CARDS ============ */}
-        <StaggerChildren staggerDelay={0.1} className="w-full grid grid-cols-1 md:grid-cols-3">
+        <StaggerChildren
+          staggerDelay={0.1}
+          className="w-full grid grid-cols-1 md:grid-cols-3"
+        >
           {/* Brown CTA */}
           <StaggerItem>
             <Link href="/contact" className="block">
@@ -293,13 +373,22 @@ export default function ServicesPage() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <p className="max-w-[323px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-white mb-4 md:mb-5">
-                  Schedule a<br />strategy session.
+                  Schedule a<br />
+                  strategy session.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-white.svg",
+                    )}
+                    alt=""
+                    width={43}
+                    height={43}
+                    className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>
@@ -314,13 +403,22 @@ export default function ServicesPage() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <p className="max-w-[327px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-black mb-4 md:mb-5">
-                  Request<br />a proposal.
+                  Request
+                  <br />a proposal.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-black.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-black.svg",
+                    )}
+                    alt=""
+                    width={43}
+                    height={43}
+                    className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>
@@ -335,13 +433,23 @@ export default function ServicesPage() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <p className="max-w-[311px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-white mb-4 md:mb-5">
-                  Download our<br />services overview
+                  Download our
+                  <br />
+                  services overview
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-white.svg",
+                    )}
+                    alt=""
+                    width={43}
+                    height={43}
+                    className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>
@@ -356,10 +464,10 @@ export default function ServicesPage() {
 
 // Border color mapping
 const borderColors: Record<string, string> = {
-  'bg-navy': 'border-navy',
-  'bg-blue': 'border-blue',
-  'bg-brown': 'border-brown',
-  'bg-gold': 'border-gold',
+  "bg-navy": "border-navy",
+  "bg-blue": "border-blue",
+  "bg-brown": "border-brown",
+  "bg-gold": "border-gold",
 };
 
 // Service Tile Component - sleek horizontal expandable tiles
@@ -380,7 +488,7 @@ function ServiceTile({
   index: number;
 }) {
   const [isExpanded, setIsExpanded] = React.useState(false);
-  const borderColor = borderColors[headerColor] || 'border-navy';
+  const borderColor = borderColors[headerColor] || "border-navy";
 
   return (
     <motion.div
@@ -393,14 +501,18 @@ function ServiceTile({
       <div className="flex items-center justify-between p-6 lg:p-8">
         <div className="flex items-center gap-6 flex-1">
           {/* Number badge */}
-          <div className={`w-12 h-12 rounded-full ${headerColor} flex items-center justify-center flex-shrink-0`}>
-            <span className="font-bold text-[20px] text-white">{index + 1}</span>
+          <div
+            className={`w-12 h-12 rounded-full ${headerColor} flex items-center justify-center flex-shrink-0`}
+          >
+            <span className="font-bold text-[20px] text-white">
+              {index + 1}
+            </span>
           </div>
 
           {/* Title and description */}
           <div className="flex-1">
             <h3 className="font-bold text-[20px] lg:text-[24px] leading-tight text-dark">
-              {title.replace('\n', ' ')}
+              {title.replace("\n", " ")}
             </h3>
             <p className="text-[14px] lg:text-[16px] mt-1 text-dark/70 hidden md:block">
               {description}
@@ -414,8 +526,20 @@ function ServiceTile({
           transition={{ duration: 0.3 }}
           className="ml-4"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-dark">
-            <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            className="text-dark"
+          >
+            <path
+              d="M6 9L12 15L18 9"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </motion.div>
       </div>
@@ -423,7 +547,10 @@ function ServiceTile({
       {/* Expandable content */}
       <motion.div
         initial={false}
-        animate={{ height: isExpanded ? 'auto' : 0, opacity: isExpanded ? 1 : 0 }}
+        animate={{
+          height: isExpanded ? "auto" : 0,
+          opacity: isExpanded ? 1 : 0,
+        }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="overflow-hidden"
       >
@@ -433,14 +560,23 @@ function ServiceTile({
             {description}
           </p>
 
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t ${borderColor}`}>
+          <div
+            className={`grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t ${borderColor}`}
+          >
             {/* Deliverables */}
             <div>
-              <p className="font-bold text-[16px] text-dark mb-3">What you get:</p>
+              <p className="font-bold text-[16px] text-dark mb-3">
+                What you get:
+              </p>
               <ul className="space-y-2">
                 {deliverables.map((item, idx) => (
-                  <li key={idx} className="text-[14px] text-dark/80 flex items-start gap-2">
-                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${headerColor} flex-shrink-0`} />
+                  <li
+                    key={idx}
+                    className="text-[14px] text-dark/80 flex items-start gap-2"
+                  >
+                    <span
+                      className={`mt-1.5 w-1.5 h-1.5 rounded-full ${headerColor} flex-shrink-0`}
+                    />
                     {item}
                   </li>
                 ))}
@@ -452,8 +588,13 @@ function ServiceTile({
               <p className="font-bold text-[16px] text-dark mb-3">Outcomes:</p>
               <ul className="space-y-2">
                 {outcomes.map((item, idx) => (
-                  <li key={idx} className="text-[14px] text-dark/80 flex items-start gap-2">
-                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${headerColor} flex-shrink-0`} />
+                  <li
+                    key={idx}
+                    className="text-[14px] text-dark/80 flex items-start gap-2"
+                  >
+                    <span
+                      className={`mt-1.5 w-1.5 h-1.5 rounded-full ${headerColor} flex-shrink-0`}
+                    />
                     {item}
                   </li>
                 ))}

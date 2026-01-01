@@ -15,13 +15,33 @@ import {
 } from "@/components/animations";
 import { motion } from "framer-motion";
 
-// Services with icons
+// Services with icons and brand color borders
 const services = [
-  { icon: "/images/icons/home_document.png", title: "Strategic and\nOrganizational Planning" },
-  { icon: "/images/icons/home_flag.png", title: "Board Development\nand Governance" },
-  { icon: "/images/icons/home_crown.png", title: "Leadership and\nExecutive Development" },
-  { icon: "/images/icons/home_receipt.png", title: "Fund Development and\nPhilanthropic Strategy" },
-  { icon: "/images/icons/home_favorite.png", title: "Social Impact Strategy\nand Partnership Building" },
+  {
+    icon: "/images/icons/home_document.png",
+    title: "Strategic and\nOrganizational Planning",
+    borderColor: "#3490f3",
+  },
+  {
+    icon: "/images/icons/home_flag.png",
+    title: "Board Development\nand Governance",
+    borderColor: "#fcba04",
+  },
+  {
+    icon: "/images/icons/home_crown.png",
+    title: "Leadership and\nExecutive Development",
+    borderColor: "#964c2d",
+  },
+  {
+    icon: "/images/icons/home_receipt.png",
+    title: "Fund Development and\nPhilanthropic Strategy",
+    borderColor: "#1d1f4e",
+  },
+  {
+    icon: "/images/icons/home_favorite.png",
+    title: "Social Impact Strategy\nand Partnership Building",
+    borderColor: "#3490f3",
+  },
 ];
 
 // Why work with us - 5 pill bars
@@ -35,35 +55,90 @@ const whyWorkWithUs = [
 
 // Our Approach - 6 image cards
 const approachSteps = [
-  { image: "/images/approach-1.jpg", label: "Listen", color: "#1D1F4E", blend: "color" },
-  { image: "/images/approach-2.jpg", label: "Assess", color: "#964C2D", blend: "color" },
-  { image: "/images/approach-3.jpg", label: "Build Strategy", color: "#3490F3", blend: "color" },
-  { image: "/images/approach-4.jpg", label: "Strengthen Leadership", color: "#FCBA04", blend: "color" },
-  { image: "/images/approach-5.jpg", label: "Support Implementation", color: "#EBEBEB", blend: "saturation" },
-  { image: "/images/approach-6.jpg", label: "Measure Progress", color: "#1D1F4E", blend: "color" },
+  {
+    image: "/images/approach-1.jpg",
+    label: "Listen",
+    color: "#1D1F4E",
+    blend: "color",
+  },
+  {
+    image: "/images/approach-2.jpg",
+    label: "Assess",
+    color: "#964C2D",
+    blend: "color",
+  },
+  {
+    image: "/images/approach-3.jpg",
+    label: "Build Strategy",
+    color: "#3490F3",
+    blend: "color",
+  },
+  {
+    image: "/images/approach-4.jpg",
+    label: "Strengthen Leadership",
+    color: "#FCBA04",
+    blend: "color",
+  },
+  {
+    image: "/images/approach-5.jpg",
+    label: "Support Implementation",
+    color: "#EBEBEB",
+    blend: "saturation",
+  },
+  {
+    image: "/images/approach-6.jpg",
+    label: "Measure Progress",
+    color: "#1D1F4E",
+    blend: "color",
+  },
 ];
 
 // Who We Serve - top row (4 items)
 const whoWeServeTop = [
-  { icon: "/images/icons/home_educational.png", label: "Schools and\nEducational Institutions" },
-  { icon: "/images/icons/home_home.png", label: "Foundations and\nPhilanthropic Entities" },
+  {
+    icon: "/images/icons/home_educational.png",
+    label: "Schools and\nEducational Institutions",
+  },
+  {
+    icon: "/images/icons/home_home.png",
+    label: "Foundations and\nPhilanthropic Entities",
+  },
   { icon: "/images/icons/home_heart.png", label: "Faith-based\nOrganizations" },
-  { icon: "/images/icons/home_group.png", label: "Community-based\nNonprofits" },
+  {
+    icon: "/images/icons/home_group.png",
+    label: "Community-based\nNonprofits",
+  },
 ];
 
 // Who We Serve - bottom row (3 items)
 const whoWeServeBottom = [
-  { icon: "/images/icons/home_megaphone.png", label: "Social Movements\nand Coalitions" },
+  {
+    icon: "/images/icons/home_megaphone.png",
+    label: "Social Movements\nand Coalitions",
+  },
   { icon: "/images/icons/home_scales.png", label: "Government\nAgencies" },
-  { icon: "/images/icons/home_earth.png", label: "Networks working in\nclimate, equity, economic\njustice, and community\nresilience" },
+  {
+    icon: "/images/icons/home_earth.png",
+    label:
+      "Networks working in\nclimate, equity, economic\njustice, and community\nresilience",
+  },
 ];
 
 // Impact stats
 const impactStats = [
   { number: 100, suffix: "+", label: "Organizations Served" },
-  { number: null, text: "Millions", label: "Leveraged to strengthen\nprograms and communities" },
+  {
+    number: null,
+    text: "Millions",
+    label: "Leveraged to strengthen\nprograms and communities",
+  },
   { number: null, text: "Dozens", label: "of boards received training" },
-  { number: null, text: "Strategic", label: "Strategic fundraising frameworks\nbuilt for local, national,\nand global organizations" },
+  {
+    number: null,
+    text: "Strategic",
+    label:
+      "Strategic fundraising frameworks\nbuilt for local, national,\nand global organizations",
+  },
 ];
 
 export default function Home() {
@@ -83,13 +158,19 @@ export default function Home() {
             priority
           />
           <div className="absolute inset-0 bg-navy mix-blend-color" />
-          <div className="absolute inset-0 bg-navy/10 md:bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
+          <div
+            className="absolute inset-0 bg-navy/10 md:bg-navy/20"
+            style={{ mixBlendMode: "multiply" }}
+          />
         </div>
 
         {/* Gradient overlay from left - narrower on mobile to show more image */}
         <div
           className="absolute inset-y-0 left-0 w-[60%] md:w-[70%]"
-          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.8) 40%, rgba(255, 255, 255, 0) 100%)' }}
+          style={{
+            background:
+              "linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.8) 40%, rgba(255, 255, 255, 0) 100%)",
+          }}
         />
 
         {/* Animated Decorative Circles */}
@@ -140,11 +221,17 @@ export default function Home() {
             {/* Line with gold underlines */}
             <div className="flex items-baseline gap-2 mt-1 flex-wrap">
               <AnimatedUnderline delay={0.8}>
-                <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">for equity</span>
+                <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
+                  for equity
+                </span>
               </AnimatedUnderline>
-              <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">and</span>
+              <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
+                and
+              </span>
               <AnimatedUnderline delay={1.0}>
-                <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">community impact.</span>
+                <span className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
+                  community impact.
+                </span>
               </AnimatedUnderline>
             </div>
           </motion.div>
@@ -156,15 +243,35 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.8 }}
-          onClick={() => window.scrollTo({ top: window.innerHeight - 100, behavior: 'smooth' })}
+          onClick={() =>
+            window.scrollTo({
+              top: window.innerHeight - 100,
+              behavior: "smooth",
+            })
+          }
         >
-          <span className="text-white/70 text-xs tracking-widest uppercase">Scroll</span>
+          <span className="text-white/70 text-xs font-bold tracking-widest uppercase">
+            Scroll
+          </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.7" />
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 5V19M12 19L5 12M12 19L19 12"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                opacity="0.7"
+              />
             </svg>
           </motion.div>
         </motion.div>
@@ -176,8 +283,10 @@ export default function Home() {
         <FadeIn delay={0.2}>
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             <p className="max-w-[782px] mx-auto text-center font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
-              You want clarity. Strong leadership. Sustainable funding.<br />
-              We help you build the systems, partnerships, and strategy to move your mission forward.
+              You want clarity. Strong leadership. Sustainable funding.
+              <br />
+              We help you build the systems, partnerships, and strategy to move
+              your mission forward.
             </p>
 
             {/* Gold divider */}
@@ -204,7 +313,12 @@ export default function Home() {
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
+                  <Image
+                    src={getImagePath("/images/icons/circle-arrow-right.svg")}
+                    alt=""
+                    width={32}
+                    height={32}
+                  />
                 </motion.div>
               </div>
             </FadeIn>
@@ -212,30 +326,47 @@ export default function Home() {
             {/* Description */}
             <FadeIn delay={0.1}>
               <p className="max-w-[885px] font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-12">
-                You get support across strategy, leadership, governance, and fundraising.<br />
-                You leave with aligned teams. Better decisions. Clear priorities. A stronger organization.
+                You get support across strategy, leadership, governance, and
+                fundraising.
+                <br />
+                You leave with aligned teams. Better decisions. Clear
+                priorities. A stronger organization.
               </p>
             </FadeIn>
 
             {/* Services Grid - 5 items */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-4">
+            <StaggerChildren
+              staggerDelay={0.1}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6"
+            >
               {services.map((service, index) => (
-                <StaggerItem key={index}>
+                <StaggerItem key={index} className="h-full">
                   <motion.div
-                    className="flex flex-col items-center text-center"
-                    whileHover={{ y: -8 }}
+                    className="flex flex-col items-center text-center p-4 md:p-6 bg-white rounded-[20px] md:rounded-[24px] border-2 cursor-pointer h-full"
+                    style={{ borderColor: service.borderColor }}
+                    whileHover={{
+                      scale: 1.03,
+                      boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
+                    }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {/* Blue circle with icon */}
+                    {/* Colored circle with icon */}
                     <motion.div
-                      className="w-[80px] h-[80px] md:w-[112px] md:h-[112px] rounded-full bg-blue flex items-center justify-center mb-4 md:mb-6"
+                      className="w-[80px] h-[80px] md:w-[112px] md:h-[112px] rounded-full flex items-center justify-center mb-4 md:mb-6"
+                      style={{ backgroundColor: service.borderColor }}
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <Image src={getImagePath(service.icon)} alt="" width={62} height={62} className="brightness-0 invert w-[44px] h-[44px] md:w-[62px] md:h-[62px]" />
+                      <Image
+                        src={getImagePath(service.icon)}
+                        alt=""
+                        width={200}
+                        height={200}
+                        className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] object-contain"
+                      />
                     </motion.div>
                     {/* Label */}
-                    <p className="font-normal text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
+                    <p className="text-[14px] md:text-[18px] text-[#212121] leading-[20px] md:leading-[26px] tracking-[-0.36px] whitespace-pre-line">
                       {service.title}
                     </p>
                   </motion.div>
@@ -258,7 +389,12 @@ export default function Home() {
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
+                  <Image
+                    src={getImagePath("/images/icons/circle-arrow-right.svg")}
+                    alt=""
+                    width={32}
+                    height={32}
+                  />
                 </motion.div>
               </div>
             </FadeIn>
@@ -267,8 +403,11 @@ export default function Home() {
             <FadeIn delay={0.1}>
               <div className="max-w-[1230px] font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-8">
                 <p>
-                  The social sector faces complex pressure. More demand. Limited resources. Boards needing direction.<br />
-                  Fundraising stuck in short cycles. Leaders stretched thin. You need practical solutions that increase alignment and impact.
+                  The social sector faces complex pressure. More demand. Limited
+                  resources. Boards needing direction.
+                  <br />
+                  Fundraising stuck in short cycles. Leaders stretched thin. You
+                  need practical solutions that increase alignment and impact.
                 </p>
                 <p className="mt-4 font-bold">We bring:</p>
               </div>
@@ -280,7 +419,10 @@ export default function Home() {
                 <StaggerItem key={index}>
                   <motion.div
                     className="w-full max-w-[1220px] min-h-[56px] md:min-h-[72px] py-3 md:py-4 bg-[rgba(235,235,235,0.5)] rounded-[116px] flex items-center justify-center px-4 md:px-6"
-                    whileHover={{ scale: 1.02, backgroundColor: "rgba(235,235,235,0.8)" }}
+                    whileHover={{
+                      scale: 1.02,
+                      backgroundColor: "rgba(235,235,235,0.8)",
+                    }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <p className="font-bold text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-center tracking-[-0.02em] text-dark">
@@ -302,7 +444,7 @@ export default function Home() {
 
             {/* Bottom text */}
             <FadeIn>
-              <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+              <p className="font-light italic text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
                 You get simple steps. Straight talk. Measurable outcomes.
               </p>
             </FadeIn>
@@ -322,13 +464,21 @@ export default function Home() {
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
+                  <Image
+                    src={getImagePath("/images/icons/circle-arrow-right.svg")}
+                    alt=""
+                    width={32}
+                    height={32}
+                  />
                 </motion.div>
               </div>
             </FadeIn>
 
             {/* 6 Image Cards - 2 rows of 3 */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <StaggerChildren
+              staggerDelay={0.1}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
               {approachSteps.map((step, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -346,13 +496,15 @@ export default function Home() {
                         alt={step.label}
                         fill
                         className="object-cover"
-                        style={{ opacity: step.blend === 'saturation' ? 0.9 : 0.9 }}
+                        style={{
+                          opacity: step.blend === "saturation" ? 0.9 : 0.9,
+                        }}
                       />
                       <div
                         className="absolute inset-0 rounded-[32px]"
                         style={{
                           backgroundColor: step.color,
-                          mixBlendMode: step.blend as 'color' | 'saturation',
+                          mixBlendMode: step.blend as "color" | "saturation",
                         }}
                       />
                     </motion.div>
@@ -379,7 +531,14 @@ export default function Home() {
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={32} height={32} />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-white.svg",
+                    )}
+                    alt=""
+                    width={32}
+                    height={32}
+                  />
                 </motion.div>
               </div>
             </div>
@@ -390,7 +549,10 @@ export default function Home() {
         <div className="w-full bg-blue py-20">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             {/* Top row - 4 icons */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12 mb-8 md:mb-16">
+            <StaggerChildren
+              staggerDelay={0.1}
+              className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12 mb-8 md:mb-16"
+            >
               {whoWeServeTop.map((item, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -399,7 +561,13 @@ export default function Home() {
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <div className="w-[80px] h-[80px] md:w-[112px] md:h-[112px] flex items-center justify-center mb-4 md:mb-6">
-                      <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert w-[80px] h-[80px] md:w-[112px] md:h-[112px]" />
+                      <Image
+                        src={getImagePath(item.icon)}
+                        alt=""
+                        width={112}
+                        height={112}
+                        className="brightness-0 invert w-[80px] h-[80px] md:w-[112px] md:h-[112px]"
+                      />
                     </div>
                     <p className="font-bold text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-center text-white whitespace-pre-line">
                       {item.label}
@@ -410,7 +578,10 @@ export default function Home() {
             </StaggerChildren>
 
             {/* Bottom row - 3 icons centered */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-12 max-w-[1000px] mx-auto">
+            <StaggerChildren
+              staggerDelay={0.1}
+              className="grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-12 max-w-[1000px] mx-auto"
+            >
               {whoWeServeBottom.map((item, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -419,7 +590,13 @@ export default function Home() {
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <div className="w-[80px] h-[80px] md:w-[112px] md:h-[112px] flex items-center justify-center mb-4 md:mb-6">
-                      <Image src={getImagePath(item.icon)} alt="" width={112} height={112} className="brightness-0 invert w-[80px] h-[80px] md:w-[112px] md:h-[112px]" />
+                      <Image
+                        src={getImagePath(item.icon)}
+                        alt=""
+                        width={112}
+                        height={112}
+                        className="brightness-0 invert w-[80px] h-[80px] md:w-[112px] md:h-[112px]"
+                      />
                     </div>
                     <p className="font-bold text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-center text-white whitespace-pre-line">
                       {item.label}
@@ -447,7 +624,14 @@ export default function Home() {
                       whileHover={{ x: 5 }}
                       transition={{ type: "spring", stiffness: 400 }}
                     >
-                      <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={32} height={32} />
+                      <Image
+                        src={getImagePath(
+                          "/images/icons/circle-arrow-right.svg",
+                        )}
+                        alt=""
+                        width={32}
+                        height={32}
+                      />
                     </motion.div>
                   </div>
                 </FadeIn>
@@ -455,12 +639,21 @@ export default function Home() {
                 {/* Description */}
                 <FadeIn delay={0.1}>
                   <p className="max-w-[694px] font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-12">
-                    Having worked on the forefront of creating social change through community outreach and engagement – we know social change is hard. We don&apos;t believe in emphasizing the latest buzzwords, providing quick answers or taking short cuts, because they don&apos;t foster social change. Instead, we provide individualized solutions based on the needs of the client and their constituency.
+                    Having worked on the forefront of creating social change
+                    through community outreach and engagement – we know social
+                    change is hard. We don&apos;t believe in emphasizing the
+                    latest buzzwords, providing quick answers or taking short
+                    cuts, because they don&apos;t foster social change. Instead,
+                    we provide individualized solutions based on the needs of
+                    the client and their constituency.
                   </p>
                 </FadeIn>
 
                 {/* Stats Grid - 2x2 */}
-                <StaggerChildren staggerDelay={0.15} className="grid grid-cols-2 gap-x-6 md:gap-x-12 gap-y-0 max-w-[630px]">
+                <StaggerChildren
+                  staggerDelay={0.15}
+                  className="grid grid-cols-2 gap-x-6 md:gap-x-12 gap-y-0 max-w-[630px]"
+                >
                   {impactStats.map((stat, index) => (
                     <StaggerItem key={index}>
                       <div className="border-t-[1.5px] border-[rgba(92,92,92,0.2)] pt-4 md:pt-6 pb-8 md:pb-12">
@@ -507,10 +700,12 @@ export default function Home() {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <Image
-              src={getImagePath("/images/icons/arrow_dodger_blue.png")}
+              src={getImagePath(
+                "/site icons_122425/arrows/png 4x/arrow_dodger blue.png",
+              )}
               alt=""
-              width={1218}
-              height={55}
+              width={4872}
+              height={218}
               className="w-full h-auto"
             />
           </motion.div>
@@ -524,10 +719,12 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
           >
             <Image
-              src={getImagePath("/images/icons/arrow_chestnut.png")}
+              src={getImagePath(
+                "/site icons_122425/arrows/png 4x/arrow_chestnut.png",
+              )}
               alt=""
-              width={1218}
-              height={55}
+              width={4872}
+              height={218}
               className="w-full h-auto"
             />
           </motion.div>
@@ -553,7 +750,8 @@ export default function Home() {
             <FadeIn delay={0.1}>
               <div className="w-full max-w-[1220px] h-[250px] md:h-[359px] bg-gray-300 rounded-[24px] md:rounded-[32px] flex items-center justify-center mb-4">
                 <p className="font-bold text-[18px] md:text-[36px] leading-[24px] md:leading-[48px] text-center text-[#FF00D9] px-4">
-                  [imagery showcasing apprenticeship program in action in a rotating carousel]
+                  [imagery showcasing apprenticeship program in action in a
+                  rotating carousel]
                 </p>
               </div>
             </FadeIn>
@@ -563,11 +761,13 @@ export default function Home() {
               {[0, 1, 2].map((dot) => (
                 <motion.div
                   key={dot}
-                  className={`w-[18px] h-[18px] rounded-full border border-gray-300 flex items-center justify-center cursor-pointer ${dot === 0 ? 'bg-white' : 'bg-white'}`}
+                  className={`w-[18px] h-[18px] rounded-full border border-gray-300 flex items-center justify-center cursor-pointer ${dot === 0 ? "bg-white" : "bg-white"}`}
                   whileHover={{ scale: 1.2 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  {dot === 0 && <div className="w-[14px] h-[14px] rounded-full bg-gray-400" />}
+                  {dot === 0 && (
+                    <div className="w-[14px] h-[14px] rounded-full bg-gray-400" />
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -578,14 +778,18 @@ export default function Home() {
                 GoodTrouble Social Impact Apprenticeship Program.
               </h3>
               <p className="font-normal text-[16px] md:text-[18px] leading-[24px] md:leading-[26px] text-dark">
-                Three emerging leaders. Real client work. Practical training in strategy, philanthropy, and community development.
+                Three emerging leaders. Real client work. Practical training in
+                strategy, philanthropy, and community development.
               </p>
             </FadeIn>
           </div>
         </section>
 
         {/* ============ 3 CTA CARDS ============ */}
-        <StaggerChildren staggerDelay={0.1} className="w-full grid grid-cols-1 md:grid-cols-3 mt-8 md:mt-16">
+        <StaggerChildren
+          staggerDelay={0.1}
+          className="w-full grid grid-cols-1 md:grid-cols-3 mt-8 md:mt-16"
+        >
           {/* Brown CTA */}
           <StaggerItem>
             <Link href="/contact" className="block">
@@ -601,7 +805,15 @@ export default function Home() {
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-white.svg",
+                    )}
+                    alt=""
+                    width={43}
+                    height={43}
+                    className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>
@@ -622,7 +834,15 @@ export default function Home() {
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-black.svg",
+                    )}
+                    alt=""
+                    width={39}
+                    height={39}
+                    className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>
@@ -643,7 +863,15 @@ export default function Home() {
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-white.svg",
+                    )}
+                    alt=""
+                    width={39}
+                    height={39}
+                    className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>

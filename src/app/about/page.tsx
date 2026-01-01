@@ -54,13 +54,19 @@ export default function AboutPage() {
             priority
           />
           <div className="absolute inset-0 bg-navy mix-blend-color" />
-          <div className="absolute inset-0 bg-navy/10 md:bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
+          <div
+            className="absolute inset-0 bg-navy/10 md:bg-navy/20"
+            style={{ mixBlendMode: "multiply" }}
+          />
         </div>
 
         {/* Gradient overlay from left - narrower on mobile */}
         <div
           className="absolute inset-y-0 left-0 w-[55%] md:w-[70%]"
-          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.85) 50%, rgba(255, 255, 255, 0) 100%)' }}
+          style={{
+            background:
+              "linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.85) 50%, rgba(255, 255, 255, 0) 100%)",
+          }}
         />
 
         {/* Animated Decorative Circles */}
@@ -106,9 +112,14 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="font-bold text-[28px] md:text-[36px] leading-[38px] md:leading-[48px] tracking-[0.05em] text-white">
-              Giddings Consulting Group<br />
-              is a social impact strategy firm<br />
-              based in <AnimatedUnderline delay={0.8}><span>Elizabeth, New Jersey.</span></AnimatedUnderline>
+              Giddings Consulting Group
+              <br />
+              is a social impact strategy firm
+              <br />
+              based in{" "}
+              <AnimatedUnderline delay={0.8}>
+                <span>Elizabeth, New Jersey.</span>
+              </AnimatedUnderline>
             </h1>
           </motion.div>
         </div>
@@ -127,11 +138,16 @@ export default function AboutPage() {
             <FadeIn delay={0.1}>
               <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark max-w-[1220px]">
                 <p className="mb-4">
-                  We work with mission-driven organizations committed to equity, inclusion, and sustainable community outcomes.
+                  We work with mission-driven organizations committed to equity,
+                  inclusion, and sustainable community outcomes.
                 </p>
                 <p>
-                  Our work spans strategic planning, governance, fundraising, leadership development, coalition building, and philanthropic advising.<br />
-                  The goal is simple. Help leaders deliver stronger results for the communities they serve.
+                  Our work spans strategic planning, governance, fundraising,
+                  leadership development, coalition building, and philanthropic
+                  advising.
+                  <br />
+                  The goal is simple. Help leaders deliver stronger results for
+                  the communities they serve.
                 </p>
               </div>
             </FadeIn>
@@ -163,21 +179,27 @@ export default function AboutPage() {
               <FadeIn direction="right" delay={0.2}>
                 <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark lg:w-[540px]">
                   <p className="mb-4">
-                    Drew Giddings is a strategist, philanthropic advisor, and executive coach with more than two decades of experience across the nonprofit, philanthropic, and public sectors.
+                    Drew Giddings is a strategist, philanthropic advisor, and
+                    executive coach with more than two decades of experience
+                    across the nonprofit, philanthropic, and public sectors.
                   </p>
                   <p className="mb-4">
-                    He has supported more than 100 organizations. He advised leaders through major transitions. He strengthened boards.<br />
-                    He built fundraising models. He expanded partnerships<br />
-                    across sectors, working on climate resilience, economic inclusion, and community development.
+                    He has supported more than 100 organizations. He advised
+                    leaders through major transitions. He strengthened boards.
+                    <br />
+                    He built fundraising models. He expanded partnerships
+                    <br />
+                    across sectors, working on climate resilience, economic
+                    inclusion, and community development.
                   </p>
                   <p>
-                    His work sits at the intersection of strategy, equity,<br />
+                    His work sits at the intersection of strategy, equity,
+                    <br />
                     and systems change.
                   </p>
                 </div>
               </FadeIn>
             </div>
-
           </div>
         </section>
 
@@ -230,9 +252,13 @@ export default function AboutPage() {
 
             <FadeIn delay={0.1}>
               <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-8 max-w-[1230px]">
-                We believe strong organizations lead to stronger communities.<br />
-                We build strategy that reflects lived experience and local wisdom.<br />
-                We respect your context. We support your values. We help you lead with clarity.
+                We believe strong organizations lead to stronger communities.
+                <br />
+                We build strategy that reflects lived experience and local
+                wisdom.
+                <br />
+                We respect your context. We support your values. We help you
+                lead with clarity.
               </p>
             </FadeIn>
 
@@ -252,7 +278,10 @@ export default function AboutPage() {
             </FadeIn>
 
             {/* Values Grid - Top Row */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 lg:gap-[271px] justify-items-center mb-8 md:mb-16">
+            <StaggerChildren
+              staggerDelay={0.1}
+              className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 lg:gap-[271px] justify-items-center mb-8 md:mb-16"
+            >
               {valuesTop.map((value, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -265,7 +294,13 @@ export default function AboutPage() {
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert w-[44px] h-[44px] md:w-[62px] md:h-[62px]" />
+                      <Image
+                        src={getImagePath(value.icon)}
+                        alt=""
+                        width={62}
+                        height={62}
+                        className="brightness-0 invert w-[44px] h-[44px] md:w-[62px] md:h-[62px]"
+                      />
                     </motion.div>
                     <p className="font-normal text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] tracking-[-0.02em] text-dark">
                       {value.label}
@@ -276,7 +311,10 @@ export default function AboutPage() {
             </StaggerChildren>
 
             {/* Values Grid - Bottom Row */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 lg:gap-[271px] justify-items-center">
+            <StaggerChildren
+              staggerDelay={0.1}
+              className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 lg:gap-[271px] justify-items-center"
+            >
               {valuesBottom.map((value, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -289,7 +327,13 @@ export default function AboutPage() {
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <Image src={getImagePath(value.icon)} alt="" width={62} height={62} className="brightness-0 invert w-[44px] h-[44px] md:w-[62px] md:h-[62px]" />
+                      <Image
+                        src={getImagePath(value.icon)}
+                        alt=""
+                        width={62}
+                        height={62}
+                        className="brightness-0 invert w-[44px] h-[44px] md:w-[62px] md:h-[62px]"
+                      />
                     </motion.div>
                     <p className="font-normal text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] tracking-[-0.02em] text-dark">
                       {value.label}
@@ -327,12 +371,13 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           />
-          <motion.div
-            className="absolute w-[437px] h-[219px] -right-[77px] -bottom-[100px] rounded-full bg-blue opacity-50"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 0.5, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.3 }}
+          <FloatingCircle
+            size={300}
+            color="#3490F3"
+            className="right-[20px] -bottom-[100px] opacity-50"
+            delay={0.3}
+            floatRange={8}
+            duration={4}
           />
 
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28 relative z-10">
@@ -353,7 +398,10 @@ export default function AboutPage() {
               />
 
               {/* Bullet list */}
-              <StaggerChildren staggerDelay={0.15} className="text-[18px] md:text-[28px] text-white leading-[32px] md:leading-[60px] text-center">
+              <StaggerChildren
+                staggerDelay={0.15}
+                className="text-[18px] md:text-[28px] text-white leading-[32px] md:leading-[60px] text-center"
+              >
                 <StaggerItem>
                   <p>• You get direct engagement from senior leadership.</p>
                 </StaggerItem>
@@ -361,7 +409,10 @@ export default function AboutPage() {
                   <p>• You get tools that support execution.</p>
                 </StaggerItem>
                 <StaggerItem>
-                  <p>• You get plans built around real conditions, not abstract theory.</p>
+                  <p>
+                    • You get plans built around real conditions, not abstract
+                    theory.
+                  </p>
                 </StaggerItem>
               </StaggerChildren>
             </div>
@@ -384,7 +435,10 @@ export default function AboutPage() {
             </div>
 
             {/* Process Steps */}
-            <StaggerChildren staggerDelay={0.1} className="space-y-3 md:space-y-4">
+            <StaggerChildren
+              staggerDelay={0.1}
+              className="space-y-3 md:space-y-4"
+            >
               {processSteps.map((step, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -402,8 +456,9 @@ export default function AboutPage() {
 
             {/* Closing statement */}
             <FadeIn delay={0.3}>
-              <p className="text-[18px] md:text-[28px] text-white leading-[32px] md:leading-[60px] text-center mt-10 md:mt-14">
-                This approach strengthens culture, decision-making, and long-term sustainability.
+              <p className="text-[18px] md:text-[28px] text-white leading-[32px] md:leading-[60px] text-center mt-10 md:mt-14 italic">
+                This approach strengthens culture, decision-making, and
+                long-term sustainability.
               </p>
             </FadeIn>
           </div>
@@ -437,15 +492,24 @@ export default function AboutPage() {
               transition={{ duration: 0.8, delay: 0.1 }}
             />
 
-            <StaggerChildren staggerDelay={0.1} className="font-bold text-[18px] leading-[32px] text-dark list-disc list-inside space-y-0">
+            <StaggerChildren
+              staggerDelay={0.1}
+              className="font-bold text-[18px] leading-[32px] text-dark list-disc list-inside space-y-0"
+            >
               <StaggerItem>
                 <p>• Our primary office is in Elizabeth, New Jersey.</p>
               </StaggerItem>
               <StaggerItem>
-                <p>• Our work extends across the African diaspora and global partners.</p>
+                <p>
+                  • Our work extends across the African diaspora and global
+                  partners.
+                </p>
               </StaggerItem>
               <StaggerItem>
-                <p>• Recent milestones include an expanded office, a refreshed brand, and membership in the Clinton Global Initiative.</p>
+                <p>
+                  • Recent milestones include an expanded office, a refreshed
+                  brand, and membership in the Clinton Global Initiative.
+                </p>
               </StaggerItem>
             </StaggerChildren>
           </div>
@@ -457,7 +521,7 @@ export default function AboutPage() {
             {/* Blue pill bar */}
             <FadeIn>
               <motion.div
-                className="w-full max-w-[1220px] bg-blue rounded-[116px] py-6 px-8 mb-8"
+                className="w-full max-w-[1220px] bg-[#3490f3] rounded-full py-6 px-8 mb-8"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -469,15 +533,24 @@ export default function AboutPage() {
 
             <FadeIn delay={0.1}>
               <p className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark max-w-[1230px] mb-16">
-                We launched the <span className="font-bold">GoodTrouble Social Impact Apprenticeship Program</span> to support rising strategists and practitioners.<br />
-                Apprentices support client work and gain experience in real-world problem-solving.
+                We launched the{" "}
+                <span className="font-bold">
+                  GoodTrouble Social Impact Apprenticeship Program
+                </span>{" "}
+                to support rising strategists and practitioners.
+                <br />
+                Apprentices support client work and gain experience in
+                real-world problem-solving.
               </p>
             </FadeIn>
           </div>
         </section>
 
         {/* ============ 3 CTA CARDS ============ */}
-        <StaggerChildren staggerDelay={0.1} className="w-full grid grid-cols-1 md:grid-cols-3">
+        <StaggerChildren
+          staggerDelay={0.1}
+          className="w-full grid grid-cols-1 md:grid-cols-3"
+        >
           {/* Brown CTA */}
           <StaggerItem>
             <Link href="/contact" className="block">
@@ -487,13 +560,23 @@ export default function AboutPage() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <p className="max-w-[323px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-white mb-4 md:mb-5">
-                  Meet with<br />our team.
+                  Meet with
+                  <br />
+                  our team.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-white.svg",
+                    )}
+                    alt=""
+                    width={43}
+                    height={43}
+                    className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>
@@ -514,7 +597,15 @@ export default function AboutPage() {
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right.svg")} alt="" width={39} height={39} className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-black.svg",
+                    )}
+                    alt=""
+                    width={39}
+                    height={39}
+                    className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>
@@ -535,7 +626,15 @@ export default function AboutPage() {
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={39} height={39} className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-white.svg",
+                    )}
+                    alt=""
+                    width={39}
+                    height={39}
+                    className="w-[32px] h-[32px] md:w-[39px] md:h-[39px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>

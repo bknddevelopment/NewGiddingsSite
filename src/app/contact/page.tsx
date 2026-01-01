@@ -17,11 +17,27 @@ import { motion } from "framer-motion";
 
 // Stay informed items - 5 items matching Figma
 const stayInformedItems = [
-  { icon: "/images/icons/contact_rank.png", label: "New client\nwins and\ncase studies" },
-  { icon: "/images/icons/contact_brain.png", label: "Upcoming\nconvening and\nlearning sessions" },
-  { icon: "/images/icons/contact_file.png", label: "Leadership\nand fundraising\ntools" },
-  { icon: "/images/icons/contact_bell.png", label: "GoodTrouble\napprenticeship\nupdates" },
-  { icon: "/images/icons/contact_bulb.png", label: "Insights from our work\nacross climate, equity,\n& community resilience" },
+  {
+    icon: "/images/icons/contact_rank.png",
+    label: "New client\nwins and\ncase studies",
+  },
+  {
+    icon: "/images/icons/contact_brain.png",
+    label: "Upcoming\nconvening and\nlearning sessions",
+  },
+  {
+    icon: "/images/icons/contact_file.png",
+    label: "Leadership\nand fundraising\ntools",
+  },
+  {
+    icon: "/images/icons/contact_bell.png",
+    label: "GoodTrouble\napprenticeship\nupdates",
+  },
+  {
+    icon: "/images/icons/contact_bulb.png",
+    label:
+      "Insights from our work\nacross climate, equity,\n& community resilience",
+  },
 ];
 
 // Tell us items - 4 numbered items
@@ -49,13 +65,19 @@ export default function ContactPage() {
             priority
           />
           <div className="absolute inset-0 bg-navy mix-blend-color" />
-          <div className="absolute inset-0 bg-navy/10 md:bg-navy/20" style={{ mixBlendMode: 'multiply' }} />
+          <div
+            className="absolute inset-0 bg-navy/10 md:bg-navy/20"
+            style={{ mixBlendMode: "multiply" }}
+          />
         </div>
 
         {/* Gradient overlay from left - narrower on mobile */}
         <div
           className="absolute inset-y-0 left-0 w-[50%] md:w-[70%]"
-          style={{ background: 'linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.85) 50%, rgba(255, 255, 255, 0) 100%)' }}
+          style={{
+            background:
+              "linear-gradient(90deg, #1D1F4E 0%, rgba(29, 31, 78, 0.85) 50%, rgba(255, 255, 255, 0) 100%)",
+          }}
         />
 
         {/* Animated Decorative Circles */}
@@ -101,7 +123,10 @@ export default function ContactPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="font-bold text-[32px] md:text-[36px] leading-[44px] md:leading-[48px] tracking-[0.05em] text-white">
-              Let&apos;s stay <AnimatedUnderline delay={0.8}><span>connected!</span></AnimatedUnderline>
+              Let&apos;s stay{" "}
+              <AnimatedUnderline delay={0.8}>
+                <span>connected!</span>
+              </AnimatedUnderline>
             </h1>
           </motion.div>
         </div>
@@ -113,7 +138,9 @@ export default function ContactPage() {
         <FadeIn>
           <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
             <p className="max-w-[782px] mx-auto text-center font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-16">
-              You want tools, insights, and practical strategies that strengthen your work.<br />
+              You want tools, insights, and practical strategies that strengthen
+              your work.
+              <br />
               We share updates that help you lead with clarity and confidence.
             </p>
           </div>
@@ -129,7 +156,10 @@ export default function ContactPage() {
             </FadeIn>
 
             {/* 5 icon items */}
-            <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-4">
+            <StaggerChildren
+              staggerDelay={0.1}
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-4"
+            >
               {stayInformedItems.map((item, index) => (
                 <StaggerItem key={index}>
                   <motion.div
@@ -142,7 +172,13 @@ export default function ContactPage() {
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <Image src={getImagePath(item.icon)} alt="" width={62} height={62} className="brightness-0 invert w-[44px] h-[44px] md:w-[62px] md:h-[62px]" />
+                      <Image
+                        src={getImagePath(item.icon)}
+                        alt=""
+                        width={62}
+                        height={62}
+                        className="brightness-0 invert w-[44px] h-[44px] md:w-[62px] md:h-[62px]"
+                      />
                     </motion.div>
                     <p className="font-normal text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] tracking-[-0.02em] text-dark whitespace-pre-line">
                       {item.label}
@@ -159,7 +195,8 @@ export default function ContactPage() {
           <div className="w-full bg-navy py-6">
             <div className="max-w-[1440px] mx-auto px-6 lg:px-28">
               <p className="font-bold text-[18px] leading-[32px] text-center text-white">
-                Share your information below. We&apos;ll keep you up to date on what matters most to your mission.
+                Share your information below. We&apos;ll keep you up to date on
+                what matters most to your mission.
               </p>
             </div>
           </div>
@@ -180,14 +217,19 @@ export default function ContactPage() {
                 <FadeIn delay={0.1}>
                   <div className="font-normal text-[18px] leading-[26px] tracking-[-0.02em] text-dark mb-8">
                     <p className="mb-4">
-                      If you want support with strategy, leadership, fundraising, or partnership development, complete the form. We respond within two business days.
+                      If you want support with strategy, leadership,
+                      fundraising, or partnership development, complete the
+                      form. We respond within two business days.
                     </p>
                     <p className="font-bold">Tell us:</p>
                   </div>
                 </FadeIn>
 
                 {/* Numbered items */}
-                <StaggerChildren staggerDelay={0.1} className="space-y-3 md:space-y-4 mb-8">
+                <StaggerChildren
+                  staggerDelay={0.1}
+                  className="space-y-3 md:space-y-4 mb-8"
+                >
                   {tellUsItems.map((item, index) => (
                     <StaggerItem key={index}>
                       <motion.div
@@ -208,7 +250,9 @@ export default function ContactPage() {
                         {/* Gray pill */}
                         <motion.div
                           className="bg-[rgba(235,235,235,0.5)] rounded-[116px] min-h-[56px] md:min-h-[72px] py-3 md:py-4 flex-1 flex items-center px-5 md:px-8"
-                          whileHover={{ backgroundColor: "rgba(235,235,235,0.8)" }}
+                          whileHover={{
+                            backgroundColor: "rgba(235,235,235,0.8)",
+                          }}
                           transition={{ duration: 0.2 }}
                         >
                           <p className="font-bold text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] tracking-[-0.02em] text-dark">
@@ -221,7 +265,7 @@ export default function ContactPage() {
                 </StaggerChildren>
 
                 <FadeIn delay={0.3}>
-                  <p className="font-bold text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
+                  <p className="font-light italic text-[18px] leading-[26px] tracking-[-0.02em] text-dark">
                     We look forward to hearing from you.
                   </p>
                 </FadeIn>
@@ -243,7 +287,10 @@ export default function ContactPage() {
         </section>
 
         {/* ============ 3 CTA CARDS ============ */}
-        <StaggerChildren staggerDelay={0.1} className="w-full grid grid-cols-1 md:grid-cols-3">
+        <StaggerChildren
+          staggerDelay={0.1}
+          className="w-full grid grid-cols-1 md:grid-cols-3"
+        >
           {/* Brown CTA */}
           <StaggerItem>
             <Link href="#" className="block">
@@ -259,7 +306,15 @@ export default function ContactPage() {
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-white.svg",
+                    )}
+                    alt=""
+                    width={43}
+                    height={43}
+                    className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>
@@ -274,13 +329,23 @@ export default function ContactPage() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <p className="max-w-[327px] font-bold text-[20px] md:text-[26px] leading-[28px] md:leading-[38px] text-center tracking-[-0.005em] text-black mb-4 md:mb-5">
-                  Join our<br />mailing list.
+                  Join our
+                  <br />
+                  mailing list.
                 </p>
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-black.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-black.svg",
+                    )}
+                    alt=""
+                    width={43}
+                    height={43}
+                    className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>
@@ -301,7 +366,15 @@ export default function ContactPage() {
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Image src={getImagePath("/images/icons/circle-arrow-right-white.svg")} alt="" width={43} height={43} className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]" />
+                  <Image
+                    src={getImagePath(
+                      "/images/icons/circle-arrow-right-white.svg",
+                    )}
+                    alt=""
+                    width={43}
+                    height={43}
+                    className="w-[36px] h-[36px] md:w-[43px] md:h-[43px]"
+                  />
                 </motion.div>
               </motion.div>
             </Link>
