@@ -13,36 +13,11 @@ import {
   FloatingCircle,
 } from "@/components/animations";
 import { motion } from "framer-motion";
-
-// Placeholder blog posts - replace with actual data source later
-const blogPosts = [
-  {
-    id: 1,
-    title: "Building Stronger Boards: Governance Best Practices for 2025",
-    excerpt:
-      "Effective governance is the foundation of organizational success. Learn how to strengthen your board's capacity for strategic leadership.",
-    date: "January 2025",
-    category: "Governance",
-  },
-  {
-    id: 2,
-    title: "Equity-Centered Strategic Planning: A Practical Guide",
-    excerpt:
-      "How to integrate equity principles throughout your strategic planning process, from stakeholder engagement to implementation.",
-    date: "December 2024",
-    category: "Strategy",
-  },
-  {
-    id: 3,
-    title: "Fund Development in a Changing Landscape",
-    excerpt:
-      "Navigating new trends in philanthropy and building sustainable funding models for mission-driven organizations.",
-    date: "November 2024",
-    category: "Fundraising",
-  },
-];
+import { getAllBlogPosts } from "@/lib/blog-data";
 
 export default function BlogPage() {
+  const blogPosts = getAllBlogPosts();
+
   return (
     <div className="w-full bg-white">
       <Header />
@@ -115,62 +90,77 @@ export default function BlogPage() {
           >
             {blogPosts.map((post) => (
               <StaggerItem key={post.id}>
-                <motion.article
-                  className="bg-white rounded-[24px] border border-gray-200 overflow-hidden shadow-sm h-full flex flex-col"
-                  whileHover={{
-                    y: -8,
-                    boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                  }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  {/* Placeholder image area */}
-                  <div className="h-[200px] bg-gradient-to-br from-navy to-blue flex items-center justify-center">
-                    <span className="text-white/50 text-sm">Coming Soon</span>
-                  </div>
-
-                  <div className="p-6 flex flex-col flex-grow">
-                    {/* Category & Date */}
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="bg-gold/20 text-gold px-3 py-1 rounded-full text-sm font-medium">
-                        {post.category}
-                      </span>
-                      <span className="text-gray-500 text-sm">{post.date}</span>
+                <Link href={`/blog/${post.slug}`}>
+                  <motion.article
+                    className="bg-white rounded-[24px] border border-gray-200 overflow-hidden shadow-sm h-full flex flex-col cursor-pointer"
+                    whileHover={{
+                      y: -8,
+                      boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                    }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {/* Featured image area */}
+                    <div className="h-[200px] bg-gradient-to-br from-navy to-blue flex items-center justify-center relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-navy via-blue to-navy opacity-90" />
+                      <div className="relative z-10 p-6 text-center">
+                        <span className="text-gold font-bold text-sm uppercase tracking-wider">
+                          {post.category}
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Title */}
-                    <h2 className="font-bold text-[20px] leading-[28px] text-dark mb-3">
-                      {post.title}
-                    </h2>
+                    <div className="p-6 flex flex-col flex-grow">
+                      {/* Category & Date */}
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="bg-gold/20 text-gold px-3 py-1 rounded-full text-sm font-medium">
+                          {post.category}
+                        </span>
+                        <span className="text-gray-500 text-sm">
+                          {post.date}
+                        </span>
+                      </div>
 
-                    {/* Excerpt */}
-                    <p className="text-gray-600 text-[16px] leading-[24px] mb-6 flex-grow">
-                      {post.excerpt}
-                    </p>
+                      {/* Title */}
+                      <h2 className="font-bold text-[20px] leading-[28px] text-dark mb-3">
+                        {post.title}
+                      </h2>
 
-                    {/* Read More Link */}
-                    <motion.div
-                      className="flex items-center gap-2 text-blue font-semibold"
-                      whileHover={{ x: 5 }}
-                    >
-                      <span>Read More</span>
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                      {/* Excerpt */}
+                      <p className="text-gray-600 text-[16px] leading-[24px] mb-6 flex-grow line-clamp-3">
+                        {post.excerpt}
+                      </p>
+
+                      {/* Author & Read Time */}
+                      <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <span>{post.author}</span>
+                        <span>{post.readTime}</span>
+                      </div>
+
+                      {/* Read More Link */}
+                      <motion.div
+                        className="flex items-center gap-2 text-blue font-semibold"
+                        whileHover={{ x: 5 }}
                       >
-                        <path
-                          d="M4.166 10H15.833M15.833 10L10 4.167M15.833 10L10 15.833"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </motion.div>
-                  </div>
-                </motion.article>
+                        <span>Read More</span>
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.166 10H15.833M15.833 10L10 4.167M15.833 10L10 15.833"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </motion.div>
+                    </div>
+                  </motion.article>
+                </Link>
               </StaggerItem>
             ))}
           </StaggerChildren>
