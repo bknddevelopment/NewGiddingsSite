@@ -100,21 +100,30 @@ export default function BlogPage() {
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     {/* Featured image area */}
-                    <div className="h-[200px] bg-gradient-to-br from-navy to-blue flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-navy via-blue to-navy opacity-90" />
-                      <div className="relative z-10 p-6 text-center">
-                        <span className="text-gold font-bold text-sm uppercase tracking-wider">
+                    <div className="h-[220px] relative overflow-hidden">
+                      {post.featuredImage ? (
+                        <>
+                          <Image
+                            src={post.featuredImage}
+                            alt={post.featuredImageAlt || post.title}
+                            fill
+                            className="object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
+                        </>
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-navy via-blue to-navy" />
+                      )}
+                      <div className="absolute bottom-4 left-4 z-10">
+                        <span className="bg-gold text-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                           {post.category}
                         </span>
                       </div>
                     </div>
 
                     <div className="p-6 flex flex-col flex-grow">
-                      {/* Category & Date */}
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className="bg-gold/20 text-gold px-3 py-1 rounded-full text-sm font-medium">
-                          {post.category}
-                        </span>
+                      {/* Date */}
+                      <div className="flex items-center gap-3 mb-3">
                         <span className="text-gray-500 text-sm">
                           {post.date}
                         </span>
