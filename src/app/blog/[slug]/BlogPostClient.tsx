@@ -44,7 +44,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
       <section className="relative w-full overflow-hidden">
         {/* Featured Image Background */}
         {post.featuredImage ? (
-          <div className="relative w-full h-[400px] md:h-[500px]">
+          <div className="relative w-full h-[480px] md:h-[500px]">
             <Image
               src={post.featuredImage}
               alt={post.featuredImageAlt || post.title}
@@ -56,7 +56,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
             <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/30" />
           </div>
         ) : (
-          <div className="relative w-full h-[400px] md:h-[500px] bg-navy">
+          <div className="relative w-full h-[480px] md:h-[500px] bg-navy">
             {/* Animated Decorative Circles for fallback */}
             <FloatingCircle
               size={211}
@@ -79,7 +79,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
 
         {/* Hero Content Overlay */}
         <div className="absolute inset-0 flex items-end">
-          <div className="max-w-[1440px] mx-auto px-6 lg:px-28 pb-24 w-full">
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-28 pb-28 md:pb-24 w-full">
             <motion.div
               className="max-w-[900px]"
               initial={{ opacity: 0, y: 30 }}
