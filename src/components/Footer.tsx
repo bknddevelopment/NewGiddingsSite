@@ -20,6 +20,7 @@ const footerLinks = {
     { href: "/services", label: "Services" },
     { href: "/contact", label: "Contact" },
     { href: "/newsletter", label: "Newsletter" },
+    { href: "/blog", label: "Blog" },
   ],
   services: [
     { href: "/services#strategic-planning", label: "Strategic Planning" },

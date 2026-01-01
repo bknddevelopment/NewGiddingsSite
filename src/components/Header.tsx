@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/contact", label: "Contact" },
   { href: "/newsletter", label: "Newsletter" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Header() {
@@ -99,11 +100,11 @@ export default function Header() {
                 exit="closed"
                 variants={{
                   open: {
-                    transition: { staggerChildren: 0.07, delayChildren: 0.1 }
+                    transition: { staggerChildren: 0.07, delayChildren: 0.1 },
                   },
                   closed: {
-                    transition: { staggerChildren: 0.05, staggerDirection: -1 }
-                  }
+                    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+                  },
                 }}
               >
                 {navLinks.map((link) => (
@@ -111,7 +112,7 @@ export default function Header() {
                     key={link.href}
                     variants={{
                       open: { x: 0, opacity: 1 },
-                      closed: { x: -20, opacity: 0 }
+                      closed: { x: -20, opacity: 0 },
                     }}
                     transition={{ duration: 0.3 }}
                   >
