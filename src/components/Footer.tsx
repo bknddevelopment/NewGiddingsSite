@@ -253,6 +253,27 @@ export default function Footer() {
             </Link>
           </div>
         </motion.div>
+
+        {/* Developer Credit */}
+        <motion.div
+          className="mt-6 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+        >
+          <p className="text-gray-500 text-xs">
+            Site by{" "}
+            <a
+              href="https://bknddevelopment.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gold transition-colors"
+            >
+              BKND Development
+            </a>
+          </p>
+        </motion.div>
       </motion.div>
     </footer>
   );
