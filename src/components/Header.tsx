@@ -14,6 +14,7 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
   { href: "/newsletter", label: "Newsletter" },
   { href: "/blog", label: "Blog" },
+  { href: "/resources", label: "Resources" },
 ];
 
 export default function Header() {

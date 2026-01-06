@@ -21,6 +21,7 @@ const footerLinks = {
     { href: "/contact", label: "Contact" },
     { href: "/newsletter", label: "Newsletter" },
     { href: "/blog", label: "Blog" },
+    { href: "/resources", label: "Resources" },
   ],
   services: [
     { href: "/services#strategic-planning", label: "Strategic Planning" },
